@@ -3,7 +3,6 @@ import { IoMdMenu } from 'react-icons/io';
 import logo from '/images/logo.svg';
 import { IoCloseOutline } from 'react-icons/io5';
 import NavbarAccordion from './NavbarAccordion';
-import { PiPackageDuotone } from 'react-icons/pi';
 import statisticsIcon from '/images/sidebar/statistics.svg';
 import usersIcon from '/images/sidebar/people.svg';
 import truckIcon from '/images/truck.svg';
@@ -11,7 +10,7 @@ import shippersIcon from '/images/sidebar/shippers.svg';
 import alertIcon from '/images/sidebar/alert.svg';
 import logOutIcon from '/images/sidebar/log-out.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { UseScreenSize } from '../../context/ScreenSizeProvider';
+import { UseScreenSize } from '../../context/ScreenSizeContext';
 import { UseSidebar } from '../../context/SidebarContext';
 
 const iconsStyles = 'filter invert brightness-0';
@@ -131,6 +130,7 @@ const Sidebar = () => {
     <div className='h-full'>
       {isMediumScreen && !isSidebarOpen ? (
         <button
+          type='button'
           onClick={() => setIsSidebarOpen(true)}
           className='fixed top-4 right-4 z-50 p-2 bg-[#E6E6E6] rounded-md lg:hidden'
         >
@@ -146,11 +146,17 @@ const Sidebar = () => {
           >
             <div className={`w-full flex flex-col ${isSidebarOpen ? 'items-end' : 'items-center'}`}>
               {isSidebarOpen ? (
-                <button onClick={() => setIsSidebarOpen(false)}>
+                <button
+                  type='button'
+                  onClick={() => setIsSidebarOpen(false)}
+                >
                   <IoCloseOutline size={24} />
                 </button>
               ) : (
-                <button onClick={() => setIsSidebarOpen(true)}>
+                <button
+                  type='button'
+                  onClick={() => setIsSidebarOpen(true)}
+                >
                   <IoMdMenu size={24} />
                 </button>
               )}
@@ -169,7 +175,6 @@ const Sidebar = () => {
                   Array.isArray(item) ? (
                     <NavbarAccordion
                       key={index}
-                      icon={<PiPackageDuotone size={24} />}
                       title='الشحنات'
                       items={item}
                       isSidebarOpen={isSidebarOpen}
@@ -178,6 +183,7 @@ const Sidebar = () => {
                     />
                   ) : (
                     <button
+                      type='button'
                       key={index}
                       onClick={() => navigate(item.nav)}
                       className={`flex items-center w-full gap-2 mb-4 ${
@@ -194,6 +200,7 @@ const Sidebar = () => {
               </div>
             </div>
             <button
+              type='button'
               onClick={() => navigate('/')}
               className={`flex items-center w-full gap-2 ${
                 isSidebarOpen ? 'p-3' : 'p-2'
@@ -201,12 +208,10 @@ const Sidebar = () => {
                 isSidebarOpen ? 'justify-start' : 'justify-center'
               }`}
             >
-              <span>
-                <img
-                  src={logOutIcon}
-                  alt='log-out'
-                />
-              </span>
+              <img
+                src={logOutIcon}
+                alt='log-out'
+              />
               {isSidebarOpen && <span>تسجيل الخروج</span>}
             </button>
           </aside>

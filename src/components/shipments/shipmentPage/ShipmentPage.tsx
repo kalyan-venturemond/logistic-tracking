@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import SearchInput from '../../searchInput/SearchInput';
 import SelectMenu from '../../SelectMenu';
 import ShipmentsTable from '../shipmentsTable/ShipmentsTable';
-import AddNewItemButton from '../../items/AddNewItemButton';
+import AddNewItemButton from '../../shared/AddNewItemButton';
 
 const selectMenuOptions = [
   { label: 'الكل', value: 'all' },
@@ -60,8 +60,6 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log('shipment page rendered');
-
   return (
     <>
       {isLoading && (
@@ -97,6 +95,7 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
           <ShipmentsTable
             selectedShipmentStatus={selectedShipmentStatus}
             shipments={filteredShipments}
+            searchValue={searchValue}
           />
         </div>
       </div>

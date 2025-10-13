@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { getAvailabilityStatusStyles, tableRowStyles } from '../../../lib/utils';
 import Pagination from '../../pagination/Pagination';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePagination } from '../../../hooks/usePagination';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -17,20 +18,14 @@ const tableHeading = [
   { key: 'vehicleNumber', label: 'رقم الشاحنة' },
   { key: 'status', label: 'الحالة' },
 ];
-const DriversTable = ({ selectedStatus, drivers, isSelectRecipientsPage = false }: any) => {
+const DriversTable = ({
+  selectedStatus,
+  drivers,
+  searchValue,
+  isSelectRecipientsPage = false,
+}: any) => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
-
-  const handlePageChange = (page: any) => {
-    setCurrentPage(page);
-  };
-
-  const handleItemsPerPageChange = (itemsPerPageChange: any) => {
-    setItemsPerPage(itemsPerPageChange);
-    setCurrentPage(1);
-  };
 
   const filteredData = drivers.filter(
     (driver: any) =>
@@ -39,10 +34,13 @@ const DriversTable = ({ selectedStatus, drivers, isSelectRecipientsPage = false 
 
   const sortedData = [...filteredData].sort((a: any, b: any) => a.id - b.id);
 
-  const paginatedData = sortedData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
+  const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
+    usePagination();
+  const paginatedData = paginate(sortedData);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchValue, setCurrentPage]);
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -95,7 +93,7 @@ const DriversTable = ({ selectedStatus, drivers, isSelectRecipientsPage = false 
               return (
                 <tr
                   key={item?.id}
-                  className={`rounded-lg ${index % 2 === 0 && 'bg-[#F2F2F2]'}`}
+                  className={`rounded-lg cursor-pointer ${index % 2 === 0 && 'bg-[#F2F2F2]'}`}
                 >
                   {isSelectRecipientsPage && (
                     <td className={tableRowStyles}>
@@ -108,6 +106,7 @@ const DriversTable = ({ selectedStatus, drivers, isSelectRecipientsPage = false 
                     </td>
                   )}
                   <button
+                    type='button'
                     key={index}
                     onClick={() => {
                       navigate(`/drivers/${item.id}`);

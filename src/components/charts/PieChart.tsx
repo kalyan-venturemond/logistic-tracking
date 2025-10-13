@@ -46,7 +46,6 @@ const PieChart = ({ pieChartData, sum }: any) => {
     spacing: -5,
   };
 
-  console.log('pie chart')
   return (
     <div className='flex justify-center items-center'>
       <div className='relative'>

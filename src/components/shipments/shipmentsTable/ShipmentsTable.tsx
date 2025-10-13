@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ColumnFilterDropdown } from './ColumnFilterDropdown';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -10,6 +10,7 @@ import {
 } from '../../../lib/utils';
 import { BiFilterAlt } from 'react-icons/bi';
 import Pagination from '../../pagination/Pagination';
+import { usePagination } from '../../../hooks/usePagination';
 
 const columnsToFilter = [
   { key: 'admin', label: 'المسئول' },
@@ -40,11 +41,9 @@ const tableHeading = [
   { label: 'حالة الشحنة', key: 'status' },
 ];
 
-const ShipmentsTable = ({ shipments }: any) => {
+const ShipmentsTable = ({ shipments, searchValue }: any) => {
   const navigate = useNavigate();
   const [dateSort, setDateSort] = useState<'asc' | 'desc' | undefined>();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filters, setFilters] = useState(initialFilters);
   const [showFilter, setShowFilter] = useState<any>({});
 
@@ -112,21 +111,15 @@ const ShipmentsTable = ({ shipments }: any) => {
     });
   }
 
-  const paginatedData = sortedData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
+  const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
+    usePagination();
+  const paginatedData = paginate(sortedData);
 
-  const handlePageChange = (page: any) => {
-    setCurrentPage(page);
-  };
-
-  const handleItemsPerPageChange = (itemsPerPageChange: any) => {
-    setItemsPerPage(itemsPerPageChange);
+  useEffect(() => {
     setCurrentPage(1);
-  };
+  }, [searchValue, setCurrentPage]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = () => {
       setShowFilter({});
     };
@@ -135,8 +128,6 @@ const ShipmentsTable = ({ shipments }: any) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  console.log('ShipmentsTable rendered');
 
   return (
     <>
@@ -210,7 +201,7 @@ const ShipmentsTable = ({ shipments }: any) => {
                 onClick={() => {
                   navigate(`/shipments/${shipment.id}`);
                 }}
-                className={`cursor-pointer rounded-lg ${index % 2 === 0 ? 'bg-[#F2F2F2]' : ''}`}
+                className={`rounded-lg cursor-pointer ${index % 2 === 0 ? 'bg-[#F2F2F2]' : ''}`}
               >
                 <td className={tableRowStyles}>{shipment.trackingNumber}</td>
                 <td className={tableRowStyles}>{shipment.driver}</td>

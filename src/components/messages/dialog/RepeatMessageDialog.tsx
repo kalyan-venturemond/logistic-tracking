@@ -45,10 +45,16 @@ const RepeatMessageDialog = ({ isDialogVisible, setIsDialogVisible }: any) => {
       </DialogContent>
       <DialogActions sx={{ margin: '10px 6px 0' }}>
         <div className='grid grid-cols-2 gap-4 w-full mb-2'>
-          <button className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border py-3 rounded-lg'>
+          <button
+            type='button'
+            className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border py-3 rounded-lg'
+          >
             تطبيق
           </button>
-          <button className='col-span-1 bg-[#FCFCFC] text-[#DD7E1F] border border-[#DD7E1F] py-3 rounded-lg'>
+          <button
+            type='button'
+            className='col-span-1 bg-[#FCFCFC] text-[#DD7E1F] border border-[#DD7E1F] py-3 rounded-lg'
+          >
             حذف
           </button>
         </div>

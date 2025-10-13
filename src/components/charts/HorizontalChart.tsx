@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { UseScreenSize } from '../../context/ScreenSizeProvider';
+import { UseScreenSize } from '../../context/ScreenSizeContext';
 import { UseSidebar } from '../../context/SidebarContext';
 
 const HorizontalChart = ({ data }: any) => {
@@ -136,8 +136,6 @@ const HorizontalChart = ({ data }: any) => {
       enabled: false,
     },
   };
-
-  console.log('horizontal chart');
 
   return (
     <div

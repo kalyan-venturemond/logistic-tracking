@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import Pagination from '../pagination/Pagination';
 import { tableRowStyles } from '../../lib/utils';
+import { usePagination } from '../../hooks/usePagination';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -13,21 +14,16 @@ const tableHeading = [
   { key: 'email', label: 'البريد الالكتروني' },
   { key: 'address', label: 'العنوان' },
 ];
-const ShippersTable = ({ data }: any) => {
+const ShippersTable = ({ data, searchValue }: any) => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  const paginatedData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
+    usePagination();
+  const paginatedData = paginate(data);
 
-  const handlePageChange = (page: any) => {
-    setCurrentPage(page);
-  };
-
-  const handleItemsPerPageChange = (itemsPerPageChange: any) => {
-    setItemsPerPage(itemsPerPageChange);
+  useEffect(() => {
     setCurrentPage(1);
-  };
+  }, [searchValue, setCurrentPage]);
 
   return (
     <>
@@ -59,7 +55,7 @@ const ShippersTable = ({ data }: any) => {
                   onClick={() => {
                     navigate(`/shippers/${item.id}`);
                   }}
-                  className={`rounded-lg ${index % 2 === 0 && 'bg-[#F2F2F2]'}`}
+                  className={`rounded-lg cursor-pointer ${index % 2 === 0 && 'bg-[#F2F2F2]'}`}
                 >
                   <td className={tableRowStyles}>{item.id}</td>
                   <td className={tableRowStyles}>{item.name}</td>

@@ -366,9 +366,7 @@ const AlertMessages = () => {
   return (
     <>
       {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -399,6 +397,7 @@ const AlertMessages = () => {
         </div>
         {/* <div className='absolute inset-0 w-px bg-[#DD7E1F] hidden lg:block'></div> */}
         <button
+          type='button'
           onClick={() => {
             navigate('/alert-messages/select-recipients');
           }}

@@ -8,7 +8,6 @@ interface ShipmentDetailsInfoSectionProps {
 
 const ShipmentDetailsInfoSection =
   ({ title, data }: ShipmentDetailsInfoSectionProps) => {
-    console.log('ShipmentDetailsInfoSection rendered');
     return (
       <div className='col-span-1'>
         {title && <h1 className='text-xl sm:text-2xl font-bold font-Almarai'>{title}</h1>}

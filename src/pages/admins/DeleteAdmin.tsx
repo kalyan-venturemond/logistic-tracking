@@ -5,7 +5,7 @@ import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
 import { useParams } from 'react-router-dom';
 import { admins } from '../../lib/data';
-import DeleteItem from '../../components/items/DeleteItem';
+import DeleteItem from '../../components/shared/DeleteItem';
 
 const DeleteAdmin = () => {
   const { adminId } = useParams();

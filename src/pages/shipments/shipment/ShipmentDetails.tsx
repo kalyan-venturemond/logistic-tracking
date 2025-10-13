@@ -85,8 +85,6 @@ const ShipmentDetails = () => {
     setIsLoading(false);
   }, 1000);
 
-  console.log('ShipmentDetails rendered');
-
   return (
     <>
       {isLoading && (
@@ -174,6 +172,7 @@ const ShipmentDetails = () => {
                 </span>
               </div>
               <button
+                type='button'
                 onClick={() => setIsDialogOpen(true)}
                 className='w-full text-center text-xl sm:text-2xl  rounded-lg py-3 text-[#FCFCFC] bg-[#DD7E1F]'
               >

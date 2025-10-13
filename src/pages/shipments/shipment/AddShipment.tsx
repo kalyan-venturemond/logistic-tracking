@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMemo, useState } from 'react';
 import AddEditShipmentDataSection from '../../../components/shipments/addShipment/AddEditShipmentDataSection';
-import AddEditItemDataSection from '../../../components/items/AddEditItemDataSection';
+import AddEditItemDataSection from '../../../components/shared/AddEditItemDataSection';
 import AddEditShipmentCostSection from '../../../components/shipments/addShipment/AddEditShipmentCostSection';
 import AddShipmentTextArea from '../../../components/shipments/addShipment/addShipmentInputs/AddShipmentTextArea';
 import { toast } from 'sonner';
@@ -98,14 +98,10 @@ const AddShipment = () => {
     formData.deduct,
   ]);
 
-  console.log('add shipment rendered');
-
   return (
     <>
-     {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+      {isLoading && (
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -164,7 +160,10 @@ const AddShipment = () => {
           totalCost={totalCost}
         />
         {/* <hr className='border-0 border-t-2 border-dashed border-[#666]' /> */}
-        <button className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button
+          type='submit'
+          className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'
+        >
           إضافة الشحنة
         </button>
       </form>

@@ -59,7 +59,10 @@ const DeleteItemCard = ({ handleSubmit }: any) => {
             )}
           </button>
         </div>
-        <button className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#CD2026] rounded-lg mt-4'>
+        <button
+          type='submit'
+          className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#CD2026] rounded-lg mt-4'
+        >
           تأكيد الحذف
         </button>
       </form>

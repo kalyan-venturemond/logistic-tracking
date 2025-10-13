@@ -163,8 +163,6 @@ const DriverDetails = () => {
     [driverShipments, selectedOption],
   );
 
-  console.log('DriverDetails rendered');
-
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
       <div className='col-span-1 lg:col-span-2 h-fit shadow-lg rounded-3xl px-8 py-4 w-full overflow-x-auto'>
@@ -199,7 +197,7 @@ const DriverDetails = () => {
             {licenseInfo.map((item, index) => (
               <div
                 key={index}
-                className='flex items-center justify-between mt-4'
+                className='flex items-center justify-center mt-4'
               >
                 <span className='font-medium xs:text-sm text-base text-nowrap'>{item.label}</span>
                 <div className='md:grow flex items-center gap-2'>

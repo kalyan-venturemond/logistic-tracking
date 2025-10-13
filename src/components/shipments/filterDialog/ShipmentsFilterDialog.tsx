@@ -33,7 +33,6 @@ export default function ShipmentsFilterDialog() {
 
   return (
     <>
-
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby='customized-dialog-title'
@@ -75,6 +74,7 @@ export default function ShipmentsFilterDialog() {
           <div className='flex items-center gap-4 font-Rubik'>
             {branches.map((branch, index) => (
               <button
+                type='button'
                 key={index}
                 className={`px-6 py-2 rounded-lg ${
                   selectedBranches.includes(branch)
@@ -93,6 +93,7 @@ export default function ShipmentsFilterDialog() {
             return (
               <div key={index}>
                 <button
+                  type='button'
                   className={`py-1.5 px-8 rounded-lg border border-[#DD7E1F]  ${
                     index === 0 ? 'bg-[#F2F2F2] text-[#DD7E1F]' : 'bg-[#DD7E1F] text-[#F2F2F2]'
                   }`}

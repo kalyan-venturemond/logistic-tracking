@@ -28,6 +28,7 @@ const ShipmentStatusOverview = ({ selectedShipment }: any) => {
           <h1 className='font-bold text-lg md:text-2xl'>{selectedShipment?.dropOffCity}</h1>
         </div>
         <button
+          type='button'
           onClick={() => {
             navigate(-1);
           }}

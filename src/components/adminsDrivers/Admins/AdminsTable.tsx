@@ -2,7 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import { getAvailabilityStatusStyles, tableRowStyles } from '../../../lib/utils';
 import Pagination from '../../pagination/Pagination';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { usePagination } from '../../../hooks/usePagination';
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
@@ -14,19 +15,8 @@ const tableHeading = [
   { key: 'nationality', label: 'الجنسية' },
   { key: 'status', label: 'الحالة' },
 ];
-const AdminsTable = ({ selectedStatus, data }: any) => {
+const AdminsTable = ({ selectedStatus, data, searchValue }: any) => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-
-  const handlePageChange = (page: any) => {
-    setCurrentPage(page);
-  };
-
-  const handleItemsPerPageChange = (itemsPerPageChange: any) => {
-    setItemsPerPage(itemsPerPageChange);
-    setCurrentPage(1);
-  };
 
   const filteredData = data.filter(
     (admin: any) =>
@@ -35,12 +25,15 @@ const AdminsTable = ({ selectedStatus, data }: any) => {
 
   const sortedData = [...filteredData].sort((a: any, b: any) => a.id - b.id);
 
-  const paginatedData = filteredData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
+  const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
+    usePagination();
+  const paginatedData = paginate(filteredData);
 
-  console.log('AdminsTable rendered');
+  useEffect(() => {
+      setCurrentPage(1);
+    }, [searchValue, setCurrentPage]);
+
+
   return (
     <>
       <div className={`w-full overflow-x-auto`}>
@@ -71,7 +64,7 @@ const AdminsTable = ({ selectedStatus, data }: any) => {
                   onClick={() => {
                     navigate(`/admins/${item.id}`);
                   }}
-                  className={`rounded-lg ${index % 2 === 0 ? 'bg-[#F2F2F2]' : ''}`}
+                  className={`rounded-lg cursor-pointer ${index % 2 === 0 ? 'bg-[#F2F2F2]' : ''}`}
                 >
                   <td className={tableRowStyles}>{item.id}</td>
                   <td className={tableRowStyles}>{item.firstName}</td>

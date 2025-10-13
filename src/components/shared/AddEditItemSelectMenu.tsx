@@ -30,8 +30,6 @@ const AddShipmentSelectMenu = ({
     displayIndex: index + 1,
   }));
 
-  console.log('AddShipmentSelectMenu rendered');
-
   return (
     <div className='col-span-1 flex flex-col gap-1 -m-1'>
       <span className='text-[#1A1A1A]'>{label}</span>

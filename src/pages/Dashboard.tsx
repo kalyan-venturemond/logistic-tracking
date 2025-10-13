@@ -234,7 +234,10 @@ const Dashboard = () => {
                     {item?.count} {item.status === 'تنبيهات السائقين' ? 'تنبيه نشط' : 'شحنة'}
                   </h5>
                 </div>
-                <button className='p-2 rounded-full bg-transparent border-none outline-none'>
+                <button
+                  type='button'
+                  className='p-2 rounded-full bg-transparent border-none outline-none'
+                >
                   {item.icon}
                 </button>
               </div>
@@ -250,6 +253,7 @@ const Dashboard = () => {
           >
             {rangeOptions.map((item, index) => (
               <button
+                type='button'
                 key={index}
                 className={`font-Rubik transition-all duration-200 ${
                   selectedRange === item.value && 'bg-[#DD7E1F] text-white py-3 px-6 rounded-2xl'

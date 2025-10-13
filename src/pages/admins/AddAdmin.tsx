@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import AddEditItemDataSection from '../../components/items/AddEditItemDataSection';
+import AddEditItemDataSection from '../../components/shared/AddEditItemDataSection';
 import FileUploadInput from '../../components/adminsDrivers/Admins/FileUploadInput';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -72,9 +72,7 @@ const AddAdmin = () => {
   return (
     <>
       {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -90,7 +88,7 @@ const AddAdmin = () => {
           page='addAdmin'
         />
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
-        <button className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button type='submit' className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
           إضافة المستخدم
         </button>
       </form>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import DeleteItemCard from '../../components/items/DeleteItemCard';
+import DeleteItemCard from '../../components/shared/DeleteItemCard';
 import { toast } from 'sonner';
 import { shippers } from '../../lib/data';
 
@@ -44,13 +44,11 @@ const DeleteShipper = () => {
         </h1>
       </div>
       <div className='flex justify-center items-start h-[70vh] mx-4'>
-       {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
-          <span className='loader'></span>
-        </div>
-      )}
+        {isLoading && (
+          <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
+            <span className='loader'></span>
+          </div>
+        )}
         <DeleteItemCard handleSubmit={handleSubmit} />
       </div>
     </div>

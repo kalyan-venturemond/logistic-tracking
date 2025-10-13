@@ -21,6 +21,7 @@ const MessagesHistoryPanel = ({
           { label: 'مكررة', value: 'repeated' },
         ].map((item: any, index: number) => (
           <button
+            type='button'
             onClick={() => setSelectedCategory(item.value)}
             key={index}
             className={`w-1/2 text-lg transition-all duration-200 ${

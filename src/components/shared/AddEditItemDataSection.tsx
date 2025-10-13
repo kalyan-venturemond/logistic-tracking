@@ -213,8 +213,6 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
     }
   };
 
-  console.log('AddEditItemDataSection rendered');
-
   return (
     <>
       {title && <h1 className='font-bold text-xl sm:text-2xl'>{title}</h1>}

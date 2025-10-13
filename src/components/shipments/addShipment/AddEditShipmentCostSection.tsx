@@ -1,6 +1,6 @@
-import { UseScreenSize } from '../../../context/ScreenSizeProvider';
-import AddEditItemDataSection from '../../items/AddEditItemDataSection';
-import AddEditItemInput from '../../items/AddEditItemInput';
+import { UseScreenSize } from '../../../context/ScreenSizeContext';
+import AddEditItemDataSection from '../../shared/AddEditItemDataSection';
+import AddEditItemInput from '../../shared/AddEditItemInput';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const AddEditShipmentCostSection = ({

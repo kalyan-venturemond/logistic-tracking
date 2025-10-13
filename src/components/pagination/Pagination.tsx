@@ -59,6 +59,7 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange, onItemsPerPageChan
       </div>
       <div className='flex items-center gap-3 max-w-full overflow-x-auto'>
         <button
+          type='button'
           onClick={() => {
             setCurrentPage(currentPage - 1);
             onPageChange(currentPage - 1);
@@ -70,6 +71,7 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange, onItemsPerPageChan
         </button>
         {[...Array(totalPages)].map((_, index) => (
           <button
+            type='button'
             key={index}
             onClick={() => {
               setCurrentPage(index + 1);
@@ -83,6 +85,7 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange, onItemsPerPageChan
           </button>
         ))}
         <button
+          type='button'
           onClick={() => {
             setCurrentPage(currentPage + 1);
             onPageChange(currentPage + 1);

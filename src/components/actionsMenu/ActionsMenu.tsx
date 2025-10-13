@@ -34,6 +34,7 @@ const ActionsMenu = ({ options, position = 'top-16 left-4' }: any) => {
   return (
     <>
       <button
+        type='button'
         ref={buttonRef}
         onClick={() => setIsActionsMenuOpen(!isActionsMenuOpen)}
         className='relative'
@@ -47,6 +48,7 @@ const ActionsMenu = ({ options, position = 'top-16 left-4' }: any) => {
         >
           {options.map((item: any, index: any) => (
             <button
+            type='button'
               key={index}
               className='flex items-center gap-2'
               onClick={() => {

@@ -51,7 +51,6 @@ const LineChartComponent = ({data}: any) => {
       },
     },
   };
-  console.log('line chart')
 
   return (
     <Line

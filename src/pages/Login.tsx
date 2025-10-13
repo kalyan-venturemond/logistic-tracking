@@ -99,7 +99,7 @@ const Login = () => {
           <span className='font-Rubik text-[#333333] text-sm'>
             هذه نسخة تجريبية، فقط قم بالضغط على زر تسجيل الدخول
           </span>
-          <button className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#DD7E1F] rounded-lg mt-4'>
+          <button type='submit' className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#DD7E1F] rounded-lg mt-4'>
             تسجيل الدخول
           </button>
         </form>

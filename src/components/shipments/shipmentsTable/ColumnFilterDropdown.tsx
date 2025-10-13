@@ -91,12 +91,14 @@ export function ColumnFilterDropdown({
       </div>
       <div className='grid grid-cols-2 gap-4 w-full font-Rubik font-medium mt-2'>
         <button
+          type='button'
           className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border border-[#DD7E1F] py-1 rounded-lg'
           onClick={onClose}
         >
           تأكيد
         </button>
         <button
+          type='button'
           className='col-span-1 bg-[#FCFCFC] text-[#DD7E1F] border border-[#DD7E1F] py-1 rounded-lg'
           onClick={() => (dateSort ? setDateSort(undefined) : onChange([]))}
         >

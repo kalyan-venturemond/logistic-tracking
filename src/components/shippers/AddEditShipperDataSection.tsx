@@ -1,4 +1,4 @@
-import AddEditItemInput from '../items/AddEditItemInput';
+import AddEditItemInput from '../shared/AddEditItemInput';
 import PhoneNumberInput from '../shipments/addShipment/addShipmentInputs/phoneNumberInput/PhoneNumberInput';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

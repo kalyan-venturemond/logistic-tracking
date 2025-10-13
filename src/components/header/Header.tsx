@@ -66,6 +66,7 @@ const Header = () => {
       <h1 className='font-bold xs:text-base text-lg sm:text-3xl ml-4 text-nowrap'>{title}</h1>
       {showBackButton ? (
         <button
+          type='button'
           onClick={handleBackClick}
           className='text-[#DD7E1F] flex items-center gap-2 font-Rubik text-lg'
         >
@@ -83,7 +84,10 @@ const Header = () => {
         </button>
       ) : (
         <div className='flex gap-2 items-center'>
-          <button className='xs:hidden p-2 rounded-full bg-[#E6E6E6]'>
+          <button
+            type='button'
+            className='xs:hidden p-2 rounded-full bg-[#E6E6E6]'
+          >
             <img
               src={notification}
               alt='Notification icon'

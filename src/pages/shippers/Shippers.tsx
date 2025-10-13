@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SearchInput from '../../components/searchInput/SearchInput';
 import ShippersTable from '../../components/shippers/ShippersTable';
 import { shippers } from '../../lib/data';
-import AddNewItemButton from '../../components/items/AddNewItemButton';
+import AddNewItemButton from '../../components/shared/AddNewItemButton';
 
 const fieldsToCheck = [
   'id',
@@ -35,10 +35,8 @@ const Shippers = () => {
 
   return (
     <>
-     {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+      {isLoading && (
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -60,7 +58,10 @@ const Shippers = () => {
           <div className='w-full flex justify-between items-center mb-6'>
             <h1 className='text-xl font-bold'>قائمة العملاء</h1>
           </div>
-          <ShippersTable data={sortedData} />
+          <ShippersTable
+            data={sortedData}
+            searchValue={searchValue}
+          />
         </div>
       </div>
     </>

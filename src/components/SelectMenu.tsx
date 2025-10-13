@@ -8,8 +8,6 @@ const SelectMenu = ({ selectedItem, setSelectedItem, options }: any) => {
     setSelectedItem(event.target.value);
   };
 
-  console.log('SelectMenu rendered')
-
   return (
     <FormControl
       sx={{ m: 1, minWidth: 120 }}

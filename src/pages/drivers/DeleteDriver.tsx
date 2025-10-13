@@ -5,7 +5,7 @@ import flagIcon from '/images/adminDriver/flag.svg';
 import truckIcon from '/images/truck.svg';
 import { useParams } from 'react-router-dom';
 import { drivers } from '../../lib/data';
-import DeleteItem from '../../components/items/DeleteItem';
+import DeleteItem from '../../components/shared/DeleteItem';
 
 const DeleteDriver = () => {
   const { driverId } = useParams();

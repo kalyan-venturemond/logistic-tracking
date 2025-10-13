@@ -13,7 +13,7 @@ import EditShipment from './pages/shipments/shipment/EditShipment';
 import DeleteShipment from './pages/shipments/shipment/DeleteShipment';
 import AlertMessages from './pages/alertMessages/AlertMessages';
 import SelectRecipients from './pages/alertMessages/SelectRecipients';
-import { ScreenSizeProvider } from './context/ScreenSizeProvider';
+import { ScreenSizeProvider } from './context/ScreenSizeContext';
 import ShippingShipments from './pages/shipments/ShippingShipments';
 import CanceledShipments from './pages/shipments/CanceledShipments';
 import CompletedShipments from './pages/shipments/CompletedShipments';

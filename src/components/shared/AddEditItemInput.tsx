@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 const AddEditItemInput = ({ label, description, required = true, ...props }: any) => {
-
-  console.log('AddEditItemInput rendered');
   return (
     <div className='col-span-1 flex flex-col gap-1'>
       <span className='text-[#1A1A1A]'>{label}</span>

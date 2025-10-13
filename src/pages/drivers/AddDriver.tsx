@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import AddEditItemDataSection from '../../components/items/AddEditItemDataSection';
+import AddEditItemDataSection from '../../components/shared/AddEditItemDataSection';
 import uploadImage from '/images/upload.svg';
 import infoIcon from '/images/info-circle.svg';
 import FileUploadInput from '../../components/adminsDrivers/Admins/FileUploadInput';
@@ -197,7 +197,10 @@ const AddDriver = () => {
           </div>
         </div>
         {/* <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' /> */}
-        <button className='w-full py-4 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button
+          type='submit'
+          className='w-full py-4 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'
+        >
           إضافة السائق
         </button>
       </form>

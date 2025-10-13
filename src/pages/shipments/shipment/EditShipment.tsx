@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useMemo, useState } from 'react';
-import AddEditItemDataSection from '../../../components/items/AddEditItemDataSection';
+import AddEditItemDataSection from '../../../components/shared/AddEditItemDataSection';
 import AddEditShipmentDataSection from '../../../components/shipments/addShipment/AddEditShipmentDataSection';
 import AddEditShipmentCostSection from '../../../components/shipments/addShipment/AddEditShipmentCostSection';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -121,7 +121,9 @@ const EditShipment = () => {
 
   const totalCost = useMemo(() => {
     const { baseCost, extraCost, stayedNights, costPerNight, deduct } = formData;
-    return Number(baseCost) + Number(extraCost) + Number(stayedNights) * Number(costPerNight) - deduct;
+    return (
+      Number(baseCost) + Number(extraCost) + Number(stayedNights) * Number(costPerNight) - deduct
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     formData.baseCost,
@@ -143,10 +145,8 @@ const EditShipment = () => {
 
   return (
     <>
-     {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+      {isLoading && (
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -215,7 +215,7 @@ const EditShipment = () => {
           totalCost={totalCost}
         />
         {/* <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' /> */}
-        <button className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button type='submit' className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
           حفظ التعديلات
         </button>
       </form>

@@ -29,8 +29,6 @@ const SelectRecipients = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-
-
   const filteredData = drivers.filter((driver: any) =>
     fieldsToCheck.some((field) => {
       const fieldValue = driver[field];
@@ -48,9 +46,7 @@ const SelectRecipients = () => {
   return (
     <>
       {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -64,6 +60,7 @@ const SelectRecipients = () => {
           />
 
           <button
+            type='button'
             className='flex items-center py-2 px-10 gap-2 rounded-lg bg-[#DD7E1F] text-white text-lg'
             onClick={() => {
               navigate('/alert-messages');
@@ -89,6 +86,7 @@ const SelectRecipients = () => {
             selectedStatus={selectedDriverStatus}
             drivers={filteredData}
             isSelectRecipientsPage={true}
+            searchValue={searchValue}
           />
         </div>
       </div>

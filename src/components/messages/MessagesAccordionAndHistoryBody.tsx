@@ -33,7 +33,10 @@ const MessagesAccordionAndHistoryBody = ({
           }`}
         >
           {selectedCategory === 'repeated' && (
-            <button onClick={() => setIsDialogVisible(true)}>
+            <button
+              type='button'
+              onClick={() => setIsDialogVisible(true)}
+            >
               {' '}
               <img
                 src={repeatIcon}
@@ -41,7 +44,10 @@ const MessagesAccordionAndHistoryBody = ({
               />
             </button>
           )}
-          <button className='bg-[#DD7E1F] p-2 rounded-full'>
+          <button
+            type='button'
+            className='bg-[#DD7E1F] p-2 rounded-full'
+          >
             <img
               src={sendIcon}
               alt='send'

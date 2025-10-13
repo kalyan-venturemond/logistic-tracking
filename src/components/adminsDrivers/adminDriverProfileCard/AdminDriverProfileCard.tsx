@@ -5,7 +5,6 @@ import InfoRow from './infoRow/InfoRow';
 const AdminDriverProfileCard = 
   ({ moreInfoData, personalInfoData, menuActions }: any) => {
 
-    console.log('AdminDriverProfileCard rendered');
     return (
       <>
         <div className='w-full flex justify-end'>

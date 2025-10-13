@@ -40,6 +40,7 @@ const MessagesHistoryBody = ({
         <div className='w-full flex justify-between items-center mb-4'>
           <span className='text-[#333333] text-base'>إرسال إلى:</span>
           <button
+            type='button'
             onClick={() => {
               navigate('/alert-messages/select-recipients');
             }}
@@ -97,7 +98,10 @@ const MessagesHistoryBody = ({
             }`}
           >
             {selectedCategory === 'repeated' && (
-              <button onClick={() => setIsDialogVisible(true)}>
+              <button
+                type='button'
+                onClick={() => setIsDialogVisible(true)}
+              >
                 {' '}
                 <img
                   src={repeatIcon}
@@ -106,6 +110,7 @@ const MessagesHistoryBody = ({
               </button>
             )}
             <button
+              type='button'
               className='bg-[#DD7E1F] p-2 rounded-full'
               onClick={sendMessage}
             >

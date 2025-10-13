@@ -4,7 +4,7 @@ import SelectMenu from '../../components/SelectMenu';
 import SearchInput from '../../components/searchInput/SearchInput';
 import AdminsTable from '../../components/adminsDrivers/Admins/AdminsTable';
 import { admins } from '../../lib/data';
-import AddNewItemButton from '../../components/items/AddNewItemButton';
+import AddNewItemButton from '../../components/shared/AddNewItemButton';
 
 const selectMenuOptions = [
   { label: 'الكل', value: 'all' },
@@ -65,6 +65,7 @@ const Admins = () => {
           <AdminsTable
             selectedStatus={selectedAdminStatus}
             data={filteredData}
+            searchValue={searchValue}
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import AddEditItemDataSection from '../../items/AddEditItemDataSection';
+import AddEditItemDataSection from '../../shared/AddEditItemDataSection';
 import AddShipmentTextArea from './addShipmentInputs/AddShipmentTextArea';
 import PhoneNumberInput from './addShipmentInputs/phoneNumberInput/PhoneNumberInput';
 

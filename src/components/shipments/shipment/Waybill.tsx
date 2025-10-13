@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { QRCodeSVG } from 'qrcode.react';
-import { baseURL } from '../../../../config';
 import WaybillInfoRow from './WaybillInfoRow';
 
 const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
+
   const driverDetails = [
     {
       value: 'الاسم',
@@ -60,33 +60,6 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
       label: shipper.address,
     },
   ];
-
-  // const shipmentCostDetails = [
-  //   {
-  //     value: 'التكلفة الأساسية',
-  //     label: `${shipment.baseCost} ر.س`,
-  //   },
-  //   {
-  //     value: 'الزيادة',
-  //     label: `${shipment.extraCost} ر.س`,
-  //   },
-  //   {
-  //     value: 'الخصم',
-  //     label: `${shipment.deduct} ر.س`,
-  //   },
-  //   {
-  //     value: 'عدد الليالي',
-  //     label: `${shipment.stayedNights} ليلة`,
-  //   },
-  //   {
-  //     value: 'تكلفة المبيت لليلة الواحدة',
-  //     label: `${shipment.costPerNight} ر.س`,
-  //   },
-  //   {
-  //     value: 'الإجمالي',
-  //     label: `${shipment.total_cost} ر.س`,
-  //   }
-  // ];
 
   const shipmentDetails = [
     {
@@ -146,7 +119,6 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
       <hr className='border-0 border-t-2 border-solid border-[#666] mt-2 mb-6' />
       <div className='text-center font-Almarai font-bold text-lg mb-6'>
         كشف تحميل شاحنة
-        {/* <div className='font-semibold text-base'>Truck Loading Sheet</div> */}
       </div>
 
       <div className=''>
@@ -201,17 +173,6 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
       </div>
 
       <div className='grid grid-cols-2'>
-        {/* <div className='col-span-1'>
-          <div className='font-Almarai font-bold text-lg mb-2'>تكلفة الشحنة</div>
-          {shipmentCostDetails.map((row: any, index: any) => (
-            <div key={index}>
-              <WaybillInfoRow
-                label={row.label}
-                value={row.value}
-              />
-            </div>
-          ))}
-        </div> */}
         <div className='col-span-2'>
           <div className='font-Almarai font-bold text-lg mb-1'>تفاصيل الشحنة</div>
           {shipmentDetails.map((row: any, index: any) => (
@@ -251,7 +212,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
         <div className='col-span-1 text-center'>
           <div className='border-2 border-[#DD7E1F] p-1 w-fit m-auto'>
             <QRCodeSVG
-              value={`${baseURL}/shipments/${shipment.id}`}
+              value={`https://shuhnaty.vercel.app/shipments/${shipment.id}`}
               size={50}
               bgColor='#ffffff'
               fgColor='#212121'

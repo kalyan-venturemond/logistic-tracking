@@ -1,7 +1,7 @@
 import ShipmentStatusOverview from '../../../components/shipments/shipment/deleteShipment/ShipmentStatusOverview';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import DeleteItemCard from '../../../components/items/DeleteItemCard';
+import DeleteItemCard from '../../../components/shared/DeleteItemCard';
 import { toast } from 'sonner';
 import { shipments } from '../../../lib/data';
 
@@ -22,19 +22,15 @@ const DeleteShipment = () => {
     }, 2000);
   };
 
-  console.log('DeleteShipment rendered');
-
   return (
     <div className='flex flex-col gap-20'>
       <ShipmentStatusOverview selectedShipment={selectedShipment} />
       <div className='flex justify-center items-start h-[70vh] mx-4'>
-         {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
-          <span className='loader'></span>
-        </div>
-      )}
+        {isLoading && (
+          <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
+            <span className='loader'></span>
+          </div>
+        )}
         <DeleteItemCard handleSubmit={handleSubmit} />
       </div>
     </div>

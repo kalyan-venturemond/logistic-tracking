@@ -15,8 +15,7 @@ const Messages = ({
         .map((message: any, index: number) => (
           <div
             onClick={() => {
-              setSelectedMessageId(message?.id)
-              console.log(selectedMessageId)
+              setSelectedMessageId(message?.id);
             }}
             key={index}
             className={`my-2 p-5 cursor-pointer flex flex-col rounded-lg ${
@@ -36,6 +35,7 @@ const Messages = ({
             <span className='font-Rubik text-[#666666] my-2 text-xs'>{message.content}</span>
             {selectedCategory === 'repeated' && (
               <button
+                type='button'
                 className='flex justify-end mt-1'
                 onClick={() => setIsDialogVisible(true)}
               >

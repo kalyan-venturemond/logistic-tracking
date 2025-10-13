@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import SearchInput from '../../components/searchInput/SearchInput';
 import { drivers } from '../../lib/data';
-import AddNewItemButton from '../../components/items/AddNewItemButton';
+import AddNewItemButton from '../../components/shared/AddNewItemButton';
 import DriversTable from '../../components/adminsDrivers/drivers/DriversTable';
 
 const selectMenuOptions = [
@@ -43,10 +43,8 @@ const Drivers = () => {
 
   return (
     <>
-   {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+      {isLoading && (
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -75,6 +73,7 @@ const Drivers = () => {
           <DriversTable
             selectedStatus={selectedDriverStatus}
             drivers={filteredData}
+            searchValue={searchValue}
           />
         </div>
       </div>
