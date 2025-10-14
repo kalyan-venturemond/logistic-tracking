@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, ChartData } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -10,7 +10,7 @@ const staticChartData = {
 };
 
 const PieChart = ({ pieChartData, sum }: any) => {
-  const ChartData = {
+  const chartData: ChartData<'doughnut'> = {
     labels: staticChartData.labels,
     datasets: [
       {
@@ -47,7 +47,7 @@ const PieChart = ({ pieChartData, sum }: any) => {
     <div className='flex justify-center items-center'>
       <div className='relative'>
         <Doughnut
-          data={ChartData}
+          data={chartData}
           options={options}
         />
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-2xl font-Rubik text-[#333]'>
