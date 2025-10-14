@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo } from 'react';
 import AddEditItemInput from './AddEditItemInput';
 import AddEditItemSelectMenu from './AddEditItemSelectMenu';
 import {
@@ -13,7 +12,7 @@ import {
 } from '../../lib/data';
 
 const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page }: any) => {
-  const selectMenuData: any = useMemo(() => {
+  const selectMenuData: any = () => {
     const getSelectedItem = (options: any, identifier: string) => {
       return options?.find((option: any) => option.id === value[`${identifier}Id`]) || null;
     };
@@ -115,7 +114,7 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
           ];
       }
     }
-  }, [section, value, page]);
+  };
 
   const handleShipmentPageSectionSelectMenuItemSelection = (
     selectedItem: any,

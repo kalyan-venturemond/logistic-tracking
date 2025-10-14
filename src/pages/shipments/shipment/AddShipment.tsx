@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import AddEditShipmentDataSection from '../../../components/shipments/addShipment/AddEditShipmentDataSection';
 import AddEditItemDataSection from '../../../components/shared/AddEditItemDataSection';
 import AddEditShipmentCostSection from '../../../components/shipments/addShipment/AddEditShipmentCostSection';
@@ -86,17 +86,10 @@ const AddShipment = () => {
     }, 2000);
   };
 
-  const totalCost = useMemo(() => {
+  const totalCost = () => {
     const { baseCost, extraCost, stayedNights, costPerNight, deduct } = formData;
     return Number(baseCost) + Number(extraCost) + stayedNights * costPerNight - deduct;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    formData.baseCost,
-    formData.extraCost,
-    formData.stayedNights,
-    formData.costPerNight,
-    formData.deduct,
-  ]);
+  };
 
   return (
     <>

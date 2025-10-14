@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import PieChart from '../../components/charts/PieChart';
 
@@ -103,10 +103,7 @@ const AdminDetails = () => {
     };
   }
 
-  const pieChartData = useMemo(
-    () => getPieChartData(selectedOption, adminShipments),
-    [selectedOption, adminShipments],
-  );
+  const pieChartData = getPieChartData(selectedOption, adminShipments);
 
   const filterShipmentsByDateRange = (shipments: any[], option: string) => {
     if (option === 'all') return shipments;
@@ -122,10 +119,7 @@ const AdminDetails = () => {
     });
   };
 
-  const filteredShipments = useMemo(
-    () => filterShipmentsByDateRange(adminShipments, selectedOption),
-    [adminShipments, selectedOption],
-  );
+  const filteredShipments = () => filterShipmentsByDateRange(adminShipments, selectedOption);
 
   return (
     <div className='grid col-span-2 lg:grid-cols-3 gap-8'>

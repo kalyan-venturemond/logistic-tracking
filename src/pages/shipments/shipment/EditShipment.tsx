@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddEditItemDataSection from '../../../components/shared/AddEditItemDataSection';
 import AddEditShipmentDataSection from '../../../components/shipments/addShipment/AddEditShipmentDataSection';
 import AddEditShipmentCostSection from '../../../components/shipments/addShipment/AddEditShipmentCostSection';
@@ -119,19 +119,13 @@ const EditShipment = () => {
     }
   };
 
-  const totalCost = useMemo(() => {
+  const totalCost = () => {
     const { baseCost, extraCost, stayedNights, costPerNight, deduct } = formData;
     return (
       Number(baseCost) + Number(extraCost) + Number(stayedNights) * Number(costPerNight) - deduct
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    formData.baseCost,
-    formData.extraCost,
-    formData.stayedNights,
-    formData.costPerNight,
-    formData.deduct,
-  ]);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

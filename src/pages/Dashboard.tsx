@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import HorizontalChart from '../components/charts/HorizontalChart';
 import { UseSidebar } from '../context/SidebarContext';
 import boxSearch from '/images/box-search.svg';
@@ -189,10 +189,10 @@ function getHorizontalChartData(range: string) {
 const Dashboard = () => {
   const { isSidebarOpen } = UseSidebar();
   const [selectedRange, setSelectedRange] = useState('week');
-  const { start, end } = useMemo(() => getRangeDates(selectedRange), [selectedRange]);
-  const lineChartData = useMemo(() => getLineChartData(selectedRange), [selectedRange]);
-  const pieChartData = useMemo(() => getPieChartData(selectedRange), [selectedRange]);
-  const horizontalChartData = useMemo(() => getHorizontalChartData(selectedRange), [selectedRange]);
+  const { start, end } = getRangeDates(selectedRange);
+  const lineChartData = getLineChartData(selectedRange);
+  const pieChartData = getPieChartData(selectedRange);
+  const horizontalChartData = getHorizontalChartData(selectedRange)
 
   const handleButtonClick = useCallback((range: string) => {
     setSelectedRange(range);

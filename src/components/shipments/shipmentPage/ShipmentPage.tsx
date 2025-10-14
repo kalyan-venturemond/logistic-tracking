@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import SearchInput from '../../searchInput/SearchInput';
 import SelectMenu from '../../SelectMenu';
 import ShipmentsTable from '../shipmentsTable/ShipmentsTable';
@@ -33,7 +33,7 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
   const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const filteredShipments = React.useMemo(() => {
+  const filteredShipments = useMemo(() => {
     let filtered = shipments;
 
     if (searchValue.trim()) {

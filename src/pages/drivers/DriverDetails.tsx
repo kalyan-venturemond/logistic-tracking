@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import PieChart from '../../components/charts/PieChart';
 import driverIdCardImage from '/images/adminDriver/personalCard.svg';
@@ -139,10 +139,7 @@ const DriverDetails = () => {
     };
   }
 
-  const pieChartData = useMemo(
-    () => getPieChartData(selectedOption, driverShipments),
-    [selectedOption, driverShipments],
-  );
+  const pieChartData = getPieChartData(selectedOption, driverShipments)
 
   const filterShipmentsByDateRange = (shipments: any[], option: string) => {
     if (option === 'all') return shipments;
@@ -158,10 +155,7 @@ const DriverDetails = () => {
     });
   };
 
-  const filteredShipments = useMemo(
-    () => filterShipmentsByDateRange(driverShipments, selectedOption),
-    [driverShipments, selectedOption],
-  );
+  const filteredShipments = filterShipmentsByDateRange(driverShipments, selectedOption);
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
