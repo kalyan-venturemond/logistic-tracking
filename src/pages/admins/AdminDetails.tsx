@@ -92,7 +92,7 @@ const AdminDetails = () => {
             setSelectedItem={setSelectedOption}
           />
         </div>
-\        <AdminDriverDetailsTable shipments={filteredShipments} />
+        <AdminDriverDetailsTable shipments={filteredShipments} />
       </div>
       <div className='col-span-1 min-h-screen bg-[#FCFCFC]'>
         <div className='w-full shadow-sm rounded-3xl lg:px-8 py-4 mb-6'>
