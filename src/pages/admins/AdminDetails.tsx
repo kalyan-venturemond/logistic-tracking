@@ -25,20 +25,14 @@ const selectMenuOptions = [
 
 const AdminDetails = () => {
   const [selectedOption, setSelectedOption] = useState('all');
-
   const { adminId } = useParams();
 
   const selectedAdmin = admins.find((admin) => admin.id === Number(adminId));
-
   const adminShipments = shipments.filter((shipment) => shipment.adminId === selectedAdmin?.id);
 
   const menuActions = [
     { label: 'تعديل البيانات', icon: editShipmentIcon, path: `/admins/edit/${adminId}` },
-    {
-      label: 'حذف المستخدم',
-      icon: deleteShipmentIcon,
-      path: `/admins/delete/${adminId}`,
-    },
+    { label: 'حذف المستخدم', icon: deleteShipmentIcon, path: `/admins/delete/${adminId}` },
   ];
 
   const personalInfoData = {
@@ -49,61 +43,12 @@ const AdminDetails = () => {
   };
 
   const moreInfoData = [
-    {
-      image: adminIdCardImage,
-      label: 'رقم المعرف (ID)',
-      value: selectedAdmin?.id,
-    },
-    {
-      image: userNameIcon,
-      label: 'اسم المستخدم',
-      value: selectedAdmin?.userName,
-    },
-    {
-      image: mailIcon,
-      label: 'البريد الإلكتروني',
-      value: selectedAdmin?.email,
-    },
-    {
-      image: callIcon,
-      label: 'رقم التواصل',
-      value: selectedAdmin?.phoneNumber,
-    },
-    {
-      image: flagIcon,
-      label: 'الجنسية',
-      value: selectedAdmin?.nationality,
-    },
+    { image: adminIdCardImage, label: 'رقم المعرف (ID)', value: selectedAdmin?.id },
+    { image: userNameIcon, label: 'اسم المستخدم', value: selectedAdmin?.userName },
+    { image: mailIcon, label: 'البريد الإلكتروني', value: selectedAdmin?.email },
+    { image: callIcon, label: 'رقم التواصل', value: selectedAdmin?.phoneNumber },
+    { image: flagIcon, label: 'الجنسية', value: selectedAdmin?.nationality },
   ];
-
-  function getPieChartData(option: string, adminShipments: any) {
-    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
-    const { start, end } = getRangeDates(option);
-
-    const filteredShipments =
-      option === 'all'
-        ? adminShipments
-        : adminShipments.filter((shipment: any) => {
-            const isoDate = arabicDateStringToISO(shipment.pickupDate);
-            if (!isoDate) return false;
-
-            const shipmentDate = new Date(isoDate);
-            return shipmentDate >= start && shipmentDate <= end;
-          });
-
-    const data = statusOrder.map(
-      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
-    );
-
-    const sum = filteredShipments.length;
-
-    return {
-      data,
-      sum,
-    };
-  }
-
-  const pieChartData = getPieChartData(selectedOption, adminShipments);
 
   const filterShipmentsByDateRange = (shipments: any[], option: string) => {
     if (option === 'all') return shipments;
@@ -119,7 +64,22 @@ const AdminDetails = () => {
     });
   };
 
-  const filteredShipments = () => filterShipmentsByDateRange(adminShipments, selectedOption);
+  const filteredShipments = filterShipmentsByDateRange(adminShipments, selectedOption);
+
+  const getPieChartData = (filteredShipments: any[]) => {
+    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
+    
+    const data = statusOrder.map(
+      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
+    );
+
+    return {
+      data,
+      sum: filteredShipments.length,
+    };
+  };
+
+  const pieChartData = getPieChartData(filteredShipments);
 
   return (
     <div className='grid col-span-2 lg:grid-cols-3 gap-8'>
@@ -132,7 +92,7 @@ const AdminDetails = () => {
             setSelectedItem={setSelectedOption}
           />
         </div>
-        <AdminDriverDetailsTable shipments={filteredShipments} />
+\        <AdminDriverDetailsTable shipments={filteredShipments} />
       </div>
       <div className='col-span-1 min-h-screen bg-[#FCFCFC]'>
         <div className='w-full shadow-sm rounded-3xl lg:px-8 py-4 mb-6'>

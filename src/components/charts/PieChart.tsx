@@ -10,16 +10,15 @@ const staticChartData = {
 };
 
 const PieChart = ({ pieChartData, sum }: any) => {
-  const chartData = {
-    labels: staticChartData.labels,
-    datasets: [
-      {
-        data: pieChartData,
-        backgroundColor: staticChartData.backgroundColor,
-      },
-    ],
-  };
-
+const chartData = {
+  labels: staticChartData.labels,
+  datasets: [
+    {
+      data: pieChartData,
+      backgroundColor: staticChartData.backgroundColor,
+    },
+  ],
+};
   const options = {
     responsive: true,
     plugins: {

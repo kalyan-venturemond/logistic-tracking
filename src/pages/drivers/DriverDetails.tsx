@@ -3,7 +3,6 @@ import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import PieChart from '../../components/charts/PieChart';
 import driverIdCardImage from '/images/adminDriver/personalCard.svg';
-// import userIcon from '/images/adminDriver/user-name.svg';
 import locationIcon from '/images/adminDriver/location.svg';
 import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
@@ -27,7 +26,6 @@ const selectMenuOptions = [
 
 const DriverDetails = () => {
   const [selectedOption, setSelectedOption] = useState('all');
-
   const { driverId } = useParams();
 
   const selectedDriver = drivers.find((driver) => driver?.id === Number(driverId));
@@ -76,11 +74,6 @@ const DriverDetails = () => {
   };
 
   const moreInfoData = [
-    // {
-    //   image: userIcon,
-    //   label: 'رقم المعرف (ID)',
-    //   value: selectedDriver?.id,
-    // },
     {
       image: driverIdCardImage,
       label: 'رقم الهوية',
@@ -113,34 +106,6 @@ const DriverDetails = () => {
     },
   ];
 
-  function getPieChartData(option: string, driverShipments: any) {
-    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
-    const { start, end } = getRangeDates(option);
-    const filteredShipments =
-      option === 'all'
-        ? driverShipments
-        : driverShipments.filter((shipment: any) => {
-            const isoDate = arabicDateStringToISO(shipment.pickupDate);
-            if (!isoDate) return false;
-
-            const shipmentDate = new Date(isoDate);
-            return shipmentDate >= start && shipmentDate <= end;
-          });
-
-    const data = statusOrder.map(
-      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
-    );
-
-    const sum = filteredShipments.length;
-
-    return {
-      data,
-      sum,
-    };
-  }
-
-  const pieChartData = getPieChartData(selectedOption, driverShipments)
-
   const filterShipmentsByDateRange = (shipments: any[], option: string) => {
     if (option === 'all') return shipments;
 
@@ -156,6 +121,21 @@ const DriverDetails = () => {
   };
 
   const filteredShipments = filterShipmentsByDateRange(driverShipments, selectedOption);
+
+  const getPieChartData = (filteredShipments: any[]) => {
+    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
+
+    const data = statusOrder.map(
+      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
+    );
+
+    return {
+      data,
+      sum: filteredShipments.length,
+    };
+  };
+
+  const pieChartData = getPieChartData(filteredShipments);
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
@@ -216,7 +196,7 @@ const DriverDetails = () => {
           <PieChart
             pieChartData={pieChartData.data}
             sum={pieChartData.sum}
-          />{' '}
+          />
         </div>
       </div>
     </div>
