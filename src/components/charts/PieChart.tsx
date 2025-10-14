@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, ChartData } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -10,7 +10,7 @@ const staticChartData = {
 };
 
 const PieChart = ({ pieChartData, sum }: any) => {
-  const chartData: ChartData<'doughnut'> = {
+  const chartData = {
     labels: staticChartData.labels,
     datasets: [
       {
