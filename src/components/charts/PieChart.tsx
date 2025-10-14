@@ -10,16 +10,14 @@ const staticChartData = {
 };
 
 const PieChart = ({ pieChartData, sum }: any) => {
-  const ChartData = () => {
-    return {
-      labels: staticChartData.labels,
-      datasets: [
-        {
-          data: pieChartData,
-          backgroundColor: staticChartData.backgroundColor,
-        },
-      ],
-    };
+  const ChartData = {
+    labels: staticChartData.labels,
+    datasets: [
+      {
+        data: pieChartData,
+        backgroundColor: staticChartData.backgroundColor,
+      },
+    ],
   };
 
   const options = {
@@ -49,7 +47,7 @@ const PieChart = ({ pieChartData, sum }: any) => {
     <div className='flex justify-center items-center'>
       <div className='relative'>
         <Doughnut
-          data={ChartData()}
+          data={ChartData}
           options={options}
         />
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-2xl font-Rubik text-[#333]'>
