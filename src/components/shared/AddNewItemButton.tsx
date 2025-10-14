@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 
-const AddNewItemButton = React.memo(({ title, path }: any) => {
+const AddNewItemButton = ({ title, path }: any) => {
   const navigate = useNavigate();
   return (
     <button
@@ -17,6 +16,6 @@ const AddNewItemButton = React.memo(({ title, path }: any) => {
       <FiPlus size={24} />
     </button>
   );
-});
+};
 
 export default AddNewItemButton;
