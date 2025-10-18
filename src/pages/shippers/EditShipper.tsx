@@ -1,44 +1,31 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import addIcon from '/images/add.svg';
 import AddEditShipperDataSection from '../../components/shippers/AddEditShipperDataSection';
 import AddShipmentTextArea from '../../components/shipments/addShipment/addShipmentInputs/AddShipmentTextArea';
-import { useNavigate, useParams } from 'react-router-dom';
-import { shippers } from '../../lib/data';
+import { useParams } from 'react-router-dom';
+import { shippers } from '../../lib/data/mainData';
 import trashIcon from '/images/trash.svg';
-import { toast } from 'sonner';
-
-const shipperSectionInputsData = [
-  { label: 'الاسم', name: 'name' },
-  { label: 'رقم السجل التجاري', name: 'commercialRegistration' },
-  { label: 'البريد الإلكتروني', name: 'email' },
-  { label: 'العنوان', name: 'address' },
-];
-
-const shipperAdditionalBranchSectionInputsData = [
-  { label: 'الاسم', name: 'name' },
-  { label: 'العنوان', name: 'address' },
-  { label: 'رقم الهاتف (أساسي)', name: 'primaryPhoneNumber' },
-  { label: 'رقم الهاتف (احتياطي)', name: 'secondaryPhoneNumber' },
-];
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
+import {
+  editShipperAdditionalBranchSectionInputsData,
+  shipperSectionInputsData,
+} from '../../lib/data/shippers';
+import { useShippers } from '../../hooks/useShippers';
 
 const EditShipper = () => {
   const { shipperId } = useParams();
   const selectedShipper = shippers.find((shipper) => shipper?.id === Number(shipperId));
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
 
-  const [mainFormData, setMainFormData] = useState({
-    name: '',
-    email: '',
-    address: '',
-    primaryPhoneNumber: '',
-    secondaryPhoneNumber: '',
-    description: '',
-    commercialRegistration: '',
-  });
-
-  const [branches, setBranches] = useState<any[]>([]);
+  const {
+    branches,
+    setBranches,
+    mainFormData,
+    setMainFormData,
+    handleMainFormChange,
+    handleBranchChange,
+    addNewBranch,
+    deleteBranch,
+  } = useShippers();
 
   useEffect(() => {
     if (selectedShipper) {
@@ -47,77 +34,23 @@ const EditShipper = () => {
       });
       if (selectedShipper.branches && selectedShipper.branches.length > 0) {
         const formattedBranches = selectedShipper.branches.map((branch) => ({
-          id: branch.id,
-          name: branch.name || '',
-          address: branch.address || '',
-          primaryPhoneNumber: branch.primaryPhoneNumber || '',
-          secondaryPhoneNumber: branch.secondaryPhoneNumber || '',
+          id: branch.id ?? 0,
+          name: branch.name ?? '',
+          address: branch.address ?? '',
+          primaryPhoneNumber: branch.primaryPhoneNumber ?? '',
+          secondaryPhoneNumber: branch.secondaryPhoneNumber ?? '',
+          email: branch.email ?? '',
+          description: branch.description ?? '',
         }));
         setBranches(formattedBranches);
       }
     }
-  }, [selectedShipper]);
+  }, [selectedShipper, setBranches, setMainFormData]);
 
-  const handleMainFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setMainFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleBranchChange = (
-    index: number,
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setBranches((prev) => {
-      const updatedBranches = [...prev];
-      updatedBranches[index] = {
-        ...updatedBranches[index],
-        [name]: value,
-      };
-      return updatedBranches;
-    });
-  };
-
-  const addNewBranch = () => {
-    setBranches((prev) => [
-      ...prev,
-      {
-        name: '',
-        email: '',
-        address: '',
-        primaryPhoneNumber: '',
-        secondaryPhoneNumber: '',
-        description: '',
-      },
-    ]);
-  };
-
-  const deleteBranch = (index: number) => {
-    setBranches((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    // const submissionData = {
-    //   id: selectedShipper?.id,
-    //   ...mainFormData,
-    //   branches: branches.map(branch => ({
-    //     id: branch.id,
-    //     name: branch.name,
-    //     email: branch.email,
-    //     address: branch.address,
-    //     primaryPhoneNumber: branch.primaryPhoneNumber,
-    //     secondaryPhoneNumber: branch.secondaryPhoneNumber,
-    //   })),
-    // };
-
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/shippers');
-      toast.success('تم تحديث بيانات العميل بنجاح');
-    }, 2000);
-  };
+  const { handleSubmit, isLoading } = useFormSubmission({
+    successMessage: 'تم تحديث بيانات العميل بنجاح',
+    redirectPath: '/shippers',
+  });
 
   return (
     <>
@@ -137,10 +70,9 @@ const EditShipper = () => {
         />
         <AddShipmentTextArea
           page='editShipper'
-          name='description'
           value={mainFormData.description}
           onChange={handleMainFormChange}
-          existingNotes={selectedShipper?.description}
+          existingNotes={!!selectedShipper?.description}
         />
 
         {branches.map((branch, index) => (
@@ -164,9 +96,9 @@ const EditShipper = () => {
               </button>
             </div>
             <AddEditShipperDataSection
-              inputs={shipperAdditionalBranchSectionInputsData}
+              inputs={editShipperAdditionalBranchSectionInputsData}
               value={branch}
-              onChange={(e: any) => handleBranchChange(index, e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleBranchChange(index, e)}
             />
           </div>
         ))}

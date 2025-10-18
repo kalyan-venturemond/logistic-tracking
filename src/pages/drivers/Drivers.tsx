@@ -1,40 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import SearchInput from '../../components/searchInput/SearchInput';
-import { drivers } from '../../lib/data';
+import { drivers } from '../../lib/data/mainData';
 import AddNewItemButton from '../../components/shared/AddNewItemButton';
 import DriversTable from '../../components/adminsDrivers/drivers/DriversTable';
-
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'متاح', value: 'available' },
-  { label: 'غير متاح', value: 'notAvailable' },
-];
-
-const fieldsToCheck = [
-  'id',
-  'name',
-  'nationality',
-  'identityNumber',
-  'phoneNumber',
-  'vehicleNumber',
-  'status',
-];
-
+import { useFilteredSearchValue } from '../../hooks/useFilteredSearchValue';
+import { selectMenuOptions } from '../../lib/data/shared';
+import { fieldsToCheck } from '../../lib/data/drivers';
 const Drivers = () => {
   const [selectedDriverStatus, setSelectedDriverStatus] = useState('all');
-  const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const filteredData = drivers.filter((driver: any) =>
-    fieldsToCheck.some((field) => {
-      const fieldValue = driver[field];
-      return (
-        typeof fieldValue === 'string' &&
-        fieldValue.toLowerCase().includes(searchValue.toLowerCase().trim())
-      );
-    }),
+  const { filteredData, searchValue, setSearchValue } = useFilteredSearchValue(
+    fieldsToCheck,
+    drivers,
   );
 
   setTimeout(() => {
@@ -58,7 +37,7 @@ const Drivers = () => {
           />
           <SearchInput
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
           />
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>

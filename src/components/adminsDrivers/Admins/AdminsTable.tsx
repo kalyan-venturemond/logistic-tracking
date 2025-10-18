@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from 'react-router-dom';
 import { getAvailabilityStatusStyles, tableRowStyles } from '../../../lib/utils';
 import Pagination from '../../pagination/Pagination';
 import { useEffect } from 'react';
 import { usePagination } from '../../../hooks/usePagination';
+import { Admin } from '../../../types/admins';
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
@@ -15,24 +15,31 @@ const tableHeading = [
   { key: 'nationality', label: 'الجنسية' },
   { key: 'status', label: 'الحالة' },
 ];
-const AdminsTable = ({ selectedStatus, data, searchValue }: any) => {
+const AdminsTable = ({
+  selectedStatus,
+  data,
+  searchValue,
+}: {
+  selectedStatus: string;
+  data: Admin[];
+  searchValue: string;
+}) => {
   const navigate = useNavigate();
 
   const filteredData = data.filter(
-    (admin: any) =>
+    (admin: Admin) =>
       selectedStatus === 'all' || admin.status.toLowerCase() === selectedStatus.toLowerCase(),
   );
 
-  const sortedData = [...filteredData].sort((a: any, b: any) => a.id - b.id);
+  const sortedData = [...filteredData].sort((a: Admin, b: Admin) => a.id - b.id);
 
   const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
     usePagination();
-  const paginatedData = paginate(filteredData);
+  const paginatedData = paginate(filteredData) as Admin[];
 
   useEffect(() => {
-      setCurrentPage(1);
-    }, [searchValue, setCurrentPage]);
-
+    setCurrentPage(1);
+  }, [searchValue, setCurrentPage]);
 
   return (
     <>
@@ -57,7 +64,7 @@ const AdminsTable = ({ selectedStatus, data, searchValue }: any) => {
             </tr>
           </thead>
           <tbody className='font-Rubik text-base font-medium'>
-            {paginatedData.map((item: any, index: any) => {
+            {paginatedData.map((item: Admin, index: number) => {
               return (
                 <tr
                   key={item.id}

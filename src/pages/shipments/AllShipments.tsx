@@ -1,11 +1,11 @@
-import ShipmentPage from '../../components/shipments/shipmentPage/ShipmentPage';
-import { shipments } from '../../lib/data';
+import ShipmentsPage from '../../components/shipments/shipmentPage/ShipmentsPage';
+import { shipments } from '../../lib/data/mainData';
 
 const AllShipments = () => {
   return (
     <>
-    {/* <ShipmentsFilterDialog /> */}
-      <ShipmentPage
+      {/* <ShipmentsFilterDialog /> */}
+      <ShipmentsPage
         shipments={shipments}
         isAllShipmentsPage={true}
       />

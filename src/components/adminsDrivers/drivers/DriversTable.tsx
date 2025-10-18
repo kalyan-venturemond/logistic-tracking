@@ -3,8 +3,8 @@ import { getAvailabilityStatusStyles, tableRowStyles } from '../../../lib/utils'
 import Pagination from '../../pagination/Pagination';
 import { useEffect, useState } from 'react';
 import { usePagination } from '../../../hooks/usePagination';
+import { Driver } from '../../../types/drivers';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
@@ -23,20 +23,25 @@ const DriversTable = ({
   drivers,
   searchValue,
   isSelectRecipientsPage = false,
-}: any) => {
+}: {
+  selectedStatus: string;
+  drivers: Driver[];
+  searchValue: string;
+  isSelectRecipientsPage?: boolean;
+}) => {
   const navigate = useNavigate();
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
   const filteredData = drivers.filter(
-    (driver: any) =>
+    (driver: Driver) =>
       selectedStatus === 'all' || driver.status.toLowerCase() === selectedStatus.toLowerCase(),
   );
 
-  const sortedData = [...filteredData].sort((a: any, b: any) => a.id - b.id);
+  const sortedData = [...filteredData].sort((a: Driver, b: Driver) => a.id - b.id);
 
   const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
     usePagination();
-  const paginatedData = paginate(sortedData);
+  const paginatedData = paginate(sortedData) as Driver[];
 
   useEffect(() => {
     setCurrentPage(1);
@@ -44,7 +49,7 @@ const DriversTable = ({
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedRows(paginatedData.map((_: any, index: any) => index));
+      setSelectedRows(paginatedData.map((_, index: number) => index));
     } else {
       setSelectedRows([]);
     }
@@ -89,7 +94,7 @@ const DriversTable = ({
             </tr>
           </thead>
           <tbody className='font-Rubik text-base font-medium'>
-            {paginatedData.map((item: any, index: any) => {
+            {paginatedData.map((item: Driver, index: number) => {
               return (
                 <tr
                   key={item?.id}

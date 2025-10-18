@@ -1,11 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
-import './styles.css'
+import './styles.css';
 
-const PhoneNumberInput = ({ label, value, onChange }: any) => {
+const PhoneNumberInput = ({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: any;
+}) => {
   return (
-    <div className='flex flex-col gap-1 relative' >
+    <div className='flex flex-col gap-1 relative'>
       <label className='text-[#1A1A1A]'>{label}</label>
       <div className='relative'>
         <PhoneInput
@@ -26,10 +34,9 @@ const PhoneNumberInput = ({ label, value, onChange }: any) => {
             },
             dropdownStyleProps: {
               style: {
-            display: 'none',
+                display: 'none',
               },
             },
-            
           }}
           inputProps={{
             required: true,

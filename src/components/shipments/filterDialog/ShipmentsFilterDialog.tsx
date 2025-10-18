@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
@@ -25,7 +24,7 @@ export default function ShipmentsFilterDialog() {
     setOpen(false);
   };
 
-  const handleBranchToggle = (branch: any) => {
+  const handleBranchToggle = (branch: Branch) => {
     setSelectedBranches((prev) =>
       prev.includes(branch) ? prev.filter((b) => b !== branch) : [...prev, branch],
     );

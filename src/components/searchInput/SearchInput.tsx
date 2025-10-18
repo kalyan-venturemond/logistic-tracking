@@ -1,7 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import searchIcon from '/images/search.svg';
 
-const SearchInput = ({ value, onChange, styles = '' }: any) => {
+const SearchInput = ({
+  value,
+  onChange,
+  styles = '',
+}: {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  styles?: string;
+}) => {
   return (
     <div
       dir='rtl'

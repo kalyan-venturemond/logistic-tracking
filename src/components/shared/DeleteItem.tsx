@@ -50,26 +50,26 @@ const DeleteItem = ({ moreInfoData, personalData, isActive, item }: any) => {
         </div>
         <div className='col-span-1 md:col-span-4'>
           <div className='flex flex-col gap-2 px-4 md:px-8 py-2'>
-            {moreInfoData.map((row: any, index: any) => (
-              <div key={index}>
-                <InfoRow
-                  image={row.image}
-                  label={row.label}
-                  value={row.value}
-                />
-              </div>
-            ))}
+            {moreInfoData.map(
+              (row: { image: string; label: string; value: string }, index: number) => (
+                <div key={index}>
+                  <InfoRow
+                    image={row.image}
+                    label={row.label}
+                    value={row.value}
+                  />
+                </div>
+              ),
+            )}
           </div>
         </div>
       </div>
       <div className='flex justify-center items-start h-[70vh]'>
-      {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
-          <span className='loader'></span>
-        </div>
-      )}
+        {isLoading && (
+          <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
+            <span className='loader'></span>
+          </div>
+        )}
         <DeleteItemCard handleSubmit={handleSubmit} />
       </div>
     </div>

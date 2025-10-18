@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const DetailRow = ({ label, value }: { label?: string; value: string; isLink?: boolean }) => {
   return (
     <div className='flex items-center gap-2'>
@@ -14,7 +13,13 @@ const ShipperBranchDetailsSection = ({
   address,
   primaryPhone,
   secondaryPhone,
-}: any) => {
+}: {
+  title: string;
+  name: string;
+  address: string;
+  primaryPhone: string;
+  secondaryPhone: string;
+}) => {
   return (
     <div className='overflow-hidden text-ellipsis whitespace-nowrap'>
       <h1 className='text-[#1A1A1A] font-bold text-2xl mb-6'>{title}</h1>

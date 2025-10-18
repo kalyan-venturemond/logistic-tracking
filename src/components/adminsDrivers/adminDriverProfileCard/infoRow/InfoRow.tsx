@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const InfoRow = ({ image, label, value }: any) => (
+const InfoRow = ({ image, label, value }: {image: string; label: string; value: string}) => (
   <div className='flex items-center justify-between md:justify-start px-4 lg:px-0 py-2 font-Rubik max-w-screen'>
     <div className='flex items-center gap-2 '>
       <img

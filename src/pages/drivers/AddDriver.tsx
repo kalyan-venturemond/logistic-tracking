@@ -3,77 +3,20 @@ import AddEditItemDataSection from '../../components/shared/AddEditItemDataSecti
 import uploadImage from '/images/upload.svg';
 import infoIcon from '/images/info-circle.svg';
 import FileUploadInput from '../../components/adminsDrivers/Admins/FileUploadInput';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 import { MdCancelPresentation } from 'react-icons/md';
-
-const driverSectionInputsData = [
-  {
-    label: 'الاسم',
-    name: 'name',
-  },
-  {
-    label: 'رقم الهوية/الإقامة',
-    name: 'identityNumber',
-  },
-  {
-    label: 'رقم الهاتف',
-    name: 'phoneNumber',
-  },
-  {
-    label: 'الفرع',
-    name: 'branch',
-  },
-  {
-    label: 'رقم الشاحنة',
-    name: 'vehicleNumber',
-  },
-];
+import { driverSectionInputsData } from '../../lib/data/drivers';
+import { useDrivers } from '../../hooks/useDrivers';
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
 
 const AddDriver = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/shippers');
-      toast.success('تم تحديث بيانات السائق بنجاح');
-    }, 2000);
-  };
-
-  const [formData, setFormData] = useState({
-    id: '',
-    name: '',
-    nationalityId: 0,
-    languageId: 0,
-    identityNumber: '',
-    phoneNumber: '',
-    branch: '',
-    vehicleId: 0,
-    vehicleType: '',
-    vehicleNumber: '',
-    image: null as File | null,
-    imagePreview: '',
-    medicalReport: null as File | null,
-    medicalReportName: '',
+  const { isLoading, handleSubmit } = useFormSubmission({
+    successMessage: 'تم إضاافة السائق بنجاح',
+    redirectPath: '/shippers',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (file: File | null, previewUrl: string | null) => {
-    setFormData((prev) => ({
-      ...prev,
-      image: file,
-      imagePreview: previewUrl || prev.imagePreview,
-    }));
-  };
+  const { formData, setFormData, handleFileChange, handleChange } = useDrivers();
 
   return (
     <>

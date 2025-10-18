@@ -1,16 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SearchInput from '../searchInput/SearchInput';
 import Messages from './Messages';
+import { Message } from '../../types/alertMessages';
 
 const MessagesHistoryPanel = ({
-  data,
+  messagesData,
   selectedMessageId,
   setSelectedMessageId,
   selectedCategory,
   setSelectedCategory,
   setIsDialogVisible,
-}: any) => {
+}: {
+  messagesData: Message[];
+  selectedMessageId: number;
+  setSelectedMessageId: React.Dispatch<React.SetStateAction<number>>;
+  selectedCategory: string;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [searchValue, setSearchValue] = useState('');
 
   return (
@@ -19,7 +26,7 @@ const MessagesHistoryPanel = ({
         {[
           { label: 'مرة واحدة', value: 'once' },
           { label: 'مكررة', value: 'repeated' },
-        ].map((item: any, index: number) => (
+        ].map((item: { label: string; value: string }, index: number) => (
           <button
             type='button'
             onClick={() => setSelectedCategory(item.value)}
@@ -36,11 +43,11 @@ const MessagesHistoryPanel = ({
       </div>
       <SearchInput
         value={searchValue}
-        onChange={(e: any) => setSearchValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
         styles='!rounded-2xl'
       />
       <Messages
-        messages={data}
+        messagesData={messagesData}
         selectedMessageId={selectedMessageId}
         setSelectedMessageId={setSelectedMessageId}
         selectedCategory={selectedCategory}

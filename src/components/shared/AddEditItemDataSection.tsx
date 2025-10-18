@@ -9,20 +9,46 @@ import {
   recipients,
   shippers,
   vehicles,
-} from '../../lib/data';
+} from '../../lib/data/mainData';
 
-const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page }: any) => {
-  const selectMenuData: any = () => {
-    const getSelectedItem = (options: any, identifier: string) => {
-      return options?.find((option: any) => option.id === value[`${identifier}Id`]) || null;
+interface SelectMenuDataItem {
+  sectionPrefix?: string;
+  identifier?: string;
+  options: any[];
+  label: string;
+  title: string;
+  selectedItem: any;
+}
+
+interface AddEditItemDataSectionProps {
+  title?: string;
+  inputs: any;
+  value: Record<string, any>;
+  onChange: any;
+  section?: 'driver' | 'shipment' | 'shipper' | 'recipient';
+  page?: 'addAdmin' | 'editAdmin' | 'addDriver' | 'editDriver';
+  setFormData?: () => void;
+}
+
+const AddEditItemDataSection = ({
+  title,
+  inputs,
+  value,
+  onChange,
+  section,
+  page,
+}: AddEditItemDataSectionProps) => {
+  const getSelectedItem = (options: any[], identifier: string) => {
+    return options?.find((option) => option.id === value[`${identifier}Id`]) || null;
+  };
+
+  const selectMenuData = ((): SelectMenuDataItem | SelectMenuDataItem[] | null => {
+    const citiesData = {
+      options: cities,
+      title: 'المدينة',
     };
 
     if (section) {
-      const citiesData = {
-        options: cities,
-        title: 'المدينة',
-      };
-
       switch (section) {
         case 'driver':
           return [
@@ -56,7 +82,6 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
               selectedItem: getSelectedItem(cities, 'shipmentDropOffCity'),
             },
           ];
-
         case 'shipper':
           return {
             sectionPrefix: 'shipper',
@@ -65,7 +90,6 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
             title: 'المرسِل',
             selectedItem: getSelectedItem(shippers, 'shipper'),
           };
-
         case 'recipient':
           return {
             sectionPrefix: 'recipient',
@@ -74,6 +98,8 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
             title: 'المستلم',
             selectedItem: getSelectedItem(recipients, 'recipient'),
           };
+        default:
+          return null;
       }
     } else if (page) {
       const nationalitiesData = {
@@ -112,35 +138,40 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
               selectedItem: getSelectedItem(languages, 'language'),
             },
           ];
+        default:
+          return null;
       }
     }
-  };
+    return null;
+  })();
 
   const handleShipmentPageSectionSelectMenuItemSelection = (
     selectedItem: any,
-    sectionSelectMenuDataItem: any,
+    sectionSelectMenuDataItem: SelectMenuDataItem,
   ) => {
     if (!selectedItem) return;
 
-    const updates: any = {};
+    const updates: Record<string, any> = {};
     const sectionPrefix = sectionSelectMenuDataItem?.sectionPrefix || section;
 
-    updates[`${sectionPrefix}Id`] = selectedItem.id;
+    if (sectionPrefix) {
+      updates[`${sectionPrefix}Id`] = selectedItem.id;
 
-    Object.entries(selectedItem).forEach(([key, val]) => {
-      if (key === 'id') return;
-      const formFieldName = `${sectionPrefix}${key.charAt(0).toUpperCase()}${key.slice(1)}`;
-      updates[formFieldName] = val;
-    });
+      Object.entries(selectedItem).forEach(([key, val]) => {
+        if (key === 'id') return;
+        const formFieldName = `${sectionPrefix}${key.charAt(0).toUpperCase()}${key.slice(1)}`;
+        updates[formFieldName] = val;
+      });
 
-    onChange({
-      target: {
-        value: updates,
-      },
-    });
+      onChange({
+        target: {
+          value: updates,
+        },
+      });
+    }
   };
 
-  const handleItemPageSelectMenuItemSelection = (selectedItem: any, identifier: any) => {
+  const handleItemPageSelectMenuItemSelection = (selectedItem: any, identifier: string) => {
     if (!selectedItem) return;
     onChange({
       target: {
@@ -165,7 +196,7 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
             value={item?.selectedItem}
           />
         ));
-      } else if (selectMenuData) {
+      } else if (selectMenuData && !Array.isArray(selectMenuData)) {
         return (
           <AddEditItemSelectMenu
             options={selectMenuData?.options}
@@ -179,6 +210,7 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
         );
       }
     }
+    return null;
   };
 
   const renderedItemPageSelectMenu = () => {
@@ -190,26 +222,27 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
             options={item?.options}
             label={item?.label}
             title={item?.title}
-            onChange={(selectedItem: any) =>
-              handleItemPageSelectMenuItemSelection(selectedItem, item.identifier)
+            onChange={(selectedItem) =>
+              handleItemPageSelectMenuItemSelection(selectedItem, item.identifier || '')
             }
             value={item?.selectedItem}
           />
         ));
-      } else if (selectMenuData) {
+      } else if (selectMenuData && !Array.isArray(selectMenuData)) {
         return (
           <AddEditItemSelectMenu
             options={selectMenuData?.options}
             label={selectMenuData?.label}
             title={selectMenuData?.title}
-            onChange={(selectedItem: any) =>
-              handleItemPageSelectMenuItemSelection(selectedItem, selectMenuData.identifier)
+            onChange={(selectedItem) =>
+              handleItemPageSelectMenuItemSelection(selectedItem, selectMenuData.identifier || '')
             }
             value={selectMenuData?.selectedItem}
           />
         );
       }
     }
+    return null;
   };
 
   return (
@@ -218,7 +251,7 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
       <div className='w-full grid gap-10 my-10 grid-cols-1 md:grid-cols-2'>
         {renderedShipmentPageSectionSelectMenu()}
 
-        {inputs.map((input: any, index: any) => (
+        {inputs.map((input: any, index: number) => (
           <AddEditItemInput
             key={index}
             label={input.label}
@@ -229,6 +262,7 @@ const AddEditItemDataSection = ({ title, inputs, value, onChange, section, page 
             type={input.type}
           />
         ))}
+
         {renderedItemPageSelectMenu()}
       </div>
     </>

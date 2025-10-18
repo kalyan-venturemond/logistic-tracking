@@ -3,7 +3,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import Header from './components/header/Header';
 import ScrollToTop from './components/ScrollToTop';
 
-const Layout = ({ children }: any) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='flex h-screen'>
       <Sidebar />

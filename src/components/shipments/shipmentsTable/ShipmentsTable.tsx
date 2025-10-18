@@ -11,8 +11,9 @@ import {
 import { BiFilterAlt } from 'react-icons/bi';
 import Pagination from '../../pagination/Pagination';
 import { usePagination } from '../../../hooks/usePagination';
+import { Shipment } from '../../../types/shipments';
 
-const columnsToFilter = [
+const columnsToFilter: { key: string; label: string }[] = [
   { key: 'admin', label: 'المسئول' },
   { key: 'shipper', label: 'المرسل' },
   { key: 'shipperBranch', label: 'فرع المرسل' },
@@ -41,13 +42,19 @@ const tableHeading = [
   { label: 'حالة الشحنة', key: 'status' },
 ];
 
-const ShipmentsTable = ({ shipments, searchValue }: any) => {
+const ShipmentsTable = ({
+  shipments,
+  searchValue,
+}: {
+  shipments: Shipment[];
+  searchValue: string;
+}) => {
   const navigate = useNavigate();
   const [dateSort, setDateSort] = useState<'asc' | 'desc' | undefined>();
   const [filters, setFilters] = useState(initialFilters);
   const [showFilter, setShowFilter] = useState<any>({});
 
-  const filteredData = shipments.filter((shipment: any) =>
+  const filteredData = shipments.filter((shipment: Shipment) =>
     Object.keys(filters).every((key) => {
       if (key === 'date') {
         if (!filters[key] || filters[key].length === 0) return true;
@@ -56,11 +63,11 @@ const ShipmentsTable = ({ shipments, searchValue }: any) => {
 
       if (key === 'status') {
         if (!filters[key] || filters[key].length === 0) return true;
-        const arabicStatus = getShipmentStatusLabel(shipment[key]);
+        const arabicStatus = getShipmentStatusLabel((shipment as Shipment)[key]);
         return filters[key].includes(arabicStatus);
       }
 
-      return !filters[key] || filters[key].length === 0 || filters[key].includes(shipment[key]);
+      return !filters[key] || filters[key].length === 0 || filters[key].includes((shipment as any)[key]);
     }),
   );
 
@@ -113,7 +120,7 @@ const ShipmentsTable = ({ shipments, searchValue }: any) => {
 
   const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
     usePagination();
-  const paginatedData = paginate(sortedData);
+  const paginatedData = paginate(sortedData) as Shipment[];
 
   useEffect(() => {
     setCurrentPage(1);
@@ -195,7 +202,7 @@ const ShipmentsTable = ({ shipments, searchValue }: any) => {
             </tr>
           </thead>
           <tbody className='font-Rubik text-base font-medium'>
-            {paginatedData.map((shipment: any, index: any) => (
+            {paginatedData.map((shipment: Shipment, index: number) => (
               <tr
                 key={shipment.id}
                 onClick={() => {

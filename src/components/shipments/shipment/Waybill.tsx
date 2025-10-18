@@ -2,8 +2,12 @@
 
 import { QRCodeSVG } from 'qrcode.react';
 import WaybillInfoRow from './WaybillInfoRow';
+import { Shipment } from '../../../types/shipments';
+import { Driver } from '../../../types/drivers';
+import { Shipper } from '../../../types/shippers';
+import { Recipient } from '../../../types/recipients';
 
-const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
+const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, driver: Driver, shipper: Shipper, recipient: Recipient}) => {
 
   const driverDetails = [
     {
@@ -125,10 +129,10 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6'>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات الشاحنة</div>
-            {vehicleDetails.map((row: any, index: any) => (
+            {vehicleDetails.map((row: { value: string; label?: string | undefined }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
-                  label={row.label}
+                  label={row.label || '-'}
                   value={row.value}
                 />
               </div>
@@ -136,7 +140,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
           </div>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات السائق</div>
-            {driverDetails.map((row: any, index: any) => (
+            {driverDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
                   label={row.label}
@@ -149,7 +153,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 bg-[#F2F2F2] p-2 rounded-lg print-bg-gray'>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات المستلم</div>
-            {recipientDetails.map((row: any, index: any) => (
+            {recipientDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
                   label={row.label}
@@ -160,7 +164,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
           </div>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات المرسل</div>
-            {shipperDetails.map((row: any, index: any) => (
+            {shipperDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
                   label={row.label}
@@ -175,7 +179,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: any) => {
       <div className='grid grid-cols-2'>
         <div className='col-span-2'>
           <div className='font-Almarai font-bold text-lg mb-1'>تفاصيل الشحنة</div>
-          {shipmentDetails.map((row: any, index: any) => (
+          {shipmentDetails.map((row: any, index: number) => (
             <div key={index}>
               <WaybillInfoRow
                 label={row.label}

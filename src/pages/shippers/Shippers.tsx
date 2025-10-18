@@ -1,33 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SearchInput from '../../components/searchInput/SearchInput';
 import ShippersTable from '../../components/shippers/ShippersTable';
-import { shippers } from '../../lib/data';
+import { shippers } from '../../lib/data/mainData';
 import AddNewItemButton from '../../components/shared/AddNewItemButton';
+import { useFilteredSearchValue } from '../../hooks/useFilteredSearchValue';
+import { fieldsToCheck } from '../../lib/data/shippers';
 
-const fieldsToCheck = [
-  'id',
-  'name',
-  'primaryPhoneNumber',
-  'secondaryPhoneNumber',
-  'email',
-  'address',
-];
 const Shippers = () => {
-  const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const filteredData = shippers.filter((shipper: any) =>
-    fieldsToCheck.some((field) => {
-      const fieldValue = shipper[field];
-      return (
-        typeof fieldValue === 'string' &&
-        fieldValue.toLowerCase().includes(searchValue.toLowerCase().trim())
-      );
-    }),
-  );
-
-  const sortedData = [...filteredData].sort((a: any, b: any) => a.id - b.id);
+  const { filteredData, searchValue, setSearchValue } = useFilteredSearchValue(
+     fieldsToCheck,
+     shippers,
+   );
 
   setTimeout(() => {
     setIsLoading(false);
@@ -51,7 +36,7 @@ const Shippers = () => {
 
           <SearchInput
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
           />
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
@@ -59,7 +44,7 @@ const Shippers = () => {
             <h1 className='text-xl font-bold'>قائمة العملاء</h1>
           </div>
           <ShippersTable
-            data={sortedData}
+            data={filteredData}
             searchValue={searchValue}
           />
         </div>

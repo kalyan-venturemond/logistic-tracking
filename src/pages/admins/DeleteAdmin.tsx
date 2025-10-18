@@ -4,7 +4,7 @@ import mailIcon from '/images/adminDriver/sms.svg';
 import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
 import { useParams } from 'react-router-dom';
-import { admins } from '../../lib/data';
+import { admins } from '../../lib/data/mainData';
 import DeleteItem from '../../components/shared/DeleteItem';
 
 const DeleteAdmin = () => {

@@ -1,32 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import SearchInput from '../../components/searchInput/SearchInput';
 import AdminsTable from '../../components/adminsDrivers/Admins/AdminsTable';
-import { admins } from '../../lib/data';
+import { admins } from '../../lib/data/mainData';
 import AddNewItemButton from '../../components/shared/AddNewItemButton';
-
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'متاح', value: 'available' },
-  { label: 'غير متاح', value: 'notAvailable' },
-];
-
-const fieldsToCheck = ['id', 'userName', 'firstName', 'lastName', 'email', 'nationality', 'status'];
+import { useFilteredSearchValue } from '../../hooks/useFilteredSearchValue';
+import { selectMenuOptions } from '../../lib/data/shared';
+import { fieldsToCheck } from '../../lib/data/admins';
 
 const Admins = () => {
   const [selectedAdminStatus, setSelectedAdminStatus] = useState('all');
-  const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const filteredData = admins.filter((admin: any) =>
-    fieldsToCheck.some((field) => {
-      const fieldValue = admin[field];
-      return (
-        typeof fieldValue === 'string' &&
-        fieldValue.toLowerCase().includes(searchValue.toLowerCase().trim())
-      );
-    }),
+  const { filteredData, searchValue, setSearchValue } = useFilteredSearchValue(
+    fieldsToCheck,
+    admins,
   );
 
   setTimeout(() => {
@@ -50,7 +38,7 @@ const Admins = () => {
           />
           <SearchInput
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
           />
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>

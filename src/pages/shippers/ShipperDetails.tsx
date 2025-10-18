@@ -1,19 +1,17 @@
 import ActionsMenu from '../../components/actionsMenu/ActionsMenu';
-import editShipmentIcon from '/images/edit-shipment-icon.svg';
-import deleteShipmentIcon from '/images/delete-shipment-icon.svg';
 import ShipperBranchDetailsSection from '../../components/shippers/ShipperBranchDetailsSection';
 import { useParams } from 'react-router-dom';
-import { shippers } from '../../lib/data';
-// import { shippers } from '../../lib/data';
+import { shippers } from '../../lib/data/mainData';
+import { useMenuActions } from '../../hooks/useMenuActions';
 
 const ShipperDetails = () => {
   const { shipperId } = useParams();
   const selectedShipper = shippers.find((shipper) => shipper?.id === Number(shipperId));
 
-  const menuActions = [
-    { label: 'تعديل البيانات', icon: editShipmentIcon, path: `/shippers/edit/${shipperId}` },
-    { label: 'حذف البيانات', icon: deleteShipmentIcon, path: `/shippers/delete/${shipperId}` },
-  ];
+   const { menuActions } = useMenuActions([
+      { editLabel: 'تعديل البيانات', editPath: `/shippers/edit/${shipperId}` },
+      { deleteLabel: 'حذف البيانات', deletePath: `/shippers/delete/${shipperId}` },
+    ]);
 
   return (
     <div className='border border-[#DD7E1F] rounded-lg px-6 pt-10 pb-4 mx-4 md:mx-0'>

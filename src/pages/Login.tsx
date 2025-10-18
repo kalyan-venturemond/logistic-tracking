@@ -2,22 +2,15 @@ import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { CiLock } from 'react-icons/ci';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
 import logo from '/images/truck-Logo.svg';
+import { useFormSubmission } from '../hooks/useFormSubmission ';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/dashboard');
-    }, 2000);
-  };
+  const { handleSubmit, isLoading } = useFormSubmission({
+    redirectPath: '/dashboard',
+  });
 
   return (
     <div className='flex justify-center items-center w-screen h-screen max-h-screen overflow-y-hidden scroll-container'>

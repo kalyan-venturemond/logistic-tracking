@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import ShipmentPage from '../../components/shipments/shipmentPage/ShipmentPage';
-import { shipments } from '../../lib/data';
+import ShipmentsPage from '../../components/shipments/shipmentPage/ShipmentsPage';
+import { shipments } from '../../lib/data/mainData';
 import { getShipmentStatusLabel } from '../../lib/utils';
 const DeliveredShipments = () => {
-  const deliveredShipments = shipments.filter((shipment) => getShipmentStatusLabel(shipment.status) === 'تم التوصيل')
-  return <ShipmentPage shipments={deliveredShipments} />;
+  const deliveredShipments = shipments.filter(
+    (shipment) => getShipmentStatusLabel(shipment.status) === 'تم التوصيل',
+  );
+  return <ShipmentsPage shipments={deliveredShipments} />;
 };
 
 export default DeliveredShipments;

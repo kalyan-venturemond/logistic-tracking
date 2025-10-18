@@ -4,16 +4,13 @@ import SelectMenu from '../../components/SelectMenu';
 import SearchInput from '../../components/searchInput/SearchInput';
 import { useNavigate } from 'react-router-dom';
 import leftArrowIcon from '/images/arrow-left.svg';
-import { drivers } from '../../lib/data';
+import { drivers } from '../../lib/data/mainData';
 import DriversTable from '../../components/adminsDrivers/drivers/DriversTable';
+import { Driver } from '../../types/drivers';
+import { useFilteredSearchValue } from '../../hooks/useFilteredSearchValue';
+import { selectMenuOptions } from '../../lib/data/shared';
 
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'متاح', value: 'available' },
-  { label: 'غير متاح', value: 'notAvailable' },
-];
-
-const fieldsToCheck = [
+const fieldsToCheck: (keyof Driver)[] = [
   'id',
   'name',
   'nationality',
@@ -26,17 +23,11 @@ const fieldsToCheck = [
 const SelectRecipients = () => {
   const navigate = useNavigate();
   const [selectedDriverStatus, setSelectedDriverStatus] = useState('all');
-  const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const filteredData = drivers.filter((driver: any) =>
-    fieldsToCheck.some((field) => {
-      const fieldValue = driver[field];
-      return (
-        typeof fieldValue === 'string' &&
-        fieldValue.toLowerCase().includes(searchValue.toLowerCase().trim())
-      );
-    }),
+  const { filteredData, searchValue, setSearchValue } = useFilteredSearchValue(
+    fieldsToCheck,
+    drivers,
   );
 
   setTimeout(() => {
@@ -56,7 +47,7 @@ const SelectRecipients = () => {
         >
           <SearchInput
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
           />
 
           <button

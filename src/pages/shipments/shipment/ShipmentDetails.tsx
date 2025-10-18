@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import ShipmentDetailsInfoSection from '../../../components/shipments/shipmentDetails/infoSection/ShipmentDetailsInfoSection';
-import editShipmentIcon from '/images/edit-shipment-icon.svg';
-import deleteShipmentIcon from '/images/delete-shipment-icon.svg';
-
 import ActionsMenu from '../../../components/actionsMenu/ActionsMenu';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { UseSidebar } from '../../../context/SidebarContext';
-import { admins, drivers, recipients, shipments, shippers } from '../../../lib/data';
+import { admins, drivers, recipients, shipments, shippers } from '../../../lib/data/mainData';
 import PrintWaybillDialog from '../../../components/shipments/shipment/PrintWaybillDialog';
 import ShipmentHistory from '../../../components/shipments/shipmentHistory/ShipmentHistory';
+import { useMenuActions } from '../../../hooks/useMenuActions';
 
 const ShipmentDetails = () => {
   const { isSidebarOpen } = UseSidebar();
@@ -28,18 +25,10 @@ const ShipmentDetails = () => {
     (recipient) => recipient.id === selectedShipment?.recipientId,
   );
 
-  const menuActions = [
-    {
-      label: 'تعديل الشحنة',
-      icon: editShipmentIcon,
-      path: `/shipments/edit/${shipmentId}`,
-    },
-    {
-      label: 'حذف الشحنة',
-      icon: deleteShipmentIcon,
-      path: `/shipments/delete/${shipmentId}`,
-    },
-  ];
+  const { menuActions } = useMenuActions([
+    { editLabel: 'تعديل الشحنة', editPath: `/shipments/edit/${shipmentId}` },
+    { deleteLabel: 'حذف الشحنة', deletePath: `/shipments/delete/${shipmentId}` },
+  ]);
 
   const shipperData = [
     { label: 'الاسم', value: selectedShipper?.name || '-' },
@@ -186,15 +175,15 @@ const ShipmentDetails = () => {
               isSidebarOpen ? 'lg:col-span-4' : 'lg:col-span-3'
             }`}
           >
-            <ShipmentHistory shipment={selectedShipment} />
+            <ShipmentHistory shipment={selectedShipment!} />
           </div>
         </div>
       </div>
       <PrintWaybillDialog
-        shipment={selectedShipment}
-        driver={selectedDriver}
-        shipper={selectedShipper}
-        recipient={selectedRecipient}
+        shipment={selectedShipment!}
+        driver={selectedDriver!}
+        shipper={selectedShipper!}
+        recipient={selectedRecipient!}
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
       />

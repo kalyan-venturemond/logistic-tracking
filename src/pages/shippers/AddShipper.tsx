@@ -1,105 +1,33 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
 import addIcon from '/images/add.svg';
 import AddEditShipperDataSection from '../../components/shippers/AddEditShipperDataSection';
 import AddShipmentTextArea from '../../components/shipments/addShipment/addShipmentInputs/AddShipmentTextArea';
 import trashIcon from '/images/trash.svg';
-import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
-
-const shipperSectionInputsData = [
-  { label: 'الاسم', name: 'name' },
-  { label: 'رقم السجل التجاري', name: 'commercialRegistration' },
-  { label: 'البريد الإلكتروني', name: 'email' },
-  { label: 'العنوان', name: 'address' },
-];
-
-const shipperAdditionalBranchSectionInputsData = [
-  { label: 'البريد الإلكتروني', name: 'email' },
-  { label: 'العنوان', name: 'address' },
-];
-
-interface BranchData {
-  name: string;
-  email: string;
-  address: string;
-  primaryPhoneNumber: string;
-  secondaryPhoneNumber: string;
-  description: string;
-}
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
+import {
+  addShipperAdditionalBranchSectionInputsData,
+  shipperSectionInputsData,
+} from '../../lib/data/shippers';
+import { useShippers } from '../../hooks/useShippers';
 
 const AddShipper = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const [mainFormData, setMainFormData] = useState<BranchData>({
-    name: '',
-    email: '',
-    address: '',
-    primaryPhoneNumber: '',
-    secondaryPhoneNumber: '',
-    description: '',
+  const {
+    branches,
+    mainFormData,
+    handleMainFormChange,
+    handleBranchChange,
+    addNewBranch,
+    deleteBranch,
+  } = useShippers();
+
+  const { handleSubmit, isLoading } = useFormSubmission({
+    successMessage: 'تم إضاافة العميل بنجاح',
+    redirectPath: '/shippers',
   });
-
-  const [branches, setBranches] = useState<BranchData[]>([]);
-
-  const handleMainFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setMainFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleBranchChange = (
-    index: number,
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setBranches((prev) => {
-      const updatedBranches = [...prev];
-      updatedBranches[index] = {
-        ...updatedBranches[index],
-        [name]: value,
-      };
-      return updatedBranches;
-    });
-  };
-
-  const addNewBranch = () => {
-    setBranches((prev) => [
-      ...prev,
-      {
-        name: '',
-        email: '',
-        address: '',
-        primaryPhoneNumber: '',
-        secondaryPhoneNumber: '',
-        description: '',
-      },
-    ]);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    // const submissionData = {
-    //   main: mainFormData,
-    //   branches: branches,
-    // };
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/shippers');
-      toast.success('تم إضاافة العميل بنجاح');
-    }, 2000);
-  };
-
-  const deleteBranch = (index: number) => {
-    setBranches((prev) => prev.filter((_, i) => i !== index));
-  };
 
   return (
     <>
-       {isLoading && (
-        <div
-          className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}
-        >
+      {isLoading && (
+        <div className={`fixed inset-0 flex justify-center items-center z-50 bg-opacity-15`}>
           <span className='loader'></span>
         </div>
       )}
@@ -145,9 +73,9 @@ const AddShipper = () => {
               <h2 className='text-xl font-bold my-4'>الفرع ({index + 1})</h2>
             )}
             <AddEditShipperDataSection
-              inputs={shipperAdditionalBranchSectionInputsData}
+              inputs={addShipperAdditionalBranchSectionInputsData}
               value={branch}
-              onChange={(e: any) => handleBranchChange(index, e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleBranchChange(index, e)}
             />
           </div>
         ))}

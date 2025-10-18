@@ -8,7 +8,15 @@ const style = {
   bgcolor: 'background.paper',
 };
 
-export default function ImageModal({ image, fileName, status }: any) {
+export default function ImageModal({
+  image,
+  fileName,
+  status,
+}: {
+  image: string | undefined;
+  fileName: string;
+  status: string | undefined;
+}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

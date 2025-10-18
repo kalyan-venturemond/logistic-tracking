@@ -1,9 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HiDotsVertical } from 'react-icons/hi';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ActionsMenu = ({ options, position = 'top-16 left-4' }: any) => {
+type Option = {
+  label: string;
+  path: string;
+  icon: string;
+}
+const ActionsMenu = ({ options, position = 'top-16 left-4' }: {options: Option[], position?: string}) => {
   const navigate = useNavigate();
   const [isActionsMenuOpen, setIsActionsMenuOpen] = useState(false);
 
@@ -46,7 +50,7 @@ const ActionsMenu = ({ options, position = 'top-16 left-4' }: any) => {
           ref={menuRef}
           className={`absolute flex flex-col justify-center gap-4 rounded-lg ps-2 pe-6 py-3 bg-[#FCFCFC] border border-[#CCCCCC] shadow-lg font-Rubik z-10 ${position}`}
         >
-          {options.map((item: any, index: any) => (
+          {options.map((item: Option, index: number) => (
             <button
             type='button'
               key={index}

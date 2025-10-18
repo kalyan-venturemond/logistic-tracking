@@ -1,18 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
+import { Message } from '../../types/alertMessages';
+import { Driver } from '../../types/drivers';
 import repeatIcon from '/images/refresh-2.svg';
 const Messages = ({
-  messages,
+  messagesData,
   selectedMessageId,
   setSelectedMessageId,
   setIsDialogVisible,
   selectedCategory,
-}: any) => {
+}: {
+  messagesData: Message[];
+  selectedMessageId: number;
+  setSelectedMessageId: React.Dispatch<React.SetStateAction<number>>;
+  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCategory: string;
+}) => {
   return (
     <div className='mt-6'>
-      {messages
-        .filter((message: any) => message.category === selectedCategory)
-        .map((message: any, index: number) => (
+      {messagesData
+        .filter((message: Message) => message.category === selectedCategory)
+        .map((message: Message, index: number) => (
           <div
             onClick={() => {
               setSelectedMessageId(message?.id);
@@ -28,22 +34,23 @@ const Messages = ({
             </div>
             <span className='overflow-hidden text-ellipsis whitespace-nowrap font-Rubik text-xs'>
               {message?.drivers?.map(
-                (driver: any, index: number) =>
+                (driver: Driver, index: number) =>
                   `${driver?.name}${index === message?.drivers.length - 1 ? '' : '، '}`,
               )}
             </span>
-            <span className='font-Rubik text-[#666666] my-2 text-xs'>{message.content}</span>
             {selectedCategory === 'repeated' && (
-              <button
-                type='button'
-                className='flex justify-end mt-1'
-                onClick={() => setIsDialogVisible(true)}
-              >
-                <img
-                  src={repeatIcon}
-                  alt='repeat'
-                />
-              </button>
+              <div className='flex justify-end mt-1'>
+                <button
+                  type='button'
+                  className='w-fit'
+                  onClick={() => setIsDialogVisible(true)}
+                >
+                  <img
+                    src={repeatIcon}
+                    alt='repeat'
+                  />
+                </button>
+              </div>
             )}
           </div>
         ))}

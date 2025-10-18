@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import PieChart from '../../components/charts/PieChart';
@@ -8,20 +7,13 @@ import userNameIcon from '/images/adminDriver/user-name.svg';
 import mailIcon from '/images/adminDriver/sms.svg';
 import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
-import editShipmentIcon from '/images/edit-shipment-icon.svg';
-import deleteShipmentIcon from '/images/delete-shipment-icon.svg';
 import AdminDriverProfileCard from '../../components/adminsDrivers/adminDriverProfileCard/AdminDriverProfileCard';
 import { useParams } from 'react-router-dom';
-import { admins, shipments } from '../../lib/data';
+import { admins, shipments } from '../../lib/data/mainData';
 import AdminDriverDetailsTable from '../../components/adminsDrivers/AdminDriverDetailsTable';
-import { arabicDateStringToISO, getRangeDates } from '../../lib/utils';
-
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'أسبوعي', value: 'week' },
-  { label: 'شهري', value: 'month' },
-  { label: 'سنوي', value: 'year' },
-];
+import { useMenuActions } from '../../hooks/useMenuActions';
+import { selectMenuOptions } from '../../lib/data/shared';
+import { useChartData } from '../../hooks/useChartData';
 
 const AdminDetails = () => {
   const [selectedOption, setSelectedOption] = useState('all');
@@ -30,10 +22,10 @@ const AdminDetails = () => {
   const selectedAdmin = admins.find((admin) => admin.id === Number(adminId));
   const adminShipments = shipments.filter((shipment) => shipment.adminId === selectedAdmin?.id);
 
-  const menuActions = [
-    { label: 'تعديل البيانات', icon: editShipmentIcon, path: `/admins/edit/${adminId}` },
-    { label: 'حذف المستخدم', icon: deleteShipmentIcon, path: `/admins/delete/${adminId}` },
-  ];
+  const { menuActions } = useMenuActions([
+    { editLabel: 'تعديل البيانات', editPath: `/admins/edit/${adminId}` },
+    { deleteLabel: 'حذف البيانات', deletePath: `/admins/delete/${adminId}` },
+  ]);
 
   const personalInfoData = {
     image: selectedAdmin?.image,
@@ -50,36 +42,7 @@ const AdminDetails = () => {
     { image: flagIcon, label: 'الجنسية', value: selectedAdmin?.nationality },
   ];
 
-  const filterShipmentsByDateRange = (shipments: any[], option: string) => {
-    if (option === 'all') return shipments;
-
-    const { start, end } = getRangeDates(option);
-
-    return shipments.filter((shipment: any) => {
-      const isoDate = arabicDateStringToISO(shipment.pickupDate);
-      if (!isoDate) return false;
-
-      const shipmentDate = new Date(isoDate);
-      return shipmentDate >= start && shipmentDate <= end;
-    });
-  };
-
-  const filteredShipments = filterShipmentsByDateRange(adminShipments, selectedOption);
-
-  const getPieChartData = (filteredShipments: any[]) => {
-    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
-    
-    const data = statusOrder.map(
-      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
-    );
-
-    return {
-      data,
-      sum: filteredShipments.length,
-    };
-  };
-
-  const pieChartData = getPieChartData(filteredShipments);
+  const { pieChartData, filteredShipments } = useChartData(adminShipments, selectedOption);
 
   return (
     <div className='grid col-span-2 lg:grid-cols-3 gap-8'>

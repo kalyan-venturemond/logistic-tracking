@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Pagination from '../pagination/Pagination';
 import { tableRowStyles } from '../../lib/utils';
 import { usePagination } from '../../hooks/usePagination';
+import { Shipper } from '../../types/shippers';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -14,12 +15,12 @@ const tableHeading = [
   { key: 'email', label: 'البريد الالكتروني' },
   { key: 'address', label: 'العنوان' },
 ];
-const ShippersTable = ({ data, searchValue }: any) => {
+const ShippersTable = ({ data, searchValue }: { data: Shipper[]; searchValue: string }) => {
   const navigate = useNavigate();
 
   const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate, setCurrentPage } =
     usePagination();
-  const paginatedData = paginate(data);
+  const paginatedData = paginate(data) as Shipper[];
 
   useEffect(() => {
     setCurrentPage(1);
@@ -48,7 +49,7 @@ const ShippersTable = ({ data, searchValue }: any) => {
             </tr>
           </thead>
           <tbody className='font-Rubik font-medium'>
-            {paginatedData.map((item: any, index: any) => (
+            {paginatedData.map((item: Shipper, index: number) => (
               <>
                 <tr
                   key={item.id}

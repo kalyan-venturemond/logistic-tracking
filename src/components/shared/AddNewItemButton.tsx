@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 
-const AddNewItemButton = ({ title, path }: any) => {
+const AddNewItemButton = ({ title, path }: { title: string; path: string }) => {
   const navigate = useNavigate();
   return (
     <button

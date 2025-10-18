@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import CustomSwitchComponent from './CustomizedSwitch';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,8 @@ import repeatIcon from '/images/refresh-3.svg';
 import sendIcon from '/images/send.svg';
 import RepeatMessageDialog from './dialog/RepeatMessageDialog';
 import { toast } from 'sonner';
+import { Message, MessageContent } from '../../types/alertMessages';
+import { Driver } from '../../types/drivers';
 
 const MessagesHistoryBody = ({
   data,
@@ -14,7 +15,13 @@ const MessagesHistoryBody = ({
   selectedCategory,
   isDialogVisible,
   setIsDialogVisible,
-}: any) => {
+}: {
+  data: Message[];
+  selectedMessageId: number;
+  selectedCategory: string;
+  isDialogVisible: boolean;
+  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +34,7 @@ const MessagesHistoryBody = ({
     }, 2000);
   };
 
-  const selectedMessage = data.find((message: any) => message.id === selectedMessageId);
+  const selectedMessage = data.find((message: Message) => message.id === selectedMessageId);
 
   return (
     <>
@@ -51,7 +58,7 @@ const MessagesHistoryBody = ({
         </div>
         {selectedMessage && (
           <h1 className='overflow-hidden text-ellipsis whitespace-nowrap font-Rubik text-sm text-[#666666]'>
-            {selectedMessage.drivers?.map((driver: any) => driver?.name).join('، ')}
+            {selectedMessage.drivers?.map((driver: Driver) => driver?.name).join('، ')}
           </h1>
         )}
         {selectedCategory === 'repeated' && (
@@ -70,7 +77,7 @@ const MessagesHistoryBody = ({
         )}
         <div className='flex flex-col gap-6 text-[#FCFCFC] font-Rubik mt-8 bg-[#ECF8EF] sm:px-6 py-2'>
           {selectedMessage &&
-            selectedMessage.messages?.map((message: any, index: number) => {
+            selectedMessage.messages?.map((message: MessageContent, index: number) => {
               return (
                 <div
                   key={index}

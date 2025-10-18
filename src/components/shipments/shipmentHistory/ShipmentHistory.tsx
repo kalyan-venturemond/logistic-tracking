@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getShipmentStatusLabel, statusIcons } from '../../../lib/utils';
+import { History, Shipment } from '../../../types/shipments';
 
 const getShipmentStatusDisplayText = (status: string) => {
   switch (status) {
@@ -44,7 +44,7 @@ const getVerticalLineBgColor = (status: string) => {
   }
 };
 
-const ShipmentHistory = ({ shipment }: any) => {
+const ShipmentHistory = ({ shipment }: { shipment: Shipment }) => {
   const history = shipment.history || [];
   return (
     <div className='py-8 px-6'>
@@ -76,7 +76,7 @@ const ShipmentHistory = ({ shipment }: any) => {
           </div>
         </div>
         {history.length > 0 &&
-          history.map((phase: any, index: number) => (
+          history.map((phase: History, index: number) => (
             <div
               key={phase.id}
               className='relative w-full'

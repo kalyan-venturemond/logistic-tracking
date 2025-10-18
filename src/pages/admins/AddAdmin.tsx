@@ -1,73 +1,17 @@
-import { useState } from 'react';
 import AddEditItemDataSection from '../../components/shared/AddEditItemDataSection';
 import FileUploadInput from '../../components/adminsDrivers/Admins/FileUploadInput';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
+import { addEditAdminInputsData } from '../../lib/data/admins';
+import { useAdmins } from '../../hooks/useAdmins';
 
-const addAdminInputsData = [
-  {
-    label: 'الاسم الأول',
-    name: 'firstName',
-  },
-  {
-    label: 'الاسم الأخير',
-    name: 'lastName',
-  },
-  {
-    label: 'اسم المستخدم',
-    name: 'userName',
-  },
-  {
-    label: 'رقم التواصل',
-    name: 'phoneNumber',
-  },
-  {
-    label: 'البريد الإلكتروني',
-    name: 'email',
-  },
-  {
-    label: 'كلمة المرور',
-    name: 'password',
-    type: 'password',
-    description: ['لا تقل عن 8 أحرف', 'حروف وأرقام إنجليزية فقط'],
-  },
-];
 const AddAdmin = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/admins');
-      toast.success('تم إضاافة المستخدم بنجاح');
-    }, 2000);
-  };
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    userName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    image: null as File | null,
-    imagePreview: '',
+  const { handleSubmit, isLoading } = useFormSubmission({
+    successMessage: 'تم إضاافة المستخدم بنجاح',
+    redirectPath: '/admins',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (file: File | null, previewUrl: string | null) => {
-    setFormData((prev) => ({
-      ...prev,
-      image: file,
-      imagePreview: previewUrl || prev.imagePreview,
-    }));
-  };
+   const { formData, handleFileChange, handleChange } = useAdmins({});
 
   return (
     <>
@@ -82,7 +26,7 @@ const AddAdmin = () => {
       >
         <FileUploadInput onChange={handleFileChange} />{' '}
         <AddEditItemDataSection
-          inputs={addAdminInputsData}
+          inputs={addEditAdminInputsData}
           value={formData}
           onChange={handleChange}
           page='addAdmin'

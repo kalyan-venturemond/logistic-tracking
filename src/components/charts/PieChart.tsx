@@ -9,16 +9,16 @@ const staticChartData = {
   backgroundColor: ['#2E853F', '#EA7B7E', '#CD2026', '#E5B84D', '#B3E5BD', '#CCCCCC'],
 };
 
-const PieChart = ({ pieChartData, sum }: any) => {
-const chartData = {
-  labels: staticChartData.labels,
-  datasets: [
-    {
-      data: pieChartData,
-      backgroundColor: staticChartData.backgroundColor,
-    },
-  ],
-};
+const PieChart = ({ pieChartData, sum }: { pieChartData: number[]; sum: number }) => {
+  const chartData = {
+    labels: staticChartData.labels,
+    datasets: [
+      {
+        data: pieChartData,
+        backgroundColor: staticChartData.backgroundColor,
+      },
+    ],
+  };
   const options = {
     responsive: true,
     plugins: {

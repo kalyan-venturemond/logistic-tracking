@@ -2,12 +2,20 @@
 import { useState } from 'react';
 
 const AddShipmentTextArea = ({
+  name,
   value,
   onChange,
   page,
   existingNotes,
   placeholder = 'يمكنك هنا إضافة ملاحظات يجب أن ينتبه لها السائق',
-}: any) => {
+}: {
+  name?: string | undefined;
+  value: string;
+  onChange: any;
+  page?: string | undefined;
+  existingNotes?: boolean  | undefined;
+  placeholder?: string | undefined;
+}) => {
   const [isNotesAreaVisible, setIsNotesAreaVisible] = useState(false);
   const getButtonLabel = () => {
     if (page === 'addShipper') return 'أضف وصف للمنشأة';
@@ -26,7 +34,7 @@ const AddShipmentTextArea = ({
         <div className='w-full flex flex-col items-start mb-12'>
           <span>{page === 'addShipper' ? 'وصف المنشأة' : 'ملاحظات'}</span>
           <textarea
-            name='shipmentNotes'
+            name={name}
             value={value}
             onChange={onChange}
             placeholder={placeholder}

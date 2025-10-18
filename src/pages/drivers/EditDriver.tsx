@@ -1,95 +1,52 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import AddEditItemDataSection from '../../components/shared/AddEditItemDataSection';
 import uploadImage from '/images/upload.svg';
 import infoIcon from '/images/info-circle.svg';
 import FileUploadInput from '../../components/adminsDrivers/Admins/FileUploadInput';
-import { useNavigate, useParams } from 'react-router-dom';
-import { drivers } from '../../lib/data';
+import { useParams } from 'react-router-dom';
+import { drivers } from '../../lib/data/mainData';
 import licenseBackSideImage from '/images/adminDriver/driver/license/16.webp';
-import { toast } from 'sonner';
 import { MdCancelPresentation } from 'react-icons/md';
-
-const driverSectionInputsData = [
-  {
-    label: 'الاسم',
-    name: 'name',
-  },
-  {
-    label: 'رقم الهوية/الإقامة',
-    name: 'identityNumber',
-  },
-  {
-    label: 'رقم الهاتف',
-    name: 'phoneNumber',
-  },
-  {
-    label: 'الفرع',
-    name: 'branch',
-  },
-  {
-    label: 'رقم الشاحنة',
-    name: 'vehicleNumber',
-  },
-];
+import { DriverFormData } from '../../types/drivers';
+import { driverSectionInputsData } from '../../lib/data/drivers';
+import { useDrivers } from '../../hooks/useDrivers';
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
 
 const EditDriver = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+
+  const { formData, setFormData, handleFileChange, handleChange } = useDrivers();
+  const { isLoading, handleSubmit } = useFormSubmission({
+    successMessage: 'تم تحديث بيانات السائق بنجاح',
+    redirectPath: '/shippers',
+  });
 
   const { driverId } = useParams();
   const selectedDriver = drivers.find((driver) => driver?.id === Number(driverId));
 
   useEffect(() => {
     if (selectedDriver) {
-      setFormData({
-        ...selectedDriver,
-      });
+      setFormData((prev: DriverFormData) => ({
+        ...prev,
+        id: selectedDriver.id,
+        name: selectedDriver.name,
+        nationalityId: selectedDriver.nationalityId ?? 0,
+        languageId: selectedDriver.languageId ?? 0,
+        identityNumber: selectedDriver.identityNumber ?? '',
+        phoneNumber: selectedDriver.phoneNumber ?? '',
+        branch: selectedDriver.branch ?? '',
+        vehicleId: selectedDriver.vehicleId ?? 0,
+        vehicleType: selectedDriver.vehicleType ?? '',
+        vehicleNumber: selectedDriver.vehicleNumber ?? '',
+        image: null,
+        imagePreview: selectedDriver.image ?? '',
+        licenseIssueDate: selectedDriver.licenseIssueDate ?? '',
+        licenseExpirationDate: selectedDriver.licenseExpirationDate ?? '',
+        medicalReport: null,
+        medicalReportName: '',
+      }));
     }
-  }, [selectedDriver]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/shippers');
-      toast.success('تم إضاافة السائق بنجاح');
-    }, 2000);
-  };
-
-  const [formData, setFormData] = useState<any>({
-    id: '',
-    name: '',
-    nationalityId: 0,
-    languageId: 0,
-    identityNumber: '',
-    phoneNumber: '',
-    branch: '',
-    vehicleId: 0,
-    vehicleType: '',
-    vehicleNumber: '',
-    image: null as File | null,
-    imagePreview: '',
-    licenseIssueDate: '',
-    licenseExpirationDate: '',
-    medicalReport: null as File | null,
-    medicalReportName: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (file: File | null, previewUrl: string | null) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      image: file,
-      imagePreview: previewUrl || prev.imagePreview,
-    }));
-  };
+  }, [selectedDriver, setFormData]);
 
   return (
     <>
@@ -146,7 +103,7 @@ const EditDriver = () => {
                     className='p-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F]'
                     min={0}
                     name={item.name}
-                    value={formData[item.name] || ''}
+                    value={(formData[item.name as keyof DriverFormData] as string) || ''}
                     onChange={handleChange}
                   />
                 </div>
@@ -188,7 +145,7 @@ const EditDriver = () => {
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
-                  setFormData((prev: any) => ({
+                  setFormData((prev: DriverFormData) => ({
                     ...prev,
                     medicalReport: file,
                     medicalReportName: file.name,
@@ -202,7 +159,7 @@ const EditDriver = () => {
                 <button
                   type='button'
                   onClick={() =>
-                    setFormData((prev: any) => ({
+                    setFormData((prev: DriverFormData) => ({
                       ...prev,
                       medicalReport: null,
                       medicalReportName: '',
@@ -228,7 +185,10 @@ const EditDriver = () => {
           </div>
         </div>
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
-        <button type='submit' className='w-full py-4 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button
+          type='submit'
+          className='w-full py-4 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'
+        >
           تحديث بيانات السائق
         </button>
       </form>

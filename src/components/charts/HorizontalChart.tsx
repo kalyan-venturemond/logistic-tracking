@@ -5,7 +5,11 @@ import { ApexOptions } from 'apexcharts';
 import { UseScreenSize } from '../../context/ScreenSizeContext';
 import { UseSidebar } from '../../context/SidebarContext';
 
-const HorizontalChart = ({ data }: any) => {
+const HorizontalChart = ({
+  data,
+}: {
+  data: { series: { name: string; data: number[] }[] };
+}) => {
   const { isSidebarOpen } = UseSidebar();
   const { isSmallScreen } = UseScreenSize();
   const chartRef = useRef<any>(null);
@@ -13,7 +17,6 @@ const HorizontalChart = ({ data }: any) => {
   useEffect(() => {
     const handleResize = () => {
       if (chartRef.current) {
-        // Two methods to ensure chart resizes properly
         window.dispatchEvent(new Event('resize'));
         setTimeout(() => {
           chartRef.current?.updateOptions(

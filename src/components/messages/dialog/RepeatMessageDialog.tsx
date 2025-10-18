@@ -16,7 +16,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const RepeatMessageDialog = ({ isDialogVisible, setIsDialogVisible }: any) => {
+const RepeatMessageDialog = ({
+  isDialogVisible,
+  setIsDialogVisible,
+}: {
+  isDialogVisible: boolean;
+  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const handleClose = () => {
     setIsDialogVisible(false);
   };

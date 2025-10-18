@@ -7,7 +7,7 @@ const AddEditShipperDataSection = ({ title, inputs, value, onChange }: any) => {
     <>
       {title && <h1 className='font-bold text-xl sm:text-2xl'>{title}</h1>}
       <div className='w-full grid gap-10 my-10 grid-cols-1 md:grid-cols-2'>
-        {inputs.map((input: any, index: any) => (
+        {inputs.map((input: any, index: number) => (
           <AddEditItemInput
             key={index}
             label={input.label}

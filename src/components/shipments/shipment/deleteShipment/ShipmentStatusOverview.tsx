@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import arrowLeft from '/images/arrow-left-2.svg';
 import { useNavigate } from 'react-router-dom';
 import { getShipmentStatusLabel, statusIcons } from '../../../../lib/utils';
+import { Shipment } from '../../../../types/shipments';
 
-const ShipmentStatusOverview = ({ selectedShipment }: any) => {
+const ShipmentStatusOverview = ({ selectedShipment }: { selectedShipment: Shipment }) => {
   const navigate = useNavigate();
 
   return (

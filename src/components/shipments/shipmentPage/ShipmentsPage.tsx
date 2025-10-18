@@ -1,33 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState, useMemo } from 'react';
 import SearchInput from '../../searchInput/SearchInput';
 import SelectMenu from '../../SelectMenu';
 import ShipmentsTable from '../shipmentsTable/ShipmentsTable';
 import AddNewItemButton from '../../shared/AddNewItemButton';
+import { Shipment } from '../../../types/shipments';
+import { fieldsToCheck, selectMenuOptions } from '../../../lib/data/shipments';
 
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'قيد الشحن', value: 'shipping' },
-  { label: 'متأخرة', value: 'delayed' },
-  { label: 'تم التوصيل', value: 'delivered' },
-  { label: 'مكتملة', value: 'completed' },
-  { label: 'ملغية', value: 'canceled' },
-  { label: 'مرتجعة', value: 'returned' },
-];
-
-const fieldsToCheck = [
-  'id',
-  'admin',
-  'recipient',
-  'driver',
-  'branch',
-  'pickupCity',
-  'dropOffCity',
-  'date',
-  'status',
-];
-
-const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
+const ShipmentsPage = ({
+  shipments,
+  isAllShipmentsPage = false,
+}: {
+  shipments: Shipment[];
+  isAllShipmentsPage?: boolean;
+}) => {
   const [selectedShipmentStatus, setSelectedShipmentStatus] = useState('all');
 
   const [searchValue, setSearchValue] = useState('');
@@ -37,7 +22,7 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
     let filtered = shipments;
 
     if (searchValue.trim()) {
-      filtered = filtered.filter((shipment: any) =>
+      filtered = filtered.filter((shipment: Shipment) =>
         fieldsToCheck.some((field) => {
           const fieldValue = shipment[field];
           return (
@@ -49,7 +34,9 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
     }
 
     if (isAllShipmentsPage && selectedShipmentStatus !== 'all') {
-      filtered = filtered.filter((shipment: any) => shipment.status === selectedShipmentStatus);
+      filtered = filtered.filter(
+        (shipment: Shipment) => shipment.status === selectedShipmentStatus,
+      );
     }
 
     return filtered;
@@ -78,7 +65,7 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
 
           <SearchInput
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
           />
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
@@ -93,7 +80,6 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
             )}
           </div>
           <ShipmentsTable
-            selectedShipmentStatus={selectedShipmentStatus}
             shipments={filteredShipments}
             searchValue={searchValue}
           />
@@ -102,4 +88,4 @@ const ShipmentPage = ({ shipments, isAllShipmentsPage = false }: any) => {
     </>
   );
 };
-export default ShipmentPage;
+export default ShipmentsPage;

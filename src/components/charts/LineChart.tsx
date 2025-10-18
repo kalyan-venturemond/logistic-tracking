@@ -14,7 +14,19 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend, Filler);
 
-const LineChartComponent = ({data}: any) => {
+const LineChartComponent = ({
+  data,
+}: {
+  data: {
+    labels: string[];
+    datasets: {
+      data: number[];
+      fill: { target: string; above: string };
+      borderColor: string;
+      backgroundColor: string;
+    }[];
+  };
+}) => {
   const options: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
@@ -24,7 +36,7 @@ const LineChartComponent = ({data}: any) => {
       tooltip: {
         // animations: { active: { duration: 10 } },
         callbacks: {
-          label: function (context: any) {
+          label: function (context) {
             return `${context.raw} شحنة`;
           },
         },

@@ -1,11 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Waybill from './Waybill';
+import { Shipment } from '../../../types/shipments';
+import { Driver } from '../../../types/drivers';
+import { Shipper } from '../../../types/shippers';
+import { Recipient } from '../../../types/recipients';
 
-const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpen }: any) => {
+const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpen }: {shipment: Shipment , driver: Driver, shipper: Shipper, recipient: Recipient, open: boolean,  setOpen: (value: boolean) => void}) => {
   const descriptionElementRef = React.useRef<HTMLElement>(null);
   React.useEffect(() => {
     if (open) {

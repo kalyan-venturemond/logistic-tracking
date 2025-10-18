@@ -1,24 +1,16 @@
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import DeleteItemCard from '../../components/shared/DeleteItemCard';
-import { toast } from 'sonner';
-import { shippers } from '../../lib/data';
+import { shippers } from '../../lib/data/mainData';
+import { useFormSubmission } from '../../hooks/useFormSubmission ';
 
 const DeleteShipper = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const { shipperId } = useParams();
   const selectedShipper = shippers.find((shipper) => shipper.id === Number(shipperId));
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/shippers');
-      toast.success('تم حذف العميل بنجاح');
-    }, 2000);
-  };
+  const { handleSubmit, isLoading } = useFormSubmission({
+    successMessage: 'تم حذف العميل بنجاح',
+    redirectPath: '/shippers',
+  });
 
   return (
     <div className='flex flex-col gap-20'>

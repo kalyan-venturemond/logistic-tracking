@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ShipmentFormData } from '../../../types/shipments';
 import AddEditItemDataSection from '../../shared/AddEditItemDataSection';
 import AddShipmentTextArea from './addShipmentInputs/AddShipmentTextArea';
 import PhoneNumberInput from './addShipmentInputs/phoneNumberInput/PhoneNumberInput';
@@ -29,15 +30,17 @@ const AddEditShipmentDataSection = ({
             key={index}
             label={`رقم الهاتف (${type === 'PrimaryPhoneNumber' ? 'أساسي' : 'احتياطي'})`}
             value={value[`${section}${type}`]}
-            onChange={(val: any) => onChange({ target: { name: `${section}${type}`, value: val } })}
+            onChange={(val: string) =>
+              onChange({ target: { name: `${section}${type}`, value: val } })
+            }
           />
         ))}
       </div>
       <AddShipmentTextArea
         page={page}
         value={section === 'shipper' ? value.shipperNotes : value.recipientNotes}
-        onChange={(e: any) =>
-          setFormData((prev: any) => ({
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setFormData((prev: ShipmentFormData) => ({
             ...prev,
             [section === 'shipper' ? 'shipperNotes' : 'recipientNotes']: e.target.value,
           }))

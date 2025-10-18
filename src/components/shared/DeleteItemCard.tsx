@@ -1,10 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CiLock } from 'react-icons/ci';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 import logo from '/images/truck-Logo.svg';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
-const DeleteItemCard = ({ handleSubmit }: any) => {
+const DeleteItemCard = ({
+  handleSubmit,
+}: {
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (

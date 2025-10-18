@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   arabicDateStringToISO,
   getShipmentStatusLabel,
@@ -7,15 +6,16 @@ import {
 import Pagination from '../pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { usePagination } from '../../hooks/usePagination';
+import { Shipment } from '../../types/shipments';
 
 const tableRowStyles = 'py-2 px-4 text-right text-nowrap';
 const tableHeading = ['رقم الشحنة', 'المصدر', 'الوجهة', 'تاريخ التحميل'];
 
-const AdminDriverDetailsTable = ({ shipments }: any) => {
+const AdminDriverDetailsTable = ({ shipments }: { shipments: Shipment[] }) => {
   const navigate = useNavigate();
 
   const { itemsPerPage, handlePageChange, handleItemsPerPageChange, paginate } = usePagination();
-  const paginatedData = paginate(shipments);
+  const paginatedData = paginate(shipments) as Shipment[];
 
   return (
     <>
@@ -35,7 +35,7 @@ const AdminDriverDetailsTable = ({ shipments }: any) => {
             </tr>
           </thead>
           <tbody className='font-Rubik text-base font-medium'>
-            {paginatedData.map((shipment: any, index: any) => (
+            {paginatedData.map((shipment: Shipment, index: number) => (
               <tr
                 key={shipment.id}
                 onClick={() => {

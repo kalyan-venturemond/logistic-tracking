@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import SelectMenu from '../../components/SelectMenu';
 import PieChart from '../../components/charts/PieChart';
@@ -7,22 +6,15 @@ import locationIcon from '/images/adminDriver/location.svg';
 import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
 import truckIcon from '/images/truck.svg';
-import editShipmentIcon from '/images/edit-shipment-icon.svg';
-import deleteShipmentIcon from '/images/delete-shipment-icon.svg';
 import ImageModal from '../../components/adminsDrivers/drivers/ImageModal';
 import licenseBackSideImage from '/images/adminDriver/driver/license/16.webp';
 import AdminDriverProfileCard from '../../components/adminsDrivers/adminDriverProfileCard/AdminDriverProfileCard';
 import { useParams } from 'react-router-dom';
-import { drivers, shipments } from '../../lib/data';
+import { drivers, shipments } from '../../lib/data/mainData';
 import AdminDriverDetailsTable from '../../components/adminsDrivers/AdminDriverDetailsTable';
-import { arabicDateStringToISO, getRangeDates } from '../../lib/utils';
-
-const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'يوم', value: 'day' },
-  { label: 'أسبوع', value: 'week' },
-  { label: 'شهر', value: 'month' },
-];
+import { useMenuActions } from '../../hooks/useMenuActions';
+import { selectMenuOptions } from '../../lib/data/drivers';
+import { useChartData } from '../../hooks/useChartData';
 
 const DriverDetails = () => {
   const [selectedOption, setSelectedOption] = useState('all');
@@ -31,10 +23,10 @@ const DriverDetails = () => {
   const selectedDriver = drivers.find((driver) => driver?.id === Number(driverId));
   const driverShipments = shipments.filter((shipment) => shipment?.driverId === Number(driverId));
 
-  const menuActions = [
-    { label: 'تعديل البيانات', icon: editShipmentIcon, path: `/drivers/edit/${driverId}` },
-    { label: 'حذف البيانات', icon: deleteShipmentIcon, path: `/drivers/delete/${driverId}` },
-  ];
+  const { menuActions } = useMenuActions([
+    { editLabel: 'تعديل البيانات', editPath: `/drivers/edit/${driverId}` },
+    { deleteLabel: 'حذف البيانات', deletePath: `/drivers/delete/${driverId}` },
+  ]);
 
   const licenseInfo = [
     {
@@ -106,36 +98,7 @@ const DriverDetails = () => {
     },
   ];
 
-  const filterShipmentsByDateRange = (shipments: any[], option: string) => {
-    if (option === 'all') return shipments;
-
-    const { start, end } = getRangeDates(option);
-
-    return shipments.filter((shipment: any) => {
-      const isoDate = arabicDateStringToISO(shipment.pickupDate);
-      if (!isoDate) return false;
-
-      const shipmentDate = new Date(isoDate);
-      return shipmentDate >= start && shipmentDate <= end;
-    });
-  };
-
-  const filteredShipments = filterShipmentsByDateRange(driverShipments, selectedOption);
-
-  const getPieChartData = (filteredShipments: any[]) => {
-    const statusOrder = ['completed', 'returned', 'canceled', 'delayed', 'shipping', 'delivered'];
-
-    const data = statusOrder.map(
-      (status) => filteredShipments.filter((shipment: any) => shipment.status === status).length,
-    );
-
-    return {
-      data,
-      sum: filteredShipments.length,
-    };
-  };
-
-  const pieChartData = getPieChartData(filteredShipments);
+  const {pieChartData, filteredShipments} = useChartData(driverShipments, selectedOption);
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>

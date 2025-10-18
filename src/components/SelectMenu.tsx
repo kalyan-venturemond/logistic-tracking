@@ -1,9 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-const SelectMenu = ({ selectedItem, setSelectedItem, options }: any) => {
+interface Option {
+  label: string;
+  value: string;
+}
+const SelectMenu = ({
+  selectedItem,
+  setSelectedItem,
+  options,
+}: {
+  selectedItem: string;
+  setSelectedItem: (value: string) => void;
+  options: Option[];
+}) => {
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedItem(event.target.value);
   };
@@ -26,7 +37,7 @@ const SelectMenu = ({ selectedItem, setSelectedItem, options }: any) => {
           },
         }}
       >
-        {options.map((option: any) => (
+        {options.map((option: Option) => (
           <MenuItem
             key={option.value}
             value={option.value}

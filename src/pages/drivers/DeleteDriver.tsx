@@ -4,7 +4,7 @@ import callIcon from '/images/adminDriver/call.svg';
 import flagIcon from '/images/adminDriver/flag.svg';
 import truckIcon from '/images/truck.svg';
 import { useParams } from 'react-router-dom';
-import { drivers } from '../../lib/data';
+import { drivers } from '../../lib/data/mainData';
 import DeleteItem from '../../components/shared/DeleteItem';
 
 const DeleteDriver = () => {
@@ -18,11 +18,6 @@ const DeleteDriver = () => {
   };
 
   const moreInfoData = [
-    // {
-    //   image: userIcon,
-    //   label: 'رقم المعرف (ID)',
-    //   value: selectedDriver?.id,
-    // },
     {
       image: driverIdCardImage,
       label: 'رقم الهوية',
