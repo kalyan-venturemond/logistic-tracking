@@ -39,8 +39,6 @@ const EditShipper = () => {
           address: branch.address ?? '',
           primaryPhoneNumber: branch.primaryPhoneNumber ?? '',
           secondaryPhoneNumber: branch.secondaryPhoneNumber ?? '',
-          email: branch.email ?? '',
-          description: branch.description ?? '',
         }));
         setBranches(formattedBranches);
       }

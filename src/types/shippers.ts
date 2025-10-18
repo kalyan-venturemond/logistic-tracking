@@ -17,5 +17,13 @@ export interface Shipper {
   address: string;
   commercialRegistration: string;
   description: string;
-  branches: Branch[];
+  branches: newBranchData[];
+}
+
+export interface newBranchData {
+    id?: number;
+  name: string;
+  address: string;
+  primaryPhoneNumber: string;
+  secondaryPhoneNumber: string;
 }

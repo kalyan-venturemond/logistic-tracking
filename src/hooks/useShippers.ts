@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Branch } from '../types/shippers';
+import { Branch, newBranchData } from '../types/shippers';
 
 export const useShippers = () => {
   const [mainFormData, setMainFormData] = useState<Branch>({
@@ -10,7 +10,7 @@ export const useShippers = () => {
     secondaryPhoneNumber: '',
     description: '',
   });
-  const [branches, setBranches] = useState<Branch[]>([]);
+  const [branches, setBranches] = useState<newBranchData[]>([]);
 
   const handleMainFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,7 +22,7 @@ export const useShippers = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setBranches((prev: Branch[]) => {
+    setBranches((prev: newBranchData[]) => {
       const updatedBranches = [...prev];
       updatedBranches[index] = {
         ...updatedBranches[index],
@@ -33,7 +33,7 @@ export const useShippers = () => {
   };
 
   const addNewBranch = () => {
-    setBranches((prev: Branch[]) => [
+    setBranches((prev: newBranchData[]) => [
       ...prev,
       {
         name: '',
@@ -47,7 +47,7 @@ export const useShippers = () => {
   };
 
   const deleteBranch = (index: number) => {
-    setBranches((prev: Branch[]) => prev.filter((_, i) => i !== index));
+    setBranches((prev: newBranchData[]) => prev.filter((_, i) => i !== index));
   };
 
   return {
