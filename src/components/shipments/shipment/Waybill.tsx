@@ -98,7 +98,7 @@ const Waybill = ({
       id='waybill-printable'
       className='m-0 bg-[#fff] rounded-2xl p-4 font-Rubik text-[#1a1a1a] text-right'
     >
-      <div className='flex xs:flex-col items-start gap-4 md:gap-0 xs:text-center text-left justify-between '>
+      <div className='flex xs:flex-col xs:items-center gap-4 md:gap-0 xs:text-center text-left justify-between '>
         <div className='font-light'>
           <div className='font-bold'>AL Jeed Transportation</div>
           <div>

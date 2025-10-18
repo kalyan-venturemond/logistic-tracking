@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { IoMdMenu } from 'react-icons/io';
 import logo from '/images/logo.svg';
 import { IoCloseOutline } from 'react-icons/io5';
-import NavbarAccordion from './NavbarAccordion';
 import statisticsIcon from '/images/sidebar/statistics.svg';
 import usersIcon from '/images/sidebar/people.svg';
 import truckIcon from '/images/truck.svg';
@@ -12,6 +11,7 @@ import logOutIcon from '/images/sidebar/log-out.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UseScreenSize } from '../../context/ScreenSizeContext';
 import { UseSidebar } from '../../context/SidebarContext';
+import SidebarAccordion from './SidebarAccordion';
 
 const iconsStyles = 'filter invert brightness-0';
 
@@ -173,7 +173,7 @@ const Sidebar = () => {
               <div className='w-full mt-10'>
                 {items.map((item, index) =>
                   Array.isArray(item) ? (
-                    <NavbarAccordion
+                    <SidebarAccordion
                       key={index}
                       title='الشحنات'
                       items={item}
@@ -185,7 +185,12 @@ const Sidebar = () => {
                     <button
                       type='button'
                       key={index}
-                      onClick={() => navigate(item.nav)}
+                      onClick={() => {
+                        navigate(item.nav);
+                        // if (isMediumScreen && isSidebarOpen) {
+                        //   setIsSidebarOpen(false);
+                        // }
+                      }}
                       className={`flex items-center w-full gap-2 mb-4 ${
                         isSidebarOpen ? 'p-3' : 'p-2'
                       } transition-all duration-200 ${

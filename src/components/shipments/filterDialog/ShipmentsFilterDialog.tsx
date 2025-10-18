@@ -92,6 +92,7 @@ export default function ShipmentsFilterDialog() {
             return (
               <div key={index}>
                 <button
+                  onClick={handleClose}
                   type='button'
                   className={`py-1.5 px-8 rounded-lg border border-primary  ${
                     index === 0 ? 'bg-[#F2F2F2] text-primary' : 'bg-primary text-[#F2F2F2]'

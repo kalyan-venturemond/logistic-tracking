@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import shipmentsIcon from '/images/box.svg';
 import arrowDownIcon from '/images/arrow-down.svg';
 
-const NavbarAccordion = ({ items, title, isSelected, isSidebarOpen, setIsSidebarOpen }: any) => {
+const SidebarAccordion = ({ items, title, isSelected, isSidebarOpen, setIsSidebarOpen }: any) => {
   const navigate = useNavigate();
   const isShipmentsSelected = isSelected('/shipments');
   return (
@@ -65,4 +65,4 @@ const NavbarAccordion = ({ items, title, isSelected, isSidebarOpen, setIsSidebar
   );
 };
 
-export default NavbarAccordion;
+export default SidebarAccordion;
