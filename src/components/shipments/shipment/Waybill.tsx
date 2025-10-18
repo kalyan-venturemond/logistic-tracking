@@ -114,7 +114,7 @@ const Waybill = ({
           alt='logo'
           className='w-24 mx-auto'
         />
-        <div className='font-Almarai text-right'>
+        <div className='font-Almarai xs:text-center text-right'>
           <div className='font-bold'>مؤسسة الجيد للنقليات</div>
           <div>
             فرع <span>جدة</span>
