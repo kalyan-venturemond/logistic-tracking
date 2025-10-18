@@ -98,7 +98,7 @@ const Waybill = ({
       id='waybill-printable'
       className='m-0 bg-[#fff] rounded-2xl p-4 font-Rubik text-[#1a1a1a] text-right'
     >
-      <div className='flex  gap-4 md:gap-0 text-left justify-between md:items-start '>
+      <div className='flex xs:flex-col items-start gap-4 md:gap-0 xs:text-center text-left justify-between '>
         <div className='font-light'>
           <div className='font-bold'>AL Jeed Transportation</div>
           <div>
@@ -107,9 +107,7 @@ const Waybill = ({
           <div>
             <span>C.R</span> 4030172574
           </div>
-          <div>
-            <span>date:</span> {shipment.pickupDate}
-          </div>
+          <span className='hidden sm:block'>date: {shipment.pickupDate}</span>
         </div>
         <img
           src='/images/truck-Logo.svg'
@@ -124,7 +122,7 @@ const Waybill = ({
           <div>
             س ت: <span>4030172574</span>
           </div>
-          <div className='mt-2 px-2 py-1 rounded-lg bg-primary text-[#FCFCFC] w-fit mx-auto'>
+          <div className='mt-2 px-2 py-1 rounded-lg bg-primary text-[#FCFCFC] w-fit mx-auto hidden sm:block'>
             <span>رقم الشحنة: </span> <span>{shipment.trackingNumber}</span>
           </div>
         </div>
