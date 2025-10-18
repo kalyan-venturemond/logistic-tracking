@@ -51,18 +51,21 @@ const RepeatMessageDialog = ({
       </DialogContent>
       <DialogActions sx={{ margin: '10px 6px 0' }}>
         <div className='grid grid-cols-2 gap-4 w-full mb-2'>
-          <button
-            type='button'
-            className='col-span-1 bg-primary text-[#FCFCFC] border py-3 rounded-lg'
-          >
-            تطبيق
-          </button>
-          <button
-            type='button'
-            className='col-span-1 bg-[#FCFCFC] text-primary border border-primary py-3 rounded-lg'
-          >
-            حذف
-          </button>
+          {['تطبيق', 'حذف'].map((item, index) => {
+            return (
+              <div key={index}>
+                <button
+                  onClick={handleClose}
+                  type='button'
+                  className={`col-span-1 py-3 rounded-lg border w-full ${
+                    index === 0 ? 'bg-primary text-[#FCFCFC]' : 'bg-[#FCFCFC] text-primary'
+                  }`}
+                >
+                  {item}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </DialogActions>
     </BootstrapDialog>
