@@ -29,7 +29,7 @@ const Messages = ({
             } transition-all duration-200`}
           >
             <div className='flex justify-between items-center mb-2'>
-              <span className='text-[#DD7E1F] text-lg'>{message.title}</span>
+              <span className='text-primary text-lg'>{message.title}</span>
               <span className='font-Rubik text-[#333333] my-2 text-xs'>{message.date}</span>
             </div>
             <span className='overflow-hidden text-ellipsis whitespace-nowrap font-Rubik text-xs'>

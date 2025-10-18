@@ -27,7 +27,7 @@ const NavbarAccordion = ({ items, title, isSelected, isSidebarOpen, setIsSidebar
             className={` flex items-center w-full transition-all duration-200 ${
               isSidebarOpen ? 'justify-start gap-2 -ms-1.5' : 'justify-center min-w-10'
             } ${
-              isShipmentsSelected && !isSidebarOpen && 'bg-[#DD7E1F] rounded-lg text-[#FCFCFC] p-2'
+              isShipmentsSelected && !isSidebarOpen && 'bg-primary rounded-lg text-[#FCFCFC] p-2'
             }`}
           >
             {' '}
@@ -52,7 +52,7 @@ const NavbarAccordion = ({ items, title, isSelected, isSidebarOpen, setIsSidebar
                   className={`flex items-center w-full ${
                     index !== items.length - 1 && 'mb-4'
                   } px-3 py-2 ${isSidebarOpen ? 'justify-start' : 'justify-center'} ${
-                    isSelected(item.nav) && 'bg-[#DD7E1F] rounded-lg text-[#FCFCFC]'
+                    isSelected(item.nav) && 'bg-primary rounded-lg text-[#FCFCFC]'
                   }`}
                 >
                   {isSidebarOpen && <span>{item.name}</span>}

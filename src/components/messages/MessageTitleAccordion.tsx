@@ -24,7 +24,7 @@ const MessageTitleAccordion = () => {
           id='panel1-header'
           className='!bg-[#FCF2E9] !rounded-2xl'
         >
-          <span className='text-[#DD7E1F]'>{messageSelectedTitle || 'اختر عنوانًا للرسالة'}</span>
+          <span className='text-primary'>{messageSelectedTitle || 'اختر عنوانًا للرسالة'}</span>
         </AccordionSummary>
         <AccordionDetails>
           <div className='flex flex-col gap-4'>
@@ -32,7 +32,7 @@ const MessageTitleAccordion = () => {
               <span
                 key={index}
                 onClick={() => setMessageSelectedTitle(option)}
-                className='text-[#DD7E1F] cursor-pointer'
+                className='text-primary cursor-pointer'
               >
                 {option}
               </span>

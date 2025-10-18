@@ -15,7 +15,7 @@ const AddEditItemInput = ({
     <div className='col-span-1 flex flex-col gap-1'>
       <span className='text-[#1A1A1A]'>{label}</span>
       <input
-        className='p-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F] font-Rubik'
+        className='p-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary font-Rubik'
         required={required}
         {...props}
       />

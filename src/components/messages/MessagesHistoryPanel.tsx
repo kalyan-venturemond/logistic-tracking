@@ -33,7 +33,7 @@ const MessagesHistoryPanel = ({
             key={index}
             className={`w-1/2 text-lg transition-all duration-200 ${
               selectedCategory === item.value
-                ? 'text-[#DD7E1F] border-b-4 border-[#DD7E1F]'
+                ? 'text-primary border-b-4 border-primary'
                 : 'text-[#666666] border-b-2 border-[#CCCCCC]'
             }`}
           >

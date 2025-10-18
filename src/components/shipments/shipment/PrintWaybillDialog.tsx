@@ -8,7 +8,21 @@ import { Driver } from '../../../types/drivers';
 import { Shipper } from '../../../types/shippers';
 import { Recipient } from '../../../types/recipients';
 
-const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpen }: {shipment: Shipment , driver: Driver, shipper: Shipper, recipient: Recipient, open: boolean,  setOpen: (value: boolean) => void}) => {
+const PrintWaybillDialog = ({
+  shipment,
+  driver,
+  shipper,
+  recipient,
+  open,
+  setOpen,
+}: {
+  shipment: Shipment;
+  driver: Driver;
+  shipper: Shipper;
+  recipient: Recipient;
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}) => {
   const descriptionElementRef = React.useRef<HTMLElement>(null);
   React.useEffect(() => {
     if (open) {
@@ -25,6 +39,7 @@ const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpe
         open={open}
         onClose={() => setOpen(false)}
         fullWidth
+        maxWidth='lg'
         scroll={'paper'}
         PaperProps={{
           sx: {
@@ -34,6 +49,20 @@ const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpe
             willChange: 'transform',
             backfaceVisibility: 'hidden',
             perspective: '1000px',
+            width: {
+              xs: '95%',
+              sm: '90%',
+              md: '70%',
+              lg: '70%',
+            },
+            maxWidth: {
+              xs: 'none',
+              lg: '700px',
+            },
+            margin: {
+              xs: '0px',
+              sm: '32px',
+            },
           },
         }}
       >
@@ -66,8 +95,8 @@ const PrintWaybillDialog = ({ shipment, driver, shipper, recipient, open, setOpe
                 }
                 key={index}
                 className={`col-span-1 ${
-                  index === 0 ? 'bg-[#FCFCFC] text-[#DD7E1F]' : 'bg-[#DD7E1F] text-[#FCFCFC]'
-                } border border-[#DD7E1F] py-3 rounded-lg`}
+                  index === 0 ? 'bg-[#FCFCFC] text-primary' : 'bg-primary text-[#FCFCFC]'
+                } border border-primary py-3 rounded-lg`}
               >
                 {item}
               </button>

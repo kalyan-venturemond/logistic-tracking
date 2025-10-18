@@ -6,7 +6,7 @@ const AddNewItemButton = ({ title, path }: { title: string; path: string }) => {
   return (
     <button
       type='button'
-      className='flex items-center py-2 px-6 gap-2 rounded-lg bg-[#DD7E1F] text-[#FCFCFC] text-lg'
+      className='flex items-center py-2 px-6 gap-2 rounded-lg bg-primary text-[#FCFCFC] text-lg'
       onClick={() => {
         navigate(path);
       }}

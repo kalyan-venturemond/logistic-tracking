@@ -190,7 +190,7 @@ const Sidebar = () => {
                         isSidebarOpen ? 'p-3' : 'p-2'
                       } transition-all duration-200 ${
                         isSidebarOpen ? 'justify-start' : 'justify-center'
-                      } ${isSelected(item.nav) && 'bg-[#DD7E1F] rounded-lg text-[#FCFCFC]'}`}
+                      } ${isSelected(item.nav) && 'bg-primary rounded-lg text-[#FCFCFC]'}`}
                     >
                       <span className={isSelected(item.nav) ? iconsStyles : ''}>{item.icon}</span>
                       {isSidebarOpen && <span>{item.name}</span>}

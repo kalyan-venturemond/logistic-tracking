@@ -67,7 +67,7 @@ const Header = () => {
         <button
           type='button'
           onClick={handleBackClick}
-          className='text-[#DD7E1F] flex items-center gap-2 font-Rubik text-lg'
+          className='text-primary flex items-center gap-2 font-Rubik text-lg'
         >
           {location.pathname.includes('/shipments/delete-shipment') ? (
             <span>إلغاء</span>

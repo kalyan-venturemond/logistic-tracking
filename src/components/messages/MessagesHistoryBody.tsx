@@ -51,7 +51,7 @@ const MessagesHistoryBody = ({
             onClick={() => {
               navigate('/alert-messages/select-recipients');
             }}
-            className='text-[#DD7E1F] font-Rubik text-sm underline'
+            className='text-primary font-Rubik text-sm underline'
           >
             تعديل
           </button>
@@ -81,7 +81,7 @@ const MessagesHistoryBody = ({
               return (
                 <div
                   key={index}
-                  className='bg-[#DD7E1F] p-2 sm:p-4 rounded-xl sm:w-80'
+                  className='bg-primary p-2 sm:p-4 rounded-xl sm:w-80'
                 >
                   <h1 className='mb-4 '>{message.content}</h1>
                   <p className='text-end text-xs'>{message.time}</p>
@@ -118,7 +118,7 @@ const MessagesHistoryBody = ({
             )}
             <button
               type='button'
-              className='bg-[#DD7E1F] p-2 rounded-full'
+              className='bg-primary p-2 rounded-full'
               onClick={sendMessage}
             >
               <img

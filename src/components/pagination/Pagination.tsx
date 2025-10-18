@@ -74,7 +74,7 @@ const Pagination = ({
             onPageChange(currentPage - 1);
           }}
           disabled={currentPage === 1}
-          className='hidden md:block text-[#DD7E1F] disabled:text-gray-400'
+          className='hidden md:block text-primary disabled:text-gray-400'
         >
           السابق
         </button>
@@ -87,7 +87,7 @@ const Pagination = ({
               onPageChange(index + 1);
             }}
             className={`px-3.5 font-bold py-1.5 text-center text-sm rounded-lg ${
-              currentPage === index + 1 ? 'bg-[#DD7E1F] text-white' : 'bg-gray-200 text-gray-700'
+              currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700'
             }`}
           >
             {index + 1}
@@ -100,7 +100,7 @@ const Pagination = ({
             onPageChange(currentPage + 1);
           }}
           disabled={currentPage === totalPages}
-          className='hidden md:block text-[#DD7E1F] disabled:text-gray-400'
+          className='hidden md:block text-primary disabled:text-gray-400'
         >
           التالي
         </button>

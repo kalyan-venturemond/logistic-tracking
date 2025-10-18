@@ -7,7 +7,7 @@ const ShipmentStatusOverview = ({ selectedShipment }: { selectedShipment: Shipme
   const navigate = useNavigate();
 
   return (
-    <div className='border border-[#DD7E1F] rounded-lg p-4 mx-4'>
+    <div className='border border-primary rounded-lg p-4 mx-4'>
       <div className='grid grid-cols-12'>
         <div className='col-span-7 flex gap-2'>
           <h1 className='font-bold text-lg md:text-2xl'>{selectedShipment?.pickupCity}</h1>

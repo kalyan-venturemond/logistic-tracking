@@ -92,7 +92,10 @@ const Login = () => {
           <span className='font-Rubik text-[#333333] text-sm'>
             هذه نسخة تجريبية، فقط قم بالضغط على زر تسجيل الدخول
           </span>
-          <button type='submit' className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#DD7E1F] rounded-lg mt-4'>
+          <button
+            type='submit'
+            className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-primary rounded-lg mt-4'
+          >
             تسجيل الدخول
           </button>
         </form>
@@ -103,7 +106,7 @@ const Login = () => {
           <a
             target='_blank'
             href='https://www.linkedin.com/in/islam-khairy-364793307/'
-            className='text-[#DD7E1F] hover:underline'
+            className='text-primary hover:underline'
           >
             Islam Khairy
           </a>

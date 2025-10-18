@@ -36,7 +36,7 @@ const EditAdmin = () => {
       )}
       <form
         onSubmit={handleSubmit}
-        className='border border-[#DD7E1F] rounded-lg p-8 mx-4 md:mx-0'
+        className='border border-primary rounded-lg p-8 mx-4 md:mx-0'
       >
         <FileUploadInput
           onChange={handleFileChange}
@@ -51,7 +51,7 @@ const EditAdmin = () => {
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
         <button
           type='submit'
-          className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'
+          className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
           تحديث البيانات
         </button>

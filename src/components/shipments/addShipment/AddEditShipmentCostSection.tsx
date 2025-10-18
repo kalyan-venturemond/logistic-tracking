@@ -63,7 +63,7 @@ const AddEditShipmentCostSection = ({
               />
             </div>
             {nights * costPerNight > 0 ? (
-              <div className='text-[#DD7E1F] mt-1'>
+              <div className='text-primary mt-1'>
                 تكلفة المبيت: {(nights * costPerNight).toLocaleString()} ر.س
               </div>
             ) : (
@@ -82,7 +82,7 @@ const AddEditShipmentCostSection = ({
           </div>
         </div>
       </div>
-      <div className='w-full mt-12 flex flex-col items-center gap-4 text-[#DD7E1F] font-Rubik text-lg'>
+      <div className='w-full mt-12 flex flex-col items-center gap-4 text-primary font-Rubik text-lg'>
         <span>التكلفة الإجمالية</span>
         <span className='font-bold'>{totalCost > 0 ? totalCost.toLocaleString() : 0} ر.س</span>
       </div>

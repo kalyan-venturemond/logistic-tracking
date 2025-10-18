@@ -13,7 +13,7 @@ const DurationsDialog = () => {
           onClick={() => setSelectedDuration(duration)}
           key={index}
           className={`px-4 py-7 rounded-xl transition-all duration-200 col-span-1 flex flex-col items-center gap-2 ${
-            selectedDuration === duration ? 'bg-[#DD7E1F] text-[#FCFCFC]' : 'text-[#DD7E1F]'
+            selectedDuration === duration ? 'bg-primary text-[#FCFCFC]' : 'text-primary'
           }`}
         >
           <PiSunDimLight size={32} />

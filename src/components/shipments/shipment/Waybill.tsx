@@ -7,8 +7,17 @@ import { Driver } from '../../../types/drivers';
 import { Shipper } from '../../../types/shippers';
 import { Recipient } from '../../../types/recipients';
 
-const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, driver: Driver, shipper: Shipper, recipient: Recipient}) => {
-
+const Waybill = ({
+  shipment,
+  driver,
+  shipper,
+  recipient,
+}: {
+  shipment: Shipment;
+  driver: Driver;
+  shipper: Shipper;
+  recipient: Recipient;
+}) => {
   const driverDetails = [
     {
       value: 'الاسم',
@@ -89,7 +98,7 @@ const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, 
       id='waybill-printable'
       className='m-0 bg-[#fff] rounded-2xl p-4 font-Rubik text-[#1a1a1a] text-right'
     >
-      <div className='flex flex-col md:flex-row gap-4 md:gap-0 text-center md:text-left md:justify-between md:items-start '>
+      <div className='flex  gap-4 md:gap-0 text-left justify-between md:items-start '>
         <div className='font-light'>
           <div className='font-bold'>AL Jeed Transportation</div>
           <div>
@@ -103,11 +112,11 @@ const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, 
           </div>
         </div>
         <img
-            src='/images/truck-Logo.svg'
-            alt='logo'
-            className='w-24 mx-auto'
-          />
-        <div className='font-Almarai text-center md:text-right'>
+          src='/images/truck-Logo.svg'
+          alt='logo'
+          className='w-24 mx-auto'
+        />
+        <div className='font-Almarai text-right'>
           <div className='font-bold'>مؤسسة الجيد للنقليات</div>
           <div>
             فرع <span>جدة</span>
@@ -115,28 +124,28 @@ const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, 
           <div>
             س ت: <span>4030172574</span>
           </div>
-          <div className='mt-2 px-2 py-1 rounded-lg bg-[#DD7E1F] text-[#FCFCFC] w-fit mx-auto'>
+          <div className='mt-2 px-2 py-1 rounded-lg bg-primary text-[#FCFCFC] w-fit mx-auto'>
             <span>رقم الشحنة: </span> <span>{shipment.trackingNumber}</span>
           </div>
         </div>
       </div>
       <hr className='border-0 border-t-2 border-solid border-[#666] mt-2 mb-6' />
-      <div className='text-center font-Almarai font-bold text-lg mb-6'>
-        كشف تحميل شاحنة
-      </div>
+      <div className='text-center font-Almarai font-bold text-lg mb-4'>كشف تحميل شاحنة</div>
 
       <div className=''>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6'>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات الشاحنة</div>
-            {vehicleDetails.map((row: { value: string; label?: string | undefined }, index: number) => (
-              <div key={index}>
-                <WaybillInfoRow
-                  label={row.label || '-'}
-                  value={row.value}
-                />
-              </div>
-            ))}
+            {vehicleDetails.map(
+              (row: { value: string; label?: string | undefined }, index: number) => (
+                <div key={index}>
+                  <WaybillInfoRow
+                    label={row.label || '-'}
+                    value={row.value}
+                  />
+                </div>
+              ),
+            )}
           </div>
           <div className='col-span-1'>
             <div className='font-Almarai font-bold text-lg mb-1'>بيانات السائق</div>
@@ -210,11 +219,13 @@ const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, 
 
       <div className='w-full grid grid-cols-3 mt-6'>
         <div className='col-span-1'>
-          <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>توقيع الموظف</p>
+          <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>
+            توقيع الموظف
+          </p>
           <hr className='border-0 border-t-2 border-dashed border-[#666] mt-6' />
         </div>
         <div className='col-span-1 text-center'>
-          <div className='border-2 border-[#DD7E1F] p-1 w-fit m-auto'>
+          <div className='border-2 border-primary p-1 w-fit m-auto'>
             <QRCodeSVG
               value={`https://shuhnaty.vercel.app/shipments/${shipment.id}`}
               size={50}
@@ -225,7 +236,9 @@ const Waybill = ({ shipment, driver, shipper, recipient }: {shipment: Shipment, 
           </div>
         </div>
         <div className='col-span-1'>
-          <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>توقيع السائق</p>
+          <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>
+            توقيع السائق
+          </p>
           <hr className='border-0 border-t-2 border-dashed border-[#666] mt-6' />
         </div>
       </div>

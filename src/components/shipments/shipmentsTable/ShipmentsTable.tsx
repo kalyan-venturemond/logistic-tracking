@@ -14,7 +14,7 @@ import { usePagination } from '../../../hooks/usePagination';
 import { Shipment } from '../../../types/shipments';
 
 const columnsToFilter: { key: string; label: string }[] = [
-  { key: 'admin', label: 'المسئول' },
+  { key: 'admin', label: 'المستخدم' },
   { key: 'shipper', label: 'المرسل' },
   { key: 'shipperBranch', label: 'فرع المرسل' },
   { key: 'recipient', label: 'المستلم' },
@@ -35,7 +35,7 @@ const tableHeading = [
   { label: 'المرسل', key: 'shipper' },
   { label: 'فرع المرسل', key: 'shipperBranch' },
   { label: 'المستلم', key: 'recipient' },
-  { label: 'المسئول', key: 'admin' },
+  { label: 'المستخدم', key: 'admin' },
   { label: 'المصدر', key: 'pickupCity' },
   { label: 'الوجهة', key: 'dropOffCity' },
   { label: 'تاريخ التحميل', key: 'date' },
@@ -67,7 +67,9 @@ const ShipmentsTable = ({
         return filters[key].includes(arabicStatus);
       }
 
-      return !filters[key] || filters[key].length === 0 || filters[key].includes((shipment as any)[key]);
+      return (
+        !filters[key] || filters[key].length === 0 || filters[key].includes((shipment as any)[key])
+      );
     }),
   );
 

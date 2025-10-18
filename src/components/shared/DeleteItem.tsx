@@ -18,7 +18,7 @@ const DeleteItem = ({ moreInfoData, personalData, isActive, item }: any) => {
       switch (item) {
         case 'admin':
           navigate('/admins');
-          toast.success('تم حذف المسئول بنجاح');
+          toast.success('تم حذف المستخدم بنجاح');
           break;
         case 'driver':
           navigate('/drivers');
@@ -30,7 +30,7 @@ const DeleteItem = ({ moreInfoData, personalData, isActive, item }: any) => {
 
   return (
     <div className='flex flex-col gap-20 mx-4 md:mx-0 mb-10 md:mb-0'>
-      <div className='w-full grid grid-cols-1 gap-16 md:gap-0 md:grid-cols-5 border border-[#DD7E1F] rounded-2xl'>
+      <div className='w-full grid grid-cols-1 gap-16 md:gap-0 md:grid-cols-5 border border-primary rounded-2xl'>
         {' '}
         <div className='col-span-1 w-full h-full flex flex-col justify-center mt-4 md:-mt-4 items-center'>
           <div

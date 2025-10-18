@@ -43,7 +43,7 @@ const shipmentsStatus = [
     status: 'تنبيهات السائقين',
     count: '12',
     icon: (
-      <div className='p-2 rounded-full bg-[#DD7E1F] group-hover:bg-[#864D13]'>
+      <div className='p-2 rounded-full bg-primary group-hover:bg-[#864D13]'>
         <img
           src={message}
           alt='Message icon'
@@ -51,7 +51,7 @@ const shipmentsStatus = [
         />
       </div>
     ),
-    styles: 'hover:bg-[#DD7E1F] text-[#DD7E1F] hover:text-white',
+    styles: 'hover:bg-primary text-primary hover:text-white',
   },
 ];
 
@@ -192,7 +192,7 @@ const Dashboard = () => {
   const { start, end } = getRangeDates(selectedRange);
   const lineChartData = getLineChartData(selectedRange);
   const pieChartData = getPieChartData(selectedRange);
-  const horizontalChartData = getHorizontalChartData(selectedRange)
+  const horizontalChartData = getHorizontalChartData(selectedRange);
 
   const handleButtonClick = useCallback((range: string) => {
     setSelectedRange(range);
@@ -256,7 +256,7 @@ const Dashboard = () => {
                 type='button'
                 key={index}
                 className={`font-Rubik transition-all duration-200 ${
-                  selectedRange === item.value && 'bg-[#DD7E1F] text-white py-3 px-6 rounded-2xl'
+                  selectedRange === item.value && 'bg-primary text-white py-3 px-6 rounded-2xl'
                 }`}
                 onClick={() => handleButtonClick(item.value)}
               >

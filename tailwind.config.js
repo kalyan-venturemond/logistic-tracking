@@ -14,6 +14,9 @@ export default {
       '2xl': '1536px',
     },
     extend: {
+        colors: {
+        primary: '#DD7E1F',
+      },
       fontFamily: {
         'Almarai': ['Almarai', 'sans-serif'],
         'Rubik': ['Rubik', 'sans-serif'],

@@ -59,7 +59,7 @@ const EditShipper = () => {
       )}
       <form
         onSubmit={handleSubmit}
-        className='border border-[#DD7E1F] rounded-lg px-6 mx-4 md:mx-0'
+        className='border border-primary rounded-lg px-6 mx-4 md:mx-0'
       >
         <AddEditShipperDataSection
           inputs={shipperSectionInputsData}
@@ -86,7 +86,7 @@ const EditShipper = () => {
                 onClick={() => deleteBranch(index)}
                 className='flex items-center gap-2'
               >
-                <span className='font-Rubik text-[#DD7E1F] text-sm'>حذف الفرع</span>
+                <span className='font-Rubik text-primary text-sm'>حذف الفرع</span>
                 <img
                   src={trashIcon}
                   alt='delete branch'
@@ -105,7 +105,7 @@ const EditShipper = () => {
         <button
           type='button'
           onClick={addNewBranch}
-          className='flex items-center gap-2 text-[#DD7E1F] border-2 border-[#DD7E1F] py-2 px-3 text-sm rounded-lg font-Rubik my-12'
+          className='flex items-center gap-2 text-primary border-2 border-primary py-2 px-3 text-sm rounded-lg font-Rubik my-12'
         >
           <span>إضافة فرع آخر</span>
           <img
@@ -115,7 +115,7 @@ const EditShipper = () => {
         </button>
         <button
           type='submit'
-          className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mb-8'
+          className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mb-8'
         >
           تحديث البيانات
         </button>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const times = ['6 ساعات', '12 ساعة', '24 ساعة'];
 
-const sharedStyles = ['border-r-[#864D13] border-[#FCF2E9]', 'border-r-[#DD7E1F] border-[#F2F2F2]'];
+const sharedStyles = ['border-r-[#864D13] border-[#FCF2E9]', 'border-r-primary border-[#F2F2F2]'];
 
 const borderStyles = [
   {
@@ -12,12 +12,12 @@ const borderStyles = [
   },
   {
     selected: `border-t-[#864D13] ${sharedStyles[0]}`,
-    unselected: `border-t-[#DD7E1F] ${sharedStyles[1]}`,
+    unselected: `border-t-primary ${sharedStyles[1]}`,
     transform: 'rotate(-315deg)',
   },
   {
     selected: 'border-[#864D13]',
-    unselected: 'border-[#DD7E1F]',
+    unselected: 'border-primary',
     transform: '',
   },
 ];
@@ -38,11 +38,11 @@ const TimesDialog = () => {
         <div
           key={index}
           className={`col-span-1 p-4 rounded-xl transition-all duration-200 ${
-            selectedTime === time ? 'bg-[#DD7E1F]' : ''
+            selectedTime === time ? 'bg-primary' : ''
           }`}
           onClick={() => setSelectedTime(time)}
         >
-          <div className='flex items-center justify-center w-24 h-24 relative text-[#DD7E1F]'>
+          <div className='flex items-center justify-center w-24 h-24 relative text-primary'>
             <div
               className={getStyles(index, selectedTime === time)}
               style={{

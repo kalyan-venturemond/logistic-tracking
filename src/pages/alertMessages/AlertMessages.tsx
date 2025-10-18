@@ -25,9 +25,9 @@ const AlertMessages = () => {
           <span className='loader'></span>
         </div>
       )}
-      <div className='grid grid-cols-1 lg:grid-cols-12 lg:ms-4 border border-[#DD7E1F] rounded-2xl px-4 mx-4 lg:mx-0 h-full overflow-auto'>
+      <div className='grid grid-cols-1 lg:grid-cols-12 lg:ms-4 border border-primary rounded-2xl px-4 mx-4 lg:mx-0 h-full overflow-auto'>
         {' '}
-        <div className='col-span-1 lg:col-span-3 h-screen overflow-y-auto  lg:border-l border-[#DD7E1F] pe-2'>
+        <div className='col-span-1 lg:col-span-3 h-screen overflow-y-auto  lg:border-l border-primary pe-2'>
           <MessagesHistoryPanel
             messagesData={messageHistoryData}
             selectedMessageId={selectedMessageId!}
@@ -52,13 +52,13 @@ const AlertMessages = () => {
             <NoSelectedMessages />
           )}
         </div>
-        {/* <div className='absolute inset-0 w-px bg-[#DD7E1F] hidden lg:block'></div> */}
+        {/* <div className='absolute inset-0 w-px bg-primary hidden lg:block'></div> */}
         <button
           type='button'
           onClick={() => {
             navigate('/alert-messages/select-recipients');
           }}
-          className={`p-3 rounded-full bg-[#DD7E1F] fixed bottom-2 transition-all duration-200 lg:right-12`}
+          className={`p-3 rounded-full bg-primary fixed bottom-2 transition-all duration-200 lg:right-12`}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

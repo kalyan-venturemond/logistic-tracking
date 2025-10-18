@@ -20,7 +20,7 @@ const getShipmentStatusDisplayTextStyles = (status: string) => {
   switch (status) {
     case 'shipping':
     case 'delayed':
-      return 'bg-[#DD7E1F] text-[#FCFCFC]';
+      return 'bg-primary text-[#FCFCFC]';
     case 'delivered':
     case 'completed':
       return 'bg-[#D9F2DE] text-[#2E853F]';
@@ -48,7 +48,7 @@ const ShipmentHistory = ({ shipment }: { shipment: Shipment }) => {
   const history = shipment.history || [];
   return (
     <div className='py-8 px-6'>
-      <h1 className='text-center text-[#DD7E1F] text-xl font-bold'>تقرير الشحنة</h1>
+      <h1 className='text-center text-primary text-xl font-bold'>تقرير الشحنة</h1>
       <hr className='border-0 border-t-2 border-dashed border-[#B3B3B3] my-6' />
       <div className='flex flex-col gap-20 items-start w-full'>
         <div

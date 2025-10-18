@@ -13,7 +13,7 @@ const AddShipmentTextArea = ({
   value: string;
   onChange: any;
   page?: string | undefined;
-  existingNotes?: boolean  | undefined;
+  existingNotes?: boolean | undefined;
   placeholder?: string | undefined;
 }) => {
   const [isNotesAreaVisible, setIsNotesAreaVisible] = useState(false);
@@ -38,13 +38,13 @@ const AddShipmentTextArea = ({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className='w-full h-56 mt-4 mb-2 p-4 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F] resize-none font-Rubik'
+            className='w-full h-56 mt-4 mb-2 p-4 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary resize-none font-Rubik'
           ></textarea>
           <div className='w-full flex items-center justify-end'>
             <button
               type='button'
               onClick={() => setIsNotesAreaVisible(false)}
-              className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border border-[#DD7E1F] p-2 rounded-lg'
+              className='col-span-1 bg-primary text-[#FCFCFC] border border-primary p-2 rounded-lg'
             >
               إخفاء
             </button>
@@ -54,7 +54,7 @@ const AddShipmentTextArea = ({
         <button
           type='button'
           onClick={() => setIsNotesAreaVisible(true)}
-          className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border border-[#DD7E1F] p-2 rounded-lg mb-6'
+          className='col-span-1 bg-primary text-[#FCFCFC] border border-primary p-2 rounded-lg mb-6'
         >
           {getButtonLabel()}
         </button>

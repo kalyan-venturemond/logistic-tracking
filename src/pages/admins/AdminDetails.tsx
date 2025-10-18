@@ -12,8 +12,8 @@ import { useParams } from 'react-router-dom';
 import { admins, shipments } from '../../lib/data/mainData';
 import AdminDriverDetailsTable from '../../components/adminsDrivers/AdminDriverDetailsTable';
 import { useMenuActions } from '../../hooks/useMenuActions';
-import { selectMenuOptions } from '../../lib/data/shared';
 import { useChartData } from '../../hooks/useChartData';
+import { selectMenuOptions } from '../../lib/data/drivers';
 
 const AdminDetails = () => {
   const [selectedOption, setSelectedOption] = useState('all');

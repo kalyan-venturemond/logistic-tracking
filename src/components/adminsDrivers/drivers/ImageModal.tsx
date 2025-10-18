@@ -26,7 +26,7 @@ export default function ImageModal({
       <Button
         onClick={handleOpen}
         className={`${
-          status === 'active' ? '!text-[#1A1A1A]' : '!text-[#DD7E1F]'
+          status === 'active' ? '!text-[#1A1A1A]' : '!text-primary'
         } !normal-case flex items-center gap-2 !px-0`}
       >
         <span> {fileName}</span>

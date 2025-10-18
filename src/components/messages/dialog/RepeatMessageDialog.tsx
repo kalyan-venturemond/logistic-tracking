@@ -36,7 +36,7 @@ const RepeatMessageDialog = ({
       <DialogTitle
         sx={{ m: 0, p: 2 }}
         id='customized-dialog-title'
-        className='text-[#DD7E1F] text-center !font-Almarai !text-2xl'
+        className='text-primary text-center !font-Almarai !text-2xl'
       >
         تكرار الإرسال
       </DialogTitle>
@@ -44,22 +44,22 @@ const RepeatMessageDialog = ({
         dir='rtl'
         sx={{ margin: '0 6px' }}
       >
-        <span className='text-[#DD7E1F] text-lg'>رسالة كل:</span>
+        <span className='text-primary text-lg'>رسالة كل:</span>
         <TimesDialog />
-        <span className='text-[#DD7E1F] text-lg inline-block mt-4'>تكرار لمدة:</span>
+        <span className='text-primary text-lg inline-block mt-4'>تكرار لمدة:</span>
         <DurationsDialog />
       </DialogContent>
       <DialogActions sx={{ margin: '10px 6px 0' }}>
         <div className='grid grid-cols-2 gap-4 w-full mb-2'>
           <button
             type='button'
-            className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border py-3 rounded-lg'
+            className='col-span-1 bg-primary text-[#FCFCFC] border py-3 rounded-lg'
           >
             تطبيق
           </button>
           <button
             type='button'
-            className='col-span-1 bg-[#FCFCFC] text-[#DD7E1F] border border-[#DD7E1F] py-3 rounded-lg'
+            className='col-span-1 bg-[#FCFCFC] text-primary border border-primary py-3 rounded-lg'
           >
             حذف
           </button>

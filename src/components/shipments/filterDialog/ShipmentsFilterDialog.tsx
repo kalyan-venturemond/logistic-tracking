@@ -53,14 +53,14 @@ export default function ShipmentsFilterDialog() {
               <label htmlFor='source'>المصدر</label>
               <input
                 type='text'
-                className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F]'
+                className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary'
               />
             </div>
             <div className='flex flex-col '>
               <label htmlFor='source'>الوجهة</label>
               <input
                 type='text'
-                className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F]'
+                className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary'
               />{' '}
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function ShipmentsFilterDialog() {
                 key={index}
                 className={`px-6 py-2 rounded-lg ${
                   selectedBranches.includes(branch)
-                    ? 'bg-[#DD7E1F] text-[#F2F2F2]'
+                    ? 'bg-primary text-[#F2F2F2]'
                     : 'bg-[#F2F2F2] text-[#666666]'
                 }`}
                 onClick={() => handleBranchToggle(branch)}
@@ -93,8 +93,8 @@ export default function ShipmentsFilterDialog() {
               <div key={index}>
                 <button
                   type='button'
-                  className={`py-1.5 px-8 rounded-lg border border-[#DD7E1F]  ${
-                    index === 0 ? 'bg-[#F2F2F2] text-[#DD7E1F]' : 'bg-[#DD7E1F] text-[#F2F2F2]'
+                  className={`py-1.5 px-8 rounded-lg border border-primary  ${
+                    index === 0 ? 'bg-[#F2F2F2] text-primary' : 'bg-primary text-[#F2F2F2]'
                   }`}
                 >
                   {item}

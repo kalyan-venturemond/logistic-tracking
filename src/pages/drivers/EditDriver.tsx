@@ -18,7 +18,7 @@ const EditDriver = () => {
   const { formData, setFormData, handleFileChange, handleChange } = useDrivers();
   const { isLoading, handleSubmit } = useFormSubmission({
     successMessage: 'تم تحديث بيانات السائق بنجاح',
-    redirectPath: '/shippers',
+    redirectPath: '/drivers',
   });
 
   const { driverId } = useParams();
@@ -57,7 +57,7 @@ const EditDriver = () => {
       )}
       <form
         onSubmit={handleSubmit}
-        className='border border-[#DD7E1F] rounded-lg p-8 mx-4 md:mx-0'
+        className='border border-primary rounded-lg p-8 mx-4 md:mx-0'
       >
         <FileUploadInput
           initialImage={selectedDriver?.image}
@@ -100,7 +100,7 @@ const EditDriver = () => {
                   <span className='text-[#1A1A1A] text-xl'>{item.inputLabel}</span>
                   <input
                     type='text'
-                    className='p-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#DD7E1F]'
+                    className='p-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary'
                     min={0}
                     name={item.name}
                     value={(formData[item.name as keyof DriverFormData] as string) || ''}
@@ -126,12 +126,12 @@ const EditDriver = () => {
                 className='cursor-pointer'
               />
               {isHovered && (
-                <div className='absolute bottom-10 right-1/2 transform translate-x-1/2 mt-2 w-64 rounded-2xl shadow-lg p-6 z-10 font-Rubik text-[#864D13] border border-[#DD7E1F] bg-[#FCF2E9]'>
+                <div className='absolute bottom-10 right-1/2 transform translate-x-1/2 mt-2 w-64 rounded-2xl shadow-lg p-6 z-10 font-Rubik text-[#864D13] border border-primary bg-[#FCF2E9]'>
                   <p>
                     مثل مشاكل في النظر أو القلب أو أن السائق يعاني من مرض السكري. فيجب كتابة ذلك مع
                     إضافة تقرير طبي من جهة طبية معتمدة تفيد بقدرته على القيادة
                   </p>
-                  <div className='absolute -bottom-2 right-1/2 transform translate-x-1/2 w-4 h-4 bg-[#FCF2E9] rotate-45 border-b border-r border-[#DD7E1F] '></div>
+                  <div className='absolute -bottom-2 right-1/2 transform translate-x-1/2 w-4 h-4 bg-[#FCF2E9] rotate-45 border-b border-r border-primary '></div>
                 </div>
               )}
             </div>
@@ -154,7 +154,7 @@ const EditDriver = () => {
               }}
             />
             {formData.medicalReport ? (
-              <div className='flex items-center gap-2 bg-[#F5F5F5] py-2 px-3 border-2 border-[#DD7E1F] rounded-lg mt-2 mb-12'>
+              <div className='flex items-center gap-2 bg-[#F5F5F5] py-2 px-3 border-2 border-primary rounded-lg mt-2 mb-12'>
                 <span className='text-[#1A1A1A]'>{formData.medicalReportName}</span>
                 <button
                   type='button'
@@ -165,7 +165,7 @@ const EditDriver = () => {
                       medicalReportName: '',
                     }))
                   }
-                  className='text-[#DD7E1F] font-bold'
+                  className='text-primary font-bold'
                 >
                   <MdCancelPresentation size={20} />
                 </button>
@@ -173,7 +173,7 @@ const EditDriver = () => {
             ) : (
               <label
                 htmlFor='medical-report-upload'
-                className='flex items-center gap-2 text-[#DD7E1F] border-2 border-[#DD7E1F] py-2 px-3 text-sm rounded-lg font-Rubik mt-2 mb-12 cursor-pointer'
+                className='flex items-center gap-2 text-primary border-2 border-primary py-2 px-3 text-sm rounded-lg font-Rubik mt-2 mb-12 cursor-pointer'
               >
                 <span>تحميل التقرير الطبي</span>
                 <img
@@ -187,7 +187,7 @@ const EditDriver = () => {
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
         <button
           type='submit'
-          className='w-full py-4 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'
+          className='w-full py-4 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
           تحديث بيانات السائق
         </button>

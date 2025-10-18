@@ -31,7 +31,7 @@ const FileUploadInput = ({
   return (
     <div className='w-full border border-dashed border-gray-300 rounded-lg flex flex-col justify-center items-center py-8 font-Rubik relative'>
       {previewUrl ? (
-        <div className='w-32 h-32 rounded-full overflow-hidden border-2 border-[#DD7E1F]'>
+        <div className='w-32 h-32 rounded-full overflow-hidden border-2 border-primary'>
           <img
             src={previewUrl}
             alt='Preview'
@@ -47,7 +47,7 @@ const FileUploadInput = ({
               alt='camera icon'
             />
           </div>
-          <span className='text-[#DD7E1F] mt-2 font-lg'>{title}</span>
+          <span className='text-primary mt-2 font-lg'>{title}</span>
         </div>
       )}
       <input

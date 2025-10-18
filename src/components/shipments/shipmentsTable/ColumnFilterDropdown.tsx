@@ -18,7 +18,7 @@ export function ColumnFilterDropdown({
     <div className='absolute left-0 z-50 bg-white border p-4 rounded-lg shadow-lg w-60 mt-3'>
       {!isPickupDate && (
         <input
-          className='w-full mb-2 border rounded-md px-2 py-1 placeholder:text-current placeholder:opacity-30 border-[#CCCCCC] focus:outline-none focus:ring-1 focus:ring-[#DD7E1F] font-Rubik font-medium'
+          className='w-full mb-2 border rounded-md px-2 py-1 placeholder:text-current placeholder:opacity-30 border-[#CCCCCC] focus:outline-none focus:ring-1 focus:ring-primary font-Rubik font-medium'
           placeholder={placeholder}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -92,14 +92,14 @@ export function ColumnFilterDropdown({
       <div className='grid grid-cols-2 gap-4 w-full font-Rubik font-medium mt-2'>
         <button
           type='button'
-          className='col-span-1 bg-[#DD7E1F] text-[#FCFCFC] border border-[#DD7E1F] py-1 rounded-lg'
+          className='col-span-1 bg-primary text-[#FCFCFC] border border-primary py-1 rounded-lg'
           onClick={onClose}
         >
           تأكيد
         </button>
         <button
           type='button'
-          className='col-span-1 bg-[#FCFCFC] text-[#DD7E1F] border border-[#DD7E1F] py-1 rounded-lg'
+          className='col-span-1 bg-[#FCFCFC] text-primary border border-primary py-1 rounded-lg'
           onClick={() => (dateSort ? setDateSort(undefined) : onChange([]))}
         >
           إعادة تعيين

@@ -81,7 +81,7 @@ const ShipmentDetails = () => {
           <span className='loader'></span>
         </div>
       )}
-      <div className='border border-[#DD7E1F] rounded-lg mx-4 bg-[#FCFCFC]'>
+      <div className='border border-primary rounded-lg mx-4 bg-[#FCFCFC]'>
         <div className='grid xs:grid-cols-10 grid-cols-12 gap-8'>
           <div
             className={`xs:col-span-10 col-span-12 ${
@@ -127,7 +127,7 @@ const ShipmentDetails = () => {
                 ))}
               </div>
               <div className='w-full p-6 bg-[#FCF2E9] rounded-lg'>
-                <h1 className='text-2xl text-center sm:text-start font-bold font-Almarai text-[#DD7E1F]'>
+                <h1 className='text-2xl text-center sm:text-start font-bold font-Almarai text-primary'>
                   تكلفة الشحنة
                 </h1>
                 <hr className='border-0 border-t-2 border-dashed border-[#B3B3B3] my-6' />{' '}
@@ -155,7 +155,7 @@ const ShipmentDetails = () => {
                 )}
               </div>
               <div className='my-10 w-full flex flex-col gap-2 sm:flex-row sm:gap-1 justify-center items-center font-Rubik text-[#666666] text-xl sm:text-2xl'>
-                <span>المستخدم المسئول:</span>
+                <span>المستخدم المستخدم:</span>
                 <span>
                   {selectedAdmin?.firstName} {selectedAdmin?.lastName}
                 </span>
@@ -163,7 +163,7 @@ const ShipmentDetails = () => {
               <button
                 type='button'
                 onClick={() => setIsDialogOpen(true)}
-                className='w-full text-center text-xl sm:text-2xl  rounded-lg py-3 text-[#FCFCFC] bg-[#DD7E1F]'
+                className='w-full text-center text-xl sm:text-2xl  rounded-lg py-3 text-[#FCFCFC] bg-primary'
               >
                 طباعة البوليصة
               </button>

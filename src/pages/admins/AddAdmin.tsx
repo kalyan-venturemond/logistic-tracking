@@ -5,13 +5,12 @@ import { addEditAdminInputsData } from '../../lib/data/admins';
 import { useAdmins } from '../../hooks/useAdmins';
 
 const AddAdmin = () => {
-
   const { handleSubmit, isLoading } = useFormSubmission({
     successMessage: 'تم إضاافة المستخدم بنجاح',
     redirectPath: '/admins',
   });
 
-   const { formData, handleFileChange, handleChange } = useAdmins({});
+  const { formData, handleFileChange, handleChange } = useAdmins({});
 
   return (
     <>
@@ -22,7 +21,7 @@ const AddAdmin = () => {
       )}
       <form
         onSubmit={handleSubmit}
-        className='border border-[#DD7E1F] rounded-lg p-8 mx-4 md:mx-0'
+        className='border border-primary rounded-lg p-8 mx-4 md:mx-0'
       >
         <FileUploadInput onChange={handleFileChange} />{' '}
         <AddEditItemDataSection
@@ -32,7 +31,10 @@ const AddAdmin = () => {
           page='addAdmin'
         />
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
-        <button type='submit' className='w-full py-3 rounded-lg text-xl bg-[#DD7E1F] text-[#FCFCFC] mt-4'>
+        <button
+          type='submit'
+          className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
+        >
           إضافة المستخدم
         </button>
       </form>

@@ -51,7 +51,7 @@ const PhoneNumberInput = ({
               borderBottomRightRadius: '0px',
             },
             className:
-              '!w-full !ps-3 !text-[#1A1A1A] !bg-[#FCFCFC] focus:!border-1 focus:!border-[#DD7E1F] focus:!outline-none font-Rubik',
+              '!w-full !ps-3 !text-[#1A1A1A] !bg-[#FCFCFC] focus:!border-1 focus:!border-primary focus:!outline-none font-Rubik',
           }}
         />
       </div>
