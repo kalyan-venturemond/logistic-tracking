@@ -8,15 +8,15 @@ import { Driver } from '../../../types/drivers';
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
-  { key: 'name', label: 'الاسم' },
-  { key: 'language', label: 'اللغة' },
-  { key: 'nationality', label: 'الجنسية' },
-  { key: 'branch', label: 'الفرع' },
-  { key: 'identityNumber', label: 'رقم الهوية' },
-  { key: 'phoneNumber', label: 'رقم الجوال' },
-  { key: 'vehicleType', label: 'نوع الشاحنة' },
-  { key: 'vehicleNumber', label: 'رقم الشاحنة' },
-  { key: 'status', label: 'الحالة' },
+  { key: 'name', label: 'Name' },
+  { key: 'language', label: 'Language' },
+  { key: 'nationality', label: 'Nationality' },
+  { key: 'branch', label: 'Branch' },
+  { key: 'identityNumber', label: 'Identity ID' },
+  { key: 'phoneNumber', label: 'Mobile No.' },
+  { key: 'vehicleType', label: 'Truck Type' },
+  { key: 'vehicleNumber', label: 'Truck No.' },
+  { key: 'status', label: 'Status' },
 ];
 const DriversTable = ({
   selectedStatus,
@@ -83,9 +83,8 @@ const DriversTable = ({
                   className={tableRowStyles}
                 >
                   <div
-                    className={`flex items-center gap-1 ${
-                      index === tableHeading.length - 1 && 'ms-20'
-                    }`}
+                    className={`flex items-center gap-1 ${index === tableHeading.length - 1 && 'ms-20'
+                      }`}
                   >
                     {col.label}
                   </div>
@@ -133,7 +132,7 @@ const DriversTable = ({
                           item.status,
                         )}`}
                       >
-                        {item.status === 'available' ? 'متاح' : 'غير متاح'}
+                        {item.status === 'available' ? 'Available' : 'Unavailable'}
                       </span>
                     </td>
                   </button>

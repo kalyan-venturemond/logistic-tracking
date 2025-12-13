@@ -82,21 +82,20 @@ const PrintWaybillDialog = ({
         </DialogContent>
         <DialogActions sx={{ margin: '10px 0 0' }}>
           <div className='grid grid-cols-2 gap-4 w-full mb-2'>
-            {['إلغاء', 'طباعة'].map((item: string, index: number) => (
+            {['Cancel', 'Print'].map((item: string, index: number) => (
               <button
                 type='button'
                 onClick={
                   index === 0
                     ? () => setOpen(false)
                     : () => {
-                        window.print();
-                        setTimeout(() => setOpen(false), 400);
-                      }
+                      window.print();
+                      setTimeout(() => setOpen(false), 400);
+                    }
                 }
                 key={index}
-                className={`col-span-1 ${
-                  index === 0 ? 'bg-[#FCFCFC] text-primary' : 'bg-primary text-[#FCFCFC]'
-                } border border-primary py-3 rounded-lg`}
+                className={`col-span-1 ${index === 0 ? 'bg-[#FCFCFC] text-primary' : 'bg-primary text-[#FCFCFC]'
+                  } border border-primary py-3 rounded-lg`}
               >
                 {item}
               </button>

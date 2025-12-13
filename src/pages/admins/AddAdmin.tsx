@@ -6,7 +6,7 @@ import { useAdmins } from '../../hooks/useAdmins';
 
 const AddAdmin = () => {
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم إضاافة المستخدم بنجاح',
+    successMessage: 'User added successfully',
     redirectPath: '/admins',
   });
 
@@ -35,7 +35,7 @@ const AddAdmin = () => {
           type='submit'
           className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
-          إضافة المستخدم
+          Add User
         </button>
       </form>
     </>

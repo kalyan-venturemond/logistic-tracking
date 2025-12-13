@@ -10,20 +10,20 @@ export const fieldsToCheck: (keyof Shipper)[] = [
 ];
 
 export const shipperSectionInputsData = [
-  { label: 'الاسم', name: 'name' },
-  { label: 'رقم السجل التجاري', name: 'commercialRegistration' },
-  { label: 'البريد الإلكتروني', name: 'email' },
-  { label: 'العنوان', name: 'address' },
+  { label: 'Name', name: 'name' },
+  { label: 'Commercial Registration No.', name: 'commercialRegistration' },
+  { label: 'Email', name: 'email' },
+  { label: 'Address', name: 'address' },
 ];
 
 export const editShipperAdditionalBranchSectionInputsData = [
-  { label: 'الاسم', name: 'name' },
-  { label: 'العنوان', name: 'address' },
-  { label: 'رقم الهاتف (أساسي)', name: 'primaryPhoneNumber' },
-  { label: 'رقم الهاتف (احتياطي)', name: 'secondaryPhoneNumber' },
+  { label: 'Name', name: 'name' },
+  { label: 'Address', name: 'address' },
+  { label: 'Primary Phone', name: 'primaryPhoneNumber' },
+  { label: 'Secondary Phone', name: 'secondaryPhoneNumber' },
 ];
 
 export const addShipperAdditionalBranchSectionInputsData = [
-  { label: 'البريد الإلكتروني', name: 'email' },
-  { label: 'العنوان', name: 'address' },
+  { label: 'Email', name: 'email' },
+  { label: 'Address', name: 'address' },
 ];

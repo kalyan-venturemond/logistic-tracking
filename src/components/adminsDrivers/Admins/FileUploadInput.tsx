@@ -8,7 +8,7 @@ interface FileUploadInputProps {
 }
 
 const FileUploadInput = ({
-  title = 'اضغط لإضافة صورة',
+  title = 'Click to upload image',
   onChange,
   initialImage,
 }: FileUploadInputProps) => {

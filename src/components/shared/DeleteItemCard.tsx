@@ -19,7 +19,7 @@ const DeleteItemCard = ({
           className='w-24 h-24'
         />
       </div>
-      <h1 className='my-6 text-center text-xl font-bold'>أدخل كلمة المرور للحذف</h1>
+      <h1 className='my-6 text-center text-xl font-bold'>Enter password to delete</h1>
       <form
         onSubmit={handleSubmit}
         className='flex flex-col items-start gap-1'
@@ -28,15 +28,14 @@ const DeleteItemCard = ({
           htmlFor='password'
           className='text-[#333333] text-sm'
         >
-          كلمة المرور
+          Password
         </label>
         <div className='relative w-full mb-4'>
           <input
             id='password'
             type={isPasswordVisible ? 'text' : 'password'}
-            dir='rtl'
             className='border border-gray-200 w-full rounded-md py-2 ps-10 focus:outline-none font-Rubik'
-            placeholder='أدخل كلمة المرور'
+            placeholder='Enter password'
           />
           <CiLock
             size={20}
@@ -66,7 +65,7 @@ const DeleteItemCard = ({
           type='submit'
           className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-[#CD2026] rounded-lg mt-4'
         >
-          تأكيد الحذف
+          Confirm Delete
         </button>
       </form>
     </div>

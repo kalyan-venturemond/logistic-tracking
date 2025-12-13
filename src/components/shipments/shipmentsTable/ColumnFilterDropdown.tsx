@@ -11,7 +11,7 @@ export function ColumnFilterDropdown({
   isPickupDate,
   dateSort,
   setDateSort,
-  placeholder = 'ابحث...',
+  placeholder = 'Search...',
 }: any) {
   const [search, setSearch] = React.useState('');
   return (
@@ -43,7 +43,7 @@ export function ColumnFilterDropdown({
                   className={`${dateSort === 'asc' ? '#DD7E1F' : 'text-gray-500'}`}
                 />
               </span>
-              <span>الأحدث</span>
+              <span>Newest</span>
             </div>
             <div
               className='flex items-center gap-2 cursor-pointer'
@@ -61,7 +61,7 @@ export function ColumnFilterDropdown({
                   className={`${dateSort === 'desc' ? '#DD7E1F' : 'text-gray-500'}`}
                 />
               </span>
-              <span>الأقدم</span>
+              <span>Oldest</span>
             </div>
           </div>
         </div>
@@ -95,14 +95,14 @@ export function ColumnFilterDropdown({
           className='col-span-1 bg-primary text-[#FCFCFC] border border-primary py-1 rounded-lg'
           onClick={onClose}
         >
-          تأكيد
+          Confirm
         </button>
         <button
           type='button'
           className='col-span-1 bg-[#FCFCFC] text-primary border border-primary py-1 rounded-lg'
           onClick={() => (dateSort ? setDateSort(undefined) : onChange([]))}
         >
-          إعادة تعيين
+          Reset
         </button>
       </div>
     </div>

@@ -13,7 +13,7 @@ const EditAdmin = () => {
   const { formData, setFormData, handleFileChange, handleChange } = useAdmins({ selectedAdmin });
 
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم تحديث بيانات المستخدم بنجاح',
+    successMessage: 'User data updated successfully',
     redirectPath: '/admins',
   });
 
@@ -53,7 +53,7 @@ const EditAdmin = () => {
           type='submit'
           className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
-          تحديث البيانات
+          Update Data
         </button>
       </form>
     </>

@@ -9,7 +9,7 @@ const DeleteShipment = () => {
 
   const selectedShipment = shipments.find((shipment) => shipment.id === Number(shipmentId));
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم حذف الشحنة بنجاح',
+    successMessage: 'Shipment deleted successfully',
     redirectPath: '/shipments',
   });
 

@@ -13,27 +13,27 @@ const DeleteAdmin = () => {
   const moreInfoData = [
     {
       image: adminImage,
-      label: 'رقم المعرف (ID)',
+      label: 'Admin ID',
       value: selectedAdmin?.id,
     },
     {
       image: locationIcon,
-      label: 'اسم المستخدم',
+      label: 'Username',
       value: selectedAdmin?.userName,
     },
     {
       image: mailIcon,
-      label: 'البريد الإلكتروني',
+      label: 'Email',
       value: selectedAdmin?.email,
     },
     {
       image: callIcon,
-      label: 'رقم التواصل',
+      label: 'Phone No.',
       value: selectedAdmin?.phoneNumber,
     },
     {
       image: flagIcon,
-      label: 'الجنسية',
+      label: 'Nationality',
       value: selectedAdmin?.nationality,
     },
   ];

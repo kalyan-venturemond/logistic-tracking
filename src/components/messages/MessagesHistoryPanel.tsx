@@ -24,18 +24,17 @@ const MessagesHistoryPanel = ({
     <div className='h-full'>
       <div className='p-6 flex items-center'>
         {[
-          { label: 'مرة واحدة', value: 'once' },
-          { label: 'مكررة', value: 'repeated' },
+          { label: 'Once', value: 'once' },
+          { label: 'Recurring', value: 'repeated' },
         ].map((item: { label: string; value: string }, index: number) => (
           <button
             type='button'
             onClick={() => setSelectedCategory(item.value)}
             key={index}
-            className={`w-1/2 text-lg transition-all duration-200 ${
-              selectedCategory === item.value
+            className={`w-1/2 text-lg transition-all duration-200 ${selectedCategory === item.value
                 ? 'text-primary border-b-4 border-primary'
                 : 'text-[#666666] border-b-2 border-[#CCCCCC]'
-            }`}
+              }`}
           >
             {item.label}
           </button>

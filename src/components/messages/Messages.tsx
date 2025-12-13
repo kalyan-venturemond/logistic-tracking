@@ -24,9 +24,8 @@ const Messages = ({
               setSelectedMessageId(message?.id);
             }}
             key={index}
-            className={`my-2 p-5 cursor-pointer flex flex-col rounded-lg ${
-              selectedMessageId === message?.id && 'bg-[#F2F2F2]'
-            } transition-all duration-200`}
+            className={`my-2 p-5 cursor-pointer flex flex-col rounded-lg ${selectedMessageId === message?.id && 'bg-[#F2F2F2]'
+              } transition-all duration-200`}
           >
             <div className='flex justify-between items-center mb-2'>
               <span className='text-primary text-lg'>{message.title}</span>
@@ -35,7 +34,7 @@ const Messages = ({
             <span className='overflow-hidden text-ellipsis whitespace-nowrap font-Rubik text-xs'>
               {message?.drivers?.map(
                 (driver: Driver, index: number) =>
-                  `${driver?.name}${index === message?.drivers.length - 1 ? '' : '، '}`,
+                  `${driver?.name}${index === message?.drivers.length - 1 ? '' : ', '}`,
               )}
             </span>
             {selectedCategory === 'repeated' && (

@@ -19,11 +19,10 @@ const Pagination = ({
 
   return (
     <div
-      dir='rtl'
       className='my-8 flex flex-col sm:flex-row justify-between gap-5 md:gap-0 md:items-center'
     >
       <div className='flex items-center'>
-        <span className='me-2 text-[#666666]'>عرض النتائج:</span>
+        <span className='me-2 text-[#666666]'>Show results:</span>
         <FormControl
           sx={{ minWidth: 70 }}
           size='small'
@@ -76,7 +75,7 @@ const Pagination = ({
           disabled={currentPage === 1}
           className='hidden md:block text-primary disabled:text-gray-400'
         >
-          السابق
+          Previous
         </button>
         {[...Array(totalPages)].map((_, index) => (
           <button
@@ -86,9 +85,8 @@ const Pagination = ({
               setCurrentPage(index + 1);
               onPageChange(index + 1);
             }}
-            className={`px-3.5 font-bold py-1.5 text-center text-sm rounded-lg ${
-              currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700'
-            }`}
+            className={`px-3.5 font-bold py-1.5 text-center text-sm rounded-lg ${currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700'
+              }`}
           >
             {index + 1}
           </button>
@@ -102,7 +100,7 @@ const Pagination = ({
           disabled={currentPage === totalPages}
           className='hidden md:block text-primary disabled:text-gray-400'
         >
-          التالي
+          Next
         </button>
       </div>
     </div>

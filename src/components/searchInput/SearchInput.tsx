@@ -11,21 +11,20 @@ const SearchInput = ({
 }) => {
   return (
     <div
-      dir='rtl'
       className={`relative flex items-center border border-gray-300 rounded-md py-3 px-10 w-full max-w-sm  ${styles}`}
     >
       <input
         type='text'
         value={value}
         onChange={onChange}
-        placeholder='ابحث هنا'
+        placeholder='Search here'
         className={`grow outline-none placeholder-gray-400 bg-transparent font-Rubik`}
       />
       <img
         src={searchIcon}
         alt='box Search icon'
-        className='w-6 h-6 absolute right-2 cursor-pointer'
-        // onClick={handleSearchIconClick}
+        className='w-6 h-6 absolute left-2 cursor-pointer'
+      // onClick={handleSearchIconClick}
       />
       {/* <img
         src={filterIcon}

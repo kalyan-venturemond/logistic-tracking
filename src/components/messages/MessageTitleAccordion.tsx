@@ -5,12 +5,12 @@ import ExpandMoreIcon from '/images/arrow.svg';
 import { useState } from 'react';
 
 const messageTitleOptions = [
-  'شحنة متأخرة',
-  'شحنة ملغية',
-  'مشكلة في المستندات',
-  'تصرف غير لائق',
-  'خصم من الراتب',
-  'حالة طارئة',
+  'Late Shipment',
+  'Canceled Shipment',
+  'Documentation Issue',
+  'Inappropriate Behavior',
+  'Salary Deduction',
+  'Emergency Case',
 ];
 
 const MessageTitleAccordion = () => {
@@ -24,7 +24,7 @@ const MessageTitleAccordion = () => {
           id='panel1-header'
           className='!bg-[#FCF2E9] !rounded-2xl'
         >
-          <span className='text-primary'>{messageSelectedTitle || 'اختر عنوانًا للرسالة'}</span>
+          <span className='text-primary'>{messageSelectedTitle || 'Select a message title'}</span>
         </AccordionSummary>
         <AccordionDetails>
           <div className='flex flex-col gap-4'>

@@ -23,8 +23,8 @@ const AdminDetails = () => {
   const adminShipments = shipments.filter((shipment) => shipment.adminId === selectedAdmin?.id);
 
   const { menuActions } = useMenuActions([
-    { editLabel: 'تعديل البيانات', editPath: `/admins/edit/${adminId}` },
-    { deleteLabel: 'حذف البيانات', deletePath: `/admins/delete/${adminId}` },
+    { editLabel: 'Edit Data', editPath: `/admins/edit/${adminId}` },
+    { deleteLabel: 'Delete Data', deletePath: `/admins/delete/${adminId}` },
   ]);
 
   const personalInfoData = {
@@ -35,11 +35,11 @@ const AdminDetails = () => {
   };
 
   const moreInfoData = [
-    { image: adminIdCardImage, label: 'رقم المعرف (ID)', value: selectedAdmin?.id },
-    { image: userNameIcon, label: 'اسم المستخدم', value: selectedAdmin?.userName },
-    { image: mailIcon, label: 'البريد الإلكتروني', value: selectedAdmin?.email },
-    { image: callIcon, label: 'رقم التواصل', value: selectedAdmin?.phoneNumber },
-    { image: flagIcon, label: 'الجنسية', value: selectedAdmin?.nationality },
+    { image: adminIdCardImage, label: 'Admin ID', value: selectedAdmin?.id },
+    { image: userNameIcon, label: 'Username', value: selectedAdmin?.userName },
+    { image: mailIcon, label: 'Email', value: selectedAdmin?.email },
+    { image: callIcon, label: 'Phone No.', value: selectedAdmin?.phoneNumber },
+    { image: flagIcon, label: 'Nationality', value: selectedAdmin?.nationality },
   ];
 
   const { pieChartData, filteredShipments } = useChartData(adminShipments, selectedOption);
@@ -48,7 +48,7 @@ const AdminDetails = () => {
     <div className='grid col-span-2 lg:grid-cols-3 gap-8'>
       <div className='col-span-1 lg:col-span-2 h-fit shadow-lg rounded-3xl px-8 py-4 w-full overflow-x-auto'>
         <div className='w-full flex justify-between items-center mb-6'>
-          <h1 className='xs:text-lg text-xl font-bold'>قائمة الشحنات</h1>
+          <h1 className='xs:text-lg text-xl font-bold'>Shipments List</h1>
           <SelectMenu
             options={selectMenuOptions}
             selectedItem={selectedOption}
@@ -67,7 +67,7 @@ const AdminDetails = () => {
         </div>
         <div className='w-full shadow-sm rounded-3xl md:px-8 py-4 bg-[#FFF]'>
           <div className='flex items-center justify-center gap-2 my-12'>
-            <h1 className='text-xl font-bold text-[#333333]'>بيان الشهر</h1>
+            <h1 className='text-xl font-bold text-[#333333]'>Monthly Report</h1>
           </div>
           <PieChart
             pieChartData={pieChartData.data}

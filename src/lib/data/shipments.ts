@@ -1,45 +1,45 @@
 import { Shipment } from "../../types/shipments";
 
 export const driverSectionInputsData = [
-  { label: 'رقم الشاحنة', name: 'driverVehicleNumber' },
-  { label: 'رقم الهاتف', name: 'driverPhoneNumber' },
+  { label: 'Truck Number', name: 'driverVehicleNumber' },
+  { label: 'Phone Number', name: 'driverPhoneNumber' },
 ];
 
 export const costSectionInputsData = [
-  { label: 'التكلفة الأساسية', name: 'baseCost', type: 'number' },
-  { label: 'الزيادة', name: 'extraCost', type: 'number' },
+  { label: 'Base Cost', name: 'baseCost', type: 'number' },
+  { label: 'Extra Cost', name: 'extraCost', type: 'number' },
 ];
 
 export const shipmentSectionInputsData = [
   {
-    label: 'تاريخ التحميل',
+    label: 'Pickup Date',
     name: 'shipmentPickupDate',
     type: 'date',
     description:
-      'يتم تحديد تاريخ التحميل بشكل تلقائي حسب تاريخ اليوم، إذا كانت الشحنة تستلزم تاريخا محدددا للتحميل يمكنك التعديل بناء عليه.',
+      'The pickup date is automatically set to today. You can modify it if the shipment requires a specific pickup date.',
   },
   {
-    label: 'تاريخ التسليم',
+    label: 'Delivery Date',
     name: 'shipmentExpectedDeliveryDate',
     type: 'date',
-    description: 'أكّد مع المستلم التاريخ الدقيق للاستلام',
+    description: 'Confirm the exact delivery date with the recipient',
   },
-  { label: 'المحتويات', name: 'shipmentContent' },
-  { label: 'الوزن بالطن', name: 'shipmentWeight' },
+  { label: 'Content', name: 'shipmentContent' },
+  { label: 'Weight (Ton)', name: 'shipmentWeight' },
 ];
 
-export const shipperSectionInputsData = [{ label: 'العنوان', name: 'shipperAddress' }];
+export const shipperSectionInputsData = [{ label: 'Address', name: 'shipperAddress' }];
 
-export const recipientSectionInputsData = [{ label: 'العنوان', name: 'recipientAddress' }];
+export const recipientSectionInputsData = [{ label: 'Address', name: 'recipientAddress' }];
 
 export const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'قيد الشحن', value: 'shipping' },
-  { label: 'متأخرة', value: 'delayed' },
-  { label: 'تم التوصيل', value: 'delivered' },
-  { label: 'مكتملة', value: 'completed' },
-  { label: 'ملغية', value: 'canceled' },
-  { label: 'مرتجعة', value: 'returned' },
+  { label: 'All', value: 'all' },
+  { label: 'In Transit', value: 'shipping' },
+  { label: 'Delayed', value: 'delayed' },
+  { label: 'Delivered', value: 'delivered' },
+  { label: 'Completed', value: 'completed' },
+  { label: 'Canceled', value: 'canceled' },
+  { label: 'Returned', value: 'returned' },
 ];
 
 export const fieldsToCheck: (keyof Shipment)[] = [

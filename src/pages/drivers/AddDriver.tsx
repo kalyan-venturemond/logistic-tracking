@@ -12,7 +12,7 @@ const AddDriver = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const { isLoading, handleSubmit } = useFormSubmission({
-    successMessage: 'تم إضاافة السائق بنجاح',
+    successMessage: 'Driver added successfully',
     redirectPath: '/drivers',
   });
 
@@ -37,14 +37,14 @@ const AddDriver = () => {
           page='addDriver'
         />
         <div>
-          <h1 className='font-bold text-lg md:text-3xl mt-12 mb-8'>بيانات الرخصة</h1>
+          <h1 className='font-bold text-lg md:text-3xl mt-12 mb-8'>License Information</h1>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
             {[
               {
-                uploadImageTitle: 'إضافة الوجه الأمامي للرخصة',
-                inputLabel: 'تاريخ الإصدار',
+                uploadImageTitle: 'Add Front License Image',
+                inputLabel: 'Issue Date',
               },
-              { uploadImageTitle: 'إضافة الوجه الخلفي للرخصة', inputLabel: 'تاريخ الانتهاء' },
+              { uploadImageTitle: 'Add Back License Image', inputLabel: 'Expiration Date' },
             ].map((item, index) => (
               <div
                 key={index}
@@ -69,7 +69,7 @@ const AddDriver = () => {
         <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' />
         <div>
           <div className='flex items-center gap-2 relative'>
-            <h1 className='my-12 font-bold text-lg md:text-3xl'>ملاحظات صحية</h1>
+            <h1 className='my-12 font-bold text-lg md:text-3xl'>Health Notes</h1>
             <div
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
@@ -83,8 +83,8 @@ const AddDriver = () => {
               {isHovered && (
                 <div className='absolute bottom-10 right-1/2 transform translate-x-1/2 mt-2 w-64 rounded-2xl shadow-lg p-6 z-10 font-Rubik text-[#864D13] border border-primary bg-[#FCF2E9]'>
                   <p>
-                    مثل مشاكل في النظر أو القلب أو أن السائق يعاني من مرض السكري. فيجب كتابة ذلك مع
-                    إضافة تقرير طبي من جهة طبية معتمدة تفيد بقدرته على القيادة
+                    e.g., vision or heart problems, or if the driver suffers from diabetes. This must be written along with
+                    adding a medical report from an approved medical entity stating their ability to drive.
                   </p>
                   <div className='absolute -bottom-2 right-1/2 transform translate-x-1/2 w-4 h-4 bg-[#FCF2E9] rotate-45 border-b border-r border-primary '></div>
                 </div>
@@ -130,7 +130,7 @@ const AddDriver = () => {
                 htmlFor='medical-report-upload'
                 className='flex items-center gap-2 text-primary border-2 border-primary py-2 px-3 text-sm rounded-lg font-Rubik mt-2 mb-12 cursor-pointer'
               >
-                <span>تحميل التقرير الطبي</span>
+                <span>Upload Medical Report</span>
                 <img
                   src={uploadImage}
                   alt='upload icon'
@@ -144,7 +144,7 @@ const AddDriver = () => {
           type='submit'
           className='w-full py-4 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
-          إضافة السائق
+          Add Driver
         </button>
       </form>
     </>

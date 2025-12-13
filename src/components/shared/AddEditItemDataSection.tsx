@@ -45,7 +45,7 @@ const AddEditItemDataSection = ({
   const selectMenuData = ((): SelectMenuDataItem | SelectMenuDataItem[] | null => {
     const citiesData = {
       options: cities,
-      title: 'المدينة',
+      title: 'City',
     };
 
     if (section) {
@@ -55,15 +55,15 @@ const AddEditItemDataSection = ({
             {
               sectionPrefix: 'driver',
               options: drivers,
-              label: 'اختر السائق',
-              title: 'السائق',
+              label: 'Select Driver',
+              title: 'Driver',
               selectedItem: getSelectedItem(drivers, 'driver'),
             },
             {
               sectionPrefix: 'driverVehicle',
               options: vehicles,
-              label: 'اختر نوع الشاحنة',
-              title: 'الشاحنة',
+              label: 'Select Truck Type',
+              title: 'Truck',
               selectedItem: getSelectedItem(vehicles, 'driverVehicle'),
             },
           ];
@@ -72,13 +72,13 @@ const AddEditItemDataSection = ({
             {
               sectionPrefix: 'shipmentPickupCity',
               ...citiesData,
-              label: 'اختر مدينة التحميل',
+              label: 'Select Pickup City',
               selectedItem: getSelectedItem(cities, 'shipmentPickupCity'),
             },
             {
               sectionPrefix: 'shipmentDropOffCity',
               ...citiesData,
-              label: 'اختر مدينة التسليم',
+              label: 'Select Delivery City',
               selectedItem: getSelectedItem(cities, 'shipmentDropOffCity'),
             },
           ];
@@ -86,16 +86,16 @@ const AddEditItemDataSection = ({
           return {
             sectionPrefix: 'shipper',
             options: shippers,
-            label: 'اختر المرسِل',
-            title: 'المرسِل',
+            label: 'Select Shipper',
+            title: 'Shipper',
             selectedItem: getSelectedItem(shippers, 'shipper'),
           };
         case 'recipient':
           return {
             sectionPrefix: 'recipient',
             options: recipients,
-            label: 'اختر المستلم',
-            title: 'المستلم',
+            label: 'Select Recipient',
+            title: 'Recipient',
             selectedItem: getSelectedItem(recipients, 'recipient'),
           };
         default:
@@ -105,8 +105,8 @@ const AddEditItemDataSection = ({
       const nationalitiesData = {
         identifier: 'nationality',
         options: nationalities,
-        label: 'اختر جنسية المستخدم',
-        title: 'الجنسية',
+        label: 'Select Nationality',
+        title: 'Nationality',
         selectedItem: getSelectedItem(nationalities, 'nationality'),
       };
 
@@ -122,19 +122,19 @@ const AddEditItemDataSection = ({
             {
               identifier: 'vehicle',
               options: vehicles,
-              label: 'اختر نوع الشاحنة',
-              title: 'الشاحنة',
+              label: 'Select Truck Type',
+              title: 'Truck',
               selectedItem: getSelectedItem(vehicles, 'vehicle'),
             },
             {
               ...nationalitiesData,
-              label: 'اختر جنسية السائق',
+              label: 'Select Driver Nationality',
             },
             {
               identifier: 'language',
               options: languages,
-              label: 'اختر اللغة',
-              title: 'اللغة',
+              label: 'Select Language',
+              title: 'Language',
               selectedItem: getSelectedItem(languages, 'language'),
             },
           ];

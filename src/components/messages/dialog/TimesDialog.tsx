@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const times = ['6 ساعات', '12 ساعة', '24 ساعة'];
+const times = ['6 Hours', '12 Hours', '24 Hours'];
 
 const sharedStyles = ['border-r-[#864D13] border-[#FCF2E9]', 'border-r-primary border-[#F2F2F2]'];
 
@@ -24,9 +24,8 @@ const borderStyles = [
 
 const getStyles = (index: number, isSelected: boolean) => {
   const { selected, unselected } = borderStyles[index];
-  return `absolute inset-0 rounded-full border-8 transition-all duration-200 ${
-    isSelected ? selected : unselected
-  }`;
+  return `absolute inset-0 rounded-full border-8 transition-all duration-200 ${isSelected ? selected : unselected
+    }`;
 };
 
 const TimesDialog = () => {
@@ -37,9 +36,8 @@ const TimesDialog = () => {
       {times.map((time, index) => (
         <div
           key={index}
-          className={`col-span-1 p-4 rounded-xl transition-all duration-200 ${
-            selectedTime === time ? 'bg-primary' : ''
-          }`}
+          className={`col-span-1 p-4 rounded-xl transition-all duration-200 ${selectedTime === time ? 'bg-primary' : ''
+            }`}
           onClick={() => setSelectedTime(time)}
         >
           <div className='flex items-center justify-center w-24 h-24 relative text-primary'>
@@ -50,9 +48,8 @@ const TimesDialog = () => {
               }}
             ></div>
             <span
-              className={`text-sm transition-all duration-200 ${
-                selectedTime === time ? 'text-[#FCFCFC]' : ''
-              }`}
+              className={`text-sm transition-all duration-200 ${selectedTime === time ? 'text-[#FCFCFC]' : ''
+                }`}
             >
               {time}
             </span>

@@ -4,7 +4,7 @@ import { getShipmentStatusLabel } from '../../lib/utils';
 
 const ReturnedShipments = () => {
   const returnedShipments = shipments.filter(
-    (shipment) => getShipmentStatusLabel(shipment.status) === 'مرتجعة',
+    (shipment) => getShipmentStatusLabel(shipment.status) === 'Returned',
   );
 
   return <ShipmentsPage shipments={returnedShipments} />;

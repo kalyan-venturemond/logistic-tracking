@@ -30,7 +30,7 @@ const MessagesHistoryBody = ({
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      toast.success('تم إرسال الرسالة بنجاح');
+      toast.success('Message sent successfully');
     }, 2000);
   };
 
@@ -45,7 +45,7 @@ const MessagesHistoryBody = ({
       )}
       <div className='w-full lg:ps-16 py-2'>
         <div className='w-full flex justify-between items-center mb-4'>
-          <span className='text-[#333333] text-base'>إرسال إلى:</span>
+          <span className='text-[#333333] text-base'>Send to:</span>
           <button
             type='button'
             onClick={() => {
@@ -53,22 +53,21 @@ const MessagesHistoryBody = ({
             }}
             className='text-primary font-Rubik text-sm underline'
           >
-            تعديل
+            Edit
           </button>
         </div>
         {selectedMessage && (
           <h1 className='overflow-hidden text-ellipsis whitespace-nowrap font-Rubik text-sm text-[#666666]'>
-            {selectedMessage.drivers?.map((driver: Driver) => driver?.name).join('، ')}
+            {selectedMessage.drivers?.map((driver: Driver) => driver?.name).join(', ')}
           </h1>
         )}
         {selectedCategory === 'repeated' && (
           <div
-            className={`flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-3 sm:gap-0 ${
-              isChecked ? 'bg-[#67CB7B] text-[#FCFCFC]' : 'bg-[#CCC] text-[#666666]'
-            } p-2 font-Rubik text-sm mt-4`}
+            className={`flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-3 sm:gap-0 ${isChecked ? 'bg-[#67CB7B] text-[#FCFCFC]' : 'bg-[#CCC] text-[#666666]'
+              } p-2 font-Rubik text-sm mt-4`}
           >
-            <span>رسالة كل 6 ساعات لمدة أسبوع</span>
-            <span>باقٍ على الانتهاء: 3 أيام و19 ساعة</span>
+            <span>Message every 6 hours for a week</span>
+            <span>Time remaining: 3 days and 19 hours</span>
             <CustomSwitchComponent
               checked={isChecked}
               onChange={() => setIsChecked(!isChecked)}
@@ -96,13 +95,12 @@ const MessagesHistoryBody = ({
         <div>
           <input
             type='text'
-            placeholder='أدخل نص الرسالة'
+            placeholder='Enter message text'
             className='w-full p-2 border-none rounded-lg outline-none font-Rubik'
           />
           <div
-            className={`mt-6 flex justify-end items-center ${
-              selectedCategory === 'repeated' && 'gap-4'
-            }`}
+            className={`mt-6 flex justify-end items-center ${selectedCategory === 'repeated' && 'gap-4'
+              }`}
           >
             {selectedCategory === 'repeated' && (
               <button

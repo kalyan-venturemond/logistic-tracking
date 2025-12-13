@@ -10,7 +10,7 @@ const Login = () => {
 
   const { handleSubmit, isLoading } = useFormSubmission({
     redirectPath: '/dashboard',
-    successMessage: 'تم تسجيل الدخول بنجاح',
+    successMessage: 'Login successful',
   });
 
   return (
@@ -28,7 +28,7 @@ const Login = () => {
             className='w-24 h-24'
           />
         </div>
-        <h1 className='my-6 text-center font-medium text-xl'>الدخول للحساب</h1>
+        <h1 className='my-6 text-center font-medium text-xl'>Login to Account</h1>
         <form
           onSubmit={handleSubmit}
           className='flex flex-col items-start gap-1'
@@ -37,44 +37,42 @@ const Login = () => {
             htmlFor='userName'
             className='text-[#333333] text-sm'
           >
-            اسم المستخدم
+            Username
           </label>
           <div className='relative w-full mb-6'>
             <input
               id='userName'
-              dir='rtl'
               className='border border-gray-200 w-full rounded-md py-2 ps-10 focus:outline-none font-Rubik'
-              placeholder='أدخل اسم المستخدم'
+              placeholder='Enter username'
             />
             <CgProfile
               size={20}
               color='#666666'
-              className='absolute right-3 top-1/2 transform -translate-y-1/2 '
+              className='absolute left-3 top-1/2 transform -translate-y-1/2 '
             />
           </div>
           <label
             htmlFor='password'
             className='text-[#333333] text-sm'
           >
-            كلمة المرور
+            Password
           </label>
           <div className='relative w-full mb-4'>
             <input
               id='password'
               type={isPasswordVisible ? 'text' : 'password'}
-              dir='rtl'
               className='border border-gray-200 w-full rounded-md py-2 ps-10 focus:outline-none font-Rubik'
-              placeholder='أدخل كلمة المرور'
+              placeholder='Enter password'
             />
             <CiLock
               size={20}
               color='#666666'
-              className='absolute right-3 top-1/2 transform -translate-y-1/2'
+              className='absolute left-3 top-1/2 transform -translate-y-1/2'
             />
             <button
               type='button'
               onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-              className='absolute left-4 top-1/2 transform -translate-y-1/2'
+              className='absolute right-4 top-1/2 transform -translate-y-1/2'
               aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
             >
               {isPasswordVisible ? (
@@ -91,13 +89,13 @@ const Login = () => {
             </button>
           </div>
           <span className='font-Rubik text-[#333333] text-sm'>
-            هذه نسخة تجريبية، فقط قم بالضغط على زر تسجيل الدخول
+            This is a demo version, just click Login.
           </span>
           <button
             type='submit'
             className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-primary rounded-lg mt-4'
           >
-            تسجيل الدخول
+            Login
           </button>
         </form>
       </div>

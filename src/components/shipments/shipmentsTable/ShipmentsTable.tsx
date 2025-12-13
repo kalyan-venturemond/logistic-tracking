@@ -14,15 +14,15 @@ import { usePagination } from '../../../hooks/usePagination';
 import { Shipment } from '../../../types/shipments';
 
 const columnsToFilter: { key: string; label: string }[] = [
-  { key: 'admin', label: 'المستخدم' },
-  { key: 'shipper', label: 'المرسل' },
-  { key: 'shipperBranch', label: 'فرع المرسل' },
-  { key: 'recipient', label: 'المستلم' },
-  { key: 'driver', label: 'السائق' },
-  { key: 'pickupCity', label: 'المصدر' },
-  { key: 'dropOffCity', label: 'الوجهة' },
-  { key: 'date', label: 'تاريخ التحميل' },
-  { key: 'status', label: 'حالة الشحنة' },
+  { key: 'admin', label: 'User' },
+  { key: 'shipper', label: 'Shipper' },
+  { key: 'shipperBranch', label: 'Shipper Branch' },
+  { key: 'recipient', label: 'Recipient' },
+  { key: 'driver', label: 'Driver' },
+  { key: 'pickupCity', label: 'Origin' },
+  { key: 'dropOffCity', label: 'Destination' },
+  { key: 'date', label: 'Pickup Date' },
+  { key: 'status', label: 'Status' },
 ];
 
 const initialFilters: any = {};
@@ -30,16 +30,16 @@ const initialFilters: any = {};
 columnsToFilter.forEach((col) => (initialFilters[col.key] = []));
 
 const tableHeading = [
-  { label: 'رقم الشحنة', key: 'id' },
-  { label: 'السائق', key: 'driver' },
-  { label: 'المرسل', key: 'shipper' },
-  { label: 'فرع المرسل', key: 'shipperBranch' },
-  { label: 'المستلم', key: 'recipient' },
-  { label: 'المستخدم', key: 'admin' },
-  { label: 'المصدر', key: 'pickupCity' },
-  { label: 'الوجهة', key: 'dropOffCity' },
-  { label: 'تاريخ التحميل', key: 'date' },
-  { label: 'حالة الشحنة', key: 'status' },
+  { label: 'Tracking No.', key: 'id' },
+  { label: 'Driver', key: 'driver' },
+  { label: 'Shipper', key: 'shipper' },
+  { label: 'Shipper Branch', key: 'shipperBranch' },
+  { label: 'Recipient', key: 'recipient' },
+  { label: 'User', key: 'admin' },
+  { label: 'Origin', key: 'pickupCity' },
+  { label: 'Destination', key: 'dropOffCity' },
+  { label: 'Pickup Date', key: 'date' },
+  { label: 'Status', key: 'status' },
 ];
 
 const ShipmentsTable = ({
@@ -63,8 +63,9 @@ const ShipmentsTable = ({
 
       if (key === 'status') {
         if (!filters[key] || filters[key].length === 0) return true;
-        const arabicStatus = getShipmentStatusLabel((shipment as Shipment)[key]);
-        return filters[key].includes(arabicStatus);
+        // Label is already English now
+        const statusLabel = getShipmentStatusLabel((shipment as Shipment)[key]);
+        return filters[key].includes(statusLabel);
       }
 
       return (
@@ -150,9 +151,8 @@ const ShipmentsTable = ({
                   className={tableRowStyles + ' relative'}
                 >
                   <div
-                    className={`flex items-center gap-1 ${
-                      index === tableHeading.length - 1 && 'ms-4'
-                    }`}
+                    className={`flex items-center gap-1 ${index === tableHeading.length - 1 && 'ms-4'
+                      }`}
                   >
                     {col.label}
 
@@ -194,7 +194,7 @@ const ShipmentsTable = ({
                               [col.key]: false,
                             }))
                           }
-                          placeholder={`ابحث عن ${col.label}`}
+                          placeholder={`Search for ${col.label}`}
                         />
                       </div>
                     )}

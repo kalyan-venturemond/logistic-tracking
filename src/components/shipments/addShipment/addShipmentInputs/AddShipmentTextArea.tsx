@@ -7,7 +7,7 @@ const AddShipmentTextArea = ({
   onChange,
   page,
   existingNotes,
-  placeholder = 'يمكنك هنا إضافة ملاحظات يجب أن ينتبه لها السائق',
+  placeholder = 'You can add notes here for the driver to pay attention to',
 }: {
   name?: string | undefined;
   value: string;
@@ -18,21 +18,21 @@ const AddShipmentTextArea = ({
 }) => {
   const [isNotesAreaVisible, setIsNotesAreaVisible] = useState(false);
   const getButtonLabel = () => {
-    if (page === 'addShipper') return 'أضف وصف للمنشأة';
+    if (page === 'addShipper') return 'Add Facility Description';
     else if (page === 'editShipper') {
       if (existingNotes) {
-        return 'تعديل وصف المنشأة';
+        return 'Edit Facility Description';
       }
-      return 'أضف وصف للمنشأة';
-    } else if (page === 'editShipment' && existingNotes) return 'تعديل الملاحظات';
-    else return 'إضافة ملاحظات';
+      return 'Add Facility Description';
+    } else if (page === 'editShipment' && existingNotes) return 'Edit Notes';
+    else return 'Add Notes';
   };
 
   return (
     <>
       {isNotesAreaVisible ? (
         <div className='w-full flex flex-col items-start mb-12'>
-          <span>{page === 'addShipper' ? 'وصف المنشأة' : 'ملاحظات'}</span>
+          <span>{page === 'addShipper' ? 'Facility Description' : 'Notes'}</span>
           <textarea
             name={name}
             value={value}
@@ -46,7 +46,7 @@ const AddShipmentTextArea = ({
               onClick={() => setIsNotesAreaVisible(false)}
               className='col-span-1 bg-primary text-[#FCFCFC] border border-primary p-2 rounded-lg'
             >
-              إخفاء
+              Hide
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { getRangeDates } from '../lib/utils';
 
 const shipmentsStatus = [
   {
-    status: 'تم التوصيل',
+    status: 'Delivered',
     count: '48',
     icon: (
       <div className='p-2 rounded-full bg-[#999999] group-hover:bg-[#4D4D4D]'>
@@ -26,7 +26,7 @@ const shipmentsStatus = [
     styles: 'hover:bg-[#666666] text-[#333333] hover:text-white',
   },
   {
-    status: 'شحنات متأخرة',
+    status: 'Delayed Shipments',
     count: '26',
     icon: (
       <div className='p-2 rounded-full bg-[#CA8B02] group-hover:bg-[#986801]'>
@@ -40,7 +40,7 @@ const shipmentsStatus = [
     styles: 'hover:bg-[#CA8B02] text-[#CA8B02] font-bold hover:text-white',
   },
   {
-    status: 'تنبيهات السائقين',
+    status: 'Driver Alerts',
     count: '12',
     icon: (
       <div className='p-2 rounded-full bg-primary group-hover:bg-[#864D13]'>
@@ -57,7 +57,7 @@ const shipmentsStatus = [
 
 function formatDate(date: Date) {
   if (!date) return '';
-  return date.toLocaleDateString('ar-EG');
+  return date.toLocaleDateString('en-US');
 }
 
 function getLineChartData(range: string) {
@@ -66,27 +66,27 @@ function getLineChartData(range: string) {
 
   switch (range) {
     case 'week':
-      labels = ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+      labels = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
       data = [20, 40, 60, 80, 40, 60, 20];
       break;
     case 'month':
-      labels = ['الأسبوع 1', 'الأسبوع 2', 'الأسبوع 3', 'الأسبوع 4', 'الأسبوع 5'];
+      labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
       data = [300, 400, 350, 450, 400];
       break;
     case 'year':
       labels = [
-        'يناير',
-        'فبراير',
-        'مارس',
-        'أبريل',
-        'مايو',
-        'يونيو',
-        'يوليو',
-        'أغسطس',
-        'سبتمبر',
-        'أكتوبر',
-        'نوفمبر',
-        'ديسمبر',
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
       data = [1200, 1500, 1300, 1600, 1400, 1700, 1500, 1800, 1600, 1900, 1700, 2000];
       break;
@@ -143,34 +143,34 @@ function getHorizontalChartData(range: string) {
   switch (range) {
     case 'week':
       series = [
-        { name: 'مكتملة', data: [90, 40, 55, 85, 50] },
-        { name: 'تم التوصيل', data: [12, 5, 8, 10, 5] },
-        { name: 'متأخرة', data: [15, 3, 7, 10, 5] },
-        { name: 'ملغية', data: [20, 8, 12, 15, 5] },
-        { name: 'مرتجعة', data: [15, 5, 8, 12, 5] },
-        { name: 'قيد الشحن', data: [10, 4, 6, 8, 7] },
+        { name: 'Completed', data: [90, 40, 55, 85, 50] },
+        { name: 'Delivered', data: [12, 5, 8, 10, 5] },
+        { name: 'Delayed', data: [15, 3, 7, 10, 5] },
+        { name: 'Canceled', data: [20, 8, 12, 15, 5] },
+        { name: 'Returned', data: [15, 5, 8, 12, 5] },
+        { name: 'In Transit', data: [10, 4, 6, 8, 7] },
       ];
       break;
 
     case 'month':
       series = [
-        { name: 'مكتملة', data: [520, 280, 350, 450, 300] },
-        { name: 'تم التوصيل', data: [80, 35, 55, 70, 60] },
-        { name: 'متأخرة', data: [120, 50, 75, 95, 60] },
-        { name: 'ملغية', data: [180, 70, 110, 150, 90] },
-        { name: 'مرتجعة', data: [85, 30, 50, 75, 60] },
-        { name: 'قيد الشحن', data: [55, 20, 35, 50, 40] },
+        { name: 'Completed', data: [520, 280, 350, 450, 300] },
+        { name: 'Delivered', data: [80, 35, 55, 70, 60] },
+        { name: 'Delayed', data: [120, 50, 75, 95, 60] },
+        { name: 'Canceled', data: [180, 70, 110, 150, 90] },
+        { name: 'Returned', data: [85, 30, 50, 75, 60] },
+        { name: 'In Transit', data: [55, 20, 35, 50, 40] },
       ];
       break;
 
     case 'year':
       series = [
-        { name: 'مكتملة', data: [5200, 2800, 3500, 4500, 3200] },
-        { name: 'تم التوصيل', data: [850, 400, 550, 700, 500] },
-        { name: 'متأخرة', data: [900, 350, 550, 750, 450] },
-        { name: 'ملغية', data: [1350, 500, 800, 1100, 750] },
-        { name: 'مرتجعة', data: [850, 350, 550, 800, 450] },
-        { name: 'قيد الشحن', data: [450, 150, 300, 400, 200] },
+        { name: 'Completed', data: [5200, 2800, 3500, 4500, 3200] },
+        { name: 'Delivered', data: [850, 400, 550, 700, 500] },
+        { name: 'Delayed', data: [900, 350, 550, 750, 450] },
+        { name: 'Canceled', data: [1350, 500, 800, 1100, 750] },
+        { name: 'Returned', data: [850, 350, 550, 800, 450] },
+        { name: 'In Transit', data: [450, 150, 300, 400, 200] },
       ];
       break;
   }
@@ -199,26 +199,26 @@ const Dashboard = () => {
   }, []);
 
   const rangeOptions = [
-    { label: 'أسبوعي', value: 'week' },
-    { label: 'شهري', value: 'month' },
-    { label: 'سنوي', value: 'year' },
+    { label: 'Weekly', value: 'week' },
+    { label: 'Monthly', value: 'month' },
+    { label: 'Yearly', value: 'year' },
   ];
 
-  const getRangeArabicLabel = (range: string) => {
+  const getRangeLabel = (range: string) => {
     switch (range) {
       case 'week':
-        return 'أسبوعي';
+        return 'Weekly';
       case 'month':
-        return 'شهري';
+        return 'Monthly';
       case 'year':
-        return 'سنوي';
+        return 'Yearly';
     }
   };
 
   return (
     <div
       className='flex'
-      dir='rtl'
+    // dir='ltr' // Handled globally in App.tsx
     >
       <div className='px-4 lg:px-8 min-h-screen w-full'>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
@@ -231,7 +231,7 @@ const Dashboard = () => {
                 <div>
                   <h4 className='xs:text-lg text-xl sm:text-2xl font-bold mb-6'>{item?.status}</h4>
                   <h5 className='xs:text-base text-lg font-medium font-Rubik'>
-                    {item?.count} {item.status === 'تنبيهات السائقين' ? 'تنبيه نشط' : 'شحنة'}
+                    {item?.count} {item.status === 'Driver Alerts' ? 'Active Alert' : 'Shipment'}
                   </h5>
                 </div>
                 <button
@@ -245,19 +245,17 @@ const Dashboard = () => {
           ))}
         </div>
         <div className='flex flex-col lg:flex-row lg:justify-between items-start lg:items-center gap-6 lg:gap-0 my-10'>
-          <h1 className='xs:text-lg text-2xl font-bold text-[#333333]'>تقرير الشحنات</h1>{' '}
+          <h1 className='xs:text-lg text-2xl font-bold text-[#333333]'>Shipment Report</h1>{' '}
           <div
-            className={`flex items-center rounded-2xl border gap-6 md:gap-12 lg:gap-16 bg-[#F2F2F2] h-fit w-fit px-4 m-auto lg:m-0 max-w-full ${
-              selectedRange === 'week' ? 'ps-0' : selectedRange === 'year' ? 'pe-0' : ''
-            }`}
+            className={`flex items-center rounded-2xl border gap-6 md:gap-12 lg:gap-16 bg-[#F2F2F2] h-fit w-fit px-4 m-auto lg:m-0 max-w-full ${selectedRange === 'week' ? 'ps-0' : selectedRange === 'year' ? 'pe-0' : ''
+              }`}
           >
             {rangeOptions.map((item, index) => (
               <button
                 type='button'
                 key={index}
-                className={`font-Rubik transition-all duration-200 ${
-                  selectedRange === item.value && 'bg-primary text-white py-3 px-6 rounded-2xl'
-                }`}
+                className={`font-Rubik transition-all duration-200 ${selectedRange === item.value && 'bg-primary text-white py-3 px-6 rounded-2xl'
+                  }`}
                 onClick={() => handleButtonClick(item.value)}
               >
                 {item.label}
@@ -271,7 +269,7 @@ const Dashboard = () => {
               <div className='w-full flex justify-between items-center lg:mt-8'>
                 <div className='flex items-center gap-2'>
                   <span className='text-[#666666] xs:text-sm text-lg sm:text-xl text-nowrap font-Rubik'>
-                    مكتملة:
+                    Completed:
                   </span>
                   <span className='text-[#333333] xs:text-lg text-xl sm:text-3xl font-medium'>
                     {lineChartData?.sum}
@@ -279,22 +277,20 @@ const Dashboard = () => {
                 </div>
                 <div className='flex items-end text-nowrap gap-1'>
                   <span
-                    className={`${
-                      selectedRange === 'month' ? 'text-red-500' : 'text-green-500'
-                    } font-bold`}
+                    className={`${selectedRange === 'month' ? 'text-red-500' : 'text-green-500'
+                      } font-bold`}
                   >
                     {((lineChartData.sum / pieChartData.sum) * 100).toFixed(1)}%
                   </span>
                   <span className='text-[#DE7F20] text-sm font-Rubik bg-[#FCF2E9] px-3 py-1 rounded-md'>
-                    {' '}
+                    Last{' '}
                     <span>
                       {selectedRange === 'week'
-                        ? 'الأسبوع'
+                        ? 'Week'
                         : selectedRange === 'month'
-                        ? 'الشهر'
-                        : 'العام'}
-                    </span>{' '}
-                    الماضي
+                          ? 'Month'
+                          : 'Year'}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -303,17 +299,17 @@ const Dashboard = () => {
               {' '}
               <div className='bg-[rgb(231,146,51)]/10 border-2 border-orange-400 rounded-md px-3 py-1 flex items-center gap-2 font-Rubik'>
                 <LuCalendarClock color='#DD7E1F' />
-                الفترة:<span className='text-gray-600'>{formatDate(start)}</span>
-                <span>إلى</span> <span className='text-orange-600'>{formatDate(end)}</span>
+                Period: <span className='text-gray-600'>{formatDate(start)}</span>
+                <span>to</span> <span className='text-orange-600'>{formatDate(end)}</span>
               </div>{' '}
             </div>
             <LineChartComponent data={lineChartData} />
           </div>
           <div className='col-span-1 shadow-md rounded-3xl border'>
             <div className='flex items-center justify-between gap-2 my-12 mx-6'>
-              <h1 className='text-xl font-medium text-[#333333]'>كل الشحنات</h1>
+              <h1 className='text-xl font-medium text-[#333333]'>All Shipments</h1>
               <span className='xs:text-xs text-base text-[#DE7F20] bg-[#FCF2E9] px-3 py-1 rounded-md font-Rubik'>
-                {getRangeArabicLabel(selectedRange)}
+                {getRangeLabel(selectedRange)}
               </span>
             </div>
             <PieChart
@@ -323,18 +319,17 @@ const Dashboard = () => {
           </div>
         </div>
         <div
-          className={`my-8 shadow-md rounded-3xl border overflow-hidden ${
-            isSidebarOpen && 'flex flex-col'
-          }`}
+          className={`my-8 shadow-md rounded-3xl border overflow-hidden ${isSidebarOpen && 'flex flex-col'
+            }`}
         >
           <div className='flex justify-between items-center p-4'>
             <div className='flex items-center gap-2'>
-              <span className='text-lg text-[#333333] font-medium'>إجمالي شحنات الفروع:</span>
+              <span className='text-lg text-[#333333] font-medium'>Total Branch Shipments:</span>
               <span className='text-lg'>{horizontalChartData?.sum}</span>
             </div>
             <div className='flex flex-col items-center gap-2'>
               <span className='text-sm text-[#DE7F20] bg-[#FCF2E9] px-3 py-1 rounded-md font-bold'>
-                {getRangeArabicLabel(selectedRange)}
+                {getRangeLabel(selectedRange)}
               </span>
             </div>
           </div>

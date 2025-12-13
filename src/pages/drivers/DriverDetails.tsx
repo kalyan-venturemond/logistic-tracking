@@ -24,21 +24,21 @@ const DriverDetails = () => {
   const driverShipments = shipments.filter((shipment) => shipment?.driverId === Number(driverId));
 
   const { menuActions } = useMenuActions([
-    { editLabel: 'تعديل البيانات', editPath: `/drivers/edit/${driverId}` },
-    { deleteLabel: 'حذف البيانات', deletePath: `/drivers/delete/${driverId}` },
+    { editLabel: 'Edit Data', editPath: `/drivers/edit/${driverId}` },
+    { deleteLabel: 'Delete Data', deletePath: `/drivers/delete/${driverId}` },
   ]);
 
   const licenseInfo = [
     {
-      label: 'تاريخ الإصدار',
+      label: 'Issue Date',
       value: selectedDriver?.licenseIssueDate,
     },
     {
-      label: 'تاريخ الانتهاء',
+      label: 'Expiration Date',
       value: selectedDriver?.licenseExpirationDate,
     },
     {
-      label: 'وجه أمامي',
+      label: 'Front Side',
       value: (
         <ImageModal
           image={selectedDriver?.licenseImage}
@@ -48,7 +48,7 @@ const DriverDetails = () => {
       ),
     },
     {
-      label: 'وجه خلفي',
+      label: 'Back Side',
       value: (
         <ImageModal
           image={licenseBackSideImage}
@@ -68,43 +68,43 @@ const DriverDetails = () => {
   const moreInfoData = [
     {
       image: driverIdCardImage,
-      label: 'رقم الهوية',
+      label: 'ID Number',
       value: selectedDriver?.identityNumber,
     },
     {
       image: locationIcon,
-      label: 'الفرع',
-      value: 'الصناعية الثالثة',
+      label: 'Branch',
+      value: 'Third Industrial City',
     },
     {
       image: callIcon,
-      label: 'رقم التواصل',
+      label: 'Phone No.',
       value: selectedDriver?.phoneNumber,
     },
     {
       image: flagIcon,
-      label: 'الجنسية',
+      label: 'Nationality',
       value: selectedDriver?.nationality,
     },
     {
       image: truckIcon,
-      label: 'نوع الشاحنة',
+      label: 'Truck Type',
       value: selectedDriver?.vehicle,
     },
     {
       image: callIcon,
-      label: 'رقم الشاحنة',
+      label: 'Truck Number',
       value: selectedDriver?.vehicleNumber,
     },
   ];
 
-  const {pieChartData, filteredShipments} = useChartData(driverShipments, selectedOption);
+  const { pieChartData, filteredShipments } = useChartData(driverShipments, selectedOption);
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
       <div className='col-span-1 lg:col-span-2 h-fit shadow-lg rounded-3xl px-8 py-4 w-full overflow-x-auto'>
         <div className='w-full flex justify-between items-center mb-6'>
-          <h1 className='xs:text-lg text-xl font-bold'>قائمة الشحنات</h1>
+          <h1 className='xs:text-lg text-xl font-bold'>Shipments List</h1>
           <SelectMenu
             options={selectMenuOptions}
             selectedItem={selectedOption}
@@ -123,13 +123,12 @@ const DriverDetails = () => {
         </div>
         <hr className='border-0 border-t-2 border-[#999999] mx-8' />
         <div
-          className={`mt-8 shadow-sm rounded-2xl px-8 py-4 border-[3px] ${
-            selectedDriver?.licenseStatus === 'active'
+          className={`mt-8 shadow-sm rounded-2xl px-8 py-4 border-[3px] ${selectedDriver?.licenseStatus === 'active'
               ? 'border-green-700'
               : 'border-[#CD2026] bg-[#FCE9EA]'
-          }  font-Rubik w-[90%] md:w-[80%] m-auto`}
+            }  font-Rubik w-[90%] md:w-[80%] m-auto`}
         >
-          <h1 className='font-bold text-center text-xl'>بيانات الرخصة</h1>
+          <h1 className='font-bold text-center text-xl'>License Information</h1>
           <div className='w-full mt-8'>
             {licenseInfo.map((item, index) => (
               <div
@@ -144,11 +143,10 @@ const DriverDetails = () => {
               </div>
             ))}
             <h1
-              className={`'font-bold text-xl ${
-                selectedDriver?.licenseStatus === 'active' ? 'text-[#1A1A1A]' : 'text-[#CD2026]'
-              } text-center mt-8`}
+              className={`'font-bold text-xl ${selectedDriver?.licenseStatus === 'active' ? 'text-[#1A1A1A]' : 'text-[#CD2026]'
+                } text-center mt-8`}
             >
-              {selectedDriver?.licenseStatus === 'active' ? 'رخصة سارية' : 'رخصة منتهية'}
+              {selectedDriver?.licenseStatus === 'active' ? 'Valid License' : 'Expired License'}
             </h1>
           </div>
         </div>

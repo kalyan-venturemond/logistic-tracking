@@ -20,75 +20,75 @@ const Waybill = ({
 }) => {
   const driverDetails = [
     {
-      value: 'الاسم',
+      value: 'Name',
       label: driver.name,
     },
     {
-      value: 'رقم الهوية',
+      value: 'ID Number',
       label: driver.identityNumber,
     },
     {
-      value: 'رقم الجوال',
+      value: 'Mobile Number',
       label: driver.phoneNumber,
     },
   ];
 
   const vehicleDetails = [
     {
-      value: 'نوع الشاحنة',
+      value: 'Truck Type',
       label: driver?.vehicle,
     },
     {
-      value: 'رقم الشاحنة',
+      value: 'Truck Number',
       label: driver.vehicleNumber,
     },
   ];
 
   const recipientDetails = [
     {
-      value: 'الاسم',
+      value: 'Name',
       label: recipient.name,
     },
     {
-      value: 'بيانات التواصل',
+      value: 'Contact Info',
       label: recipient.primaryPhoneNumber,
     },
     {
-      value: 'العنوان',
+      value: 'Address',
       label: recipient.address.slice(0, 25),
     },
   ];
 
   const shipperDetails = [
     {
-      value: 'الاسم',
+      value: 'Name',
       label: shipper.name,
     },
     {
-      value: 'بيانات التواصل',
+      value: 'Contact Info',
       label: shipper.primaryPhoneNumber,
     },
     {
-      value: 'الفرع',
+      value: 'Branch',
       label: shipper.address,
     },
   ];
 
   const shipmentDetails = [
     {
-      value: 'من',
+      value: 'From',
       label: shipment.pickupCity,
     },
     {
-      value: 'إلى',
+      value: 'To',
       label: shipment.dropOffCity,
     },
     {
-      value: 'المحتويات',
+      value: 'Contents',
       label: shipment.content,
     },
     {
-      value: 'الوزن',
+      value: 'Weight',
       label: shipment.weight,
     },
   ];
@@ -96,7 +96,7 @@ const Waybill = ({
   return (
     <div
       id='waybill-printable'
-      className='m-0 bg-[#fff] rounded-2xl p-4 font-Rubik text-[#1a1a1a] text-right'
+      className='m-0 bg-[#fff] rounded-2xl p-4 font-Rubik text-[#1a1a1a] text-left'
     >
       <div className='flex xs:flex-col xs:items-center gap-4 md:gap-0 xs:text-center text-left justify-between'>
         <div className='font-light'>
@@ -115,43 +115,43 @@ const Waybill = ({
           className='w-24 mx-auto'
         />
         <div className='font-Almarai xs:text-center text-right'>
-          <div className='font-bold'>مؤسسة الجيد للنقليات</div>
+          <div className='font-bold'>Al Jeed Transportation</div>
           <div>
-            فرع <span>جدة</span>
+            Branch <span>Jeddah</span>
           </div>
           <div>
-            س ت: <span>4030172574</span>
+            C.R: <span>4030172574</span>
           </div>
           <div className='mt-2 px-2 py-1 rounded-lg bg-primary text-[#FCFCFC] w-fit mx-auto hidden sm:block'>
-            <span>رقم الشحنة: </span> <span>{shipment.trackingNumber}</span>
+            <span>Shipment Number: </span> <span>{shipment.trackingNumber}</span>
           </div>
         </div>
       </div>
       <hr className='border-0 border-t-2 border-solid border-[#666] mt-2 mb-6' />
-      <div className='text-center font-Almarai font-bold text-lg mb-4'>كشف تحميل شاحنة</div>
+      <div className='text-center font-Almarai font-bold text-lg mb-4'>Truck Loading Manifest</div>
 
       <div className=''>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6'>
           <div className='col-span-1'>
-            <div className='font-Almarai font-bold text-lg mb-1'>بيانات الشاحنة</div>
+            <div className='font-Almarai font-bold text-lg mb-1'>Truck Details</div>
             {vehicleDetails.map(
               (row: { value: string; label?: string | undefined }, index: number) => (
                 <div key={index}>
                   <WaybillInfoRow
-                    label={row.label || '-'}
-                    value={row.value}
+                    label={row.value}
+                    value={row.label || '-'}
                   />
                 </div>
               ),
             )}
           </div>
           <div className='col-span-1'>
-            <div className='font-Almarai font-bold text-lg mb-1'>بيانات السائق</div>
+            <div className='font-Almarai font-bold text-lg mb-1'>Driver Details</div>
             {driverDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
-                  label={row.label}
-                  value={row.value}
+                  label={row.value}
+                  value={row.label}
                 />
               </div>
             ))}
@@ -159,23 +159,23 @@ const Waybill = ({
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 bg-[#F2F2F2] p-2 rounded-lg print-bg-gray'>
           <div className='col-span-1'>
-            <div className='font-Almarai font-bold text-lg mb-1'>بيانات المستلم</div>
+            <div className='font-Almarai font-bold text-lg mb-1'>Recipient Details</div>
             {recipientDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
-                  label={row.label}
-                  value={row.value}
+                  label={row.value}
+                  value={row.label}
                 />
               </div>
             ))}
           </div>
           <div className='col-span-1'>
-            <div className='font-Almarai font-bold text-lg mb-1'>بيانات المرسل</div>
+            <div className='font-Almarai font-bold text-lg mb-1'>Shipper Details</div>
             {shipperDetails.map((row: { value: string; label: string }, index: number) => (
               <div key={index}>
                 <WaybillInfoRow
-                  label={row.label}
-                  value={row.value}
+                  label={row.value}
+                  value={row.label}
                 />
               </div>
             ))}
@@ -185,40 +185,40 @@ const Waybill = ({
 
       <div className='grid grid-cols-2'>
         <div className='col-span-2'>
-          <div className='font-Almarai font-bold text-lg mb-1'>تفاصيل الشحنة</div>
+          <div className='font-Almarai font-bold text-lg mb-1'>Shipment Details</div>
           {shipmentDetails.map((row: any, index: number) => (
             <div key={index}>
               <WaybillInfoRow
-                label={row.label}
-                value={row.value}
+                label={row.value}
+                value={row.label}
               />
             </div>
           ))}
         </div>
       </div>
       <div className='mt-6 bg-[#FCF2E9] border-2 border-[#ffb678] rounded-lg p-2 text-sm'>
-        <div>:ملاحظات</div>
+        <div>Notes:</div>
         {[
-          'يرجى التأكد من الشراع الثقيل',
-          'يرجى تسليم الشحنة بموعد 2025/1/20',
-          'تأكد من إرجاع جهاز الحرارة',
+          'Please ensure heavy tarp',
+          'Please deliver shipment on date 2025/1/20',
+          'Ensure returning the thermometer device',
         ].map((item, index) => (
-          <div key={index}>{item} -</div>
+          <div key={index}>- {item}</div>
         ))}
       </div>
 
       <hr className='border-0 border-t-2 border-solid border-[#666] my-6' />
-      <div className='text-center font-Almarai font-semibold text-lg'>إقرار سائق</div>
+      <div className='text-center font-Almarai font-semibold text-lg'>Driver Declaration</div>
       <div className='text-sm text-[1A1A1A] mt-2'>
-        أتعهد أنا السائق الموضح اسمي ورقم سيارتي أعلاه بأنني مستخدم عن كافة الأضرار التي تحدث
-        للشحنة. كما أتعهد بتفقد الشحنة أثناء سيري، وأنني مستخدم عن إبلاغ المؤسسة بأسرع وسيلة ممكنة
-        في حالة حدوث أي طارئ، وهذا إقرار مني بذلك.{' '}
+        I, the driver named above, pledge that I am responsible for all damages to the shipment.
+        I also pledge to inspect the shipment during my journey, and I am responsible for informing
+        the establishment as soon as possible in case of any emergency, and this is my declaration.{' '}
       </div>
 
       <div className='w-full grid grid-cols-3 mt-6'>
         <div className='col-span-1'>
           <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>
-            توقيع الموظف
+            Employee Signature
           </p>
           <hr className='border-0 border-t-2 border-dashed border-[#666] mt-6' />
         </div>
@@ -235,7 +235,7 @@ const Waybill = ({
         </div>
         <div className='col-span-1'>
           <p className='text-center whitespace-nowrap overflow-hidden text-ellipsis'>
-            توقيع السائق
+            Driver Signature
           </p>
           <hr className='border-0 border-t-2 border-dashed border-[#666] mt-6' />
         </div>

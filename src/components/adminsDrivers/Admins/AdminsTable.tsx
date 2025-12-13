@@ -7,13 +7,13 @@ import { Admin } from '../../../types/admins';
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
-  { key: 'firstName', label: 'الاسم الأول' },
-  { key: 'lastName', label: 'الاسم الأخير' },
-  { key: 'userName', label: 'اسم المستخدم' },
-  { key: 'email', label: 'البريد الالكتروني' },
-  { key: 'phoneNumber', label: 'رقم التواصل' },
-  { key: 'nationality', label: 'الجنسية' },
-  { key: 'status', label: 'الحالة' },
+  { key: 'firstName', label: 'First Name' },
+  { key: 'lastName', label: 'Last Name' },
+  { key: 'userName', label: 'Username' },
+  { key: 'email', label: 'Email' },
+  { key: 'phoneNumber', label: 'Phone No.' },
+  { key: 'nationality', label: 'Nationality' },
+  { key: 'status', label: 'Status' },
 ];
 const AdminsTable = ({
   selectedStatus,
@@ -53,9 +53,8 @@ const AdminsTable = ({
                   className={tableRowStyles}
                 >
                   <div
-                    className={`flex items-center gap-1 ${
-                      index === tableHeading.length - 1 && 'ms-16'
-                    }`}
+                    className={`flex items-center gap-1 ${index === tableHeading.length - 1 && 'ms-16'
+                      }`}
                   >
                     {col.label}
                   </div>
@@ -86,7 +85,7 @@ const AdminsTable = ({
                         item.status,
                       )}`}
                     >
-                      {item.status === 'available' ? 'متاح' : 'غير متاح'}
+                      {item.status === 'available' ? 'Available' : 'Unavailable'}
                     </span>
                   </td>
                 </tr>

@@ -20,32 +20,32 @@ const DeleteDriver = () => {
   const moreInfoData = [
     {
       image: driverIdCardImage,
-      label: 'رقم الهوية',
+      label: 'ID Number',
       value: selectedDriver?.identityNumber,
     },
     {
       image: locationIcon,
-      label: 'الفرع',
-      value: 'الصناعية الثالثة',
+      label: 'Branch',
+      value: 'Third Industrial City',
     },
     {
       image: callIcon,
-      label: 'رقم التواصل',
+      label: 'Phone No.',
       value: selectedDriver?.phoneNumber,
     },
     {
       image: flagIcon,
-      label: 'الجنسية',
+      label: 'Nationality',
       value: selectedDriver?.nationality,
     },
     {
       image: truckIcon,
-      label: 'نوع الشاحنة',
+      label: 'Truck Type',
       value: selectedDriver?.vehicle,
     },
     {
       image: callIcon,
-      label: 'رقم الشاحنة',
+      label: 'Truck Number',
       value: selectedDriver?.vehicleNumber,
     },
   ];

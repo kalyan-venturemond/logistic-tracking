@@ -13,17 +13,17 @@ export const formatDate = (dateString: string | null) => {
 
 export const getShipmentStatusStyles = (status: string) => {
   switch (status) {
-    case 'قيد الشحن':
+    case 'In Transit':
       return 'bg-[#B3E5BD] text-[#071309]';
-    case 'متأخرة':
+    case 'Delayed':
       return 'bg-[#FEDE9A] text-[#071309]';
-    case 'تم التوصيل':
+    case 'Delivered':
       return 'bg-[#E6E6E6] text-[#333333]';
-    case 'ملغية':
+    case 'Canceled':
       return 'bg-[#CD2026] text-[#F8D3D4]';
-    case 'مرتجعة':
+    case 'Returned':
       return 'bg-[#F8D3D4] text-[#CD2026]';
-    case 'مكتملة':
+    case 'Completed':
       return 'bg-[#2E853F] text-[#B3E5BD]'; // FCFCFC
     default:
       return 'bg-gray-300 text-[#071309]';
@@ -37,23 +37,24 @@ export const getAvailabilityStatusStyles = (status: string) => {
 export const getShipmentStatusLabel = (status: string) => {
   switch (status) {
     case 'shipping':
-      return 'قيد الشحن';
+      return 'In Transit';
     case 'delayed':
-      return 'متأخرة';
+      return 'Delayed';
     case 'delivered':
-      return 'تم التوصيل';
+      return 'Delivered';
     case 'canceled':
-      return 'ملغية';
+      return 'Canceled';
     case 'returned':
-      return 'مرتجعة';
+      return 'Returned';
     case 'completed':
-      return 'مكتملة';
+      return 'Completed';
     default:
-      return 'غير معروف';
+      return 'Unknown';
   }
 };
 
 export const arabicDateStringToISO = (dateStr: string) => {
+  // Keeping this for compatibility if bad data exists, but ideally unused.
   const months: { [key: string]: string } = {
     يناير: '01',
     فبراير: '02',
@@ -69,9 +70,11 @@ export const arabicDateStringToISO = (dateStr: string) => {
     ديسمبر: '12',
   };
   const parts = dateStr.split(' ');
-  if (parts.length !== 3) return '';
+  // Handle English dates too just in case
+  if (parts.length !== 3) return dateStr;
   const [day, monthAr, year] = parts;
   const month = months[monthAr];
+  if (!month) return dateStr; // Fallback
   return `${year}-${month}-${day.padStart(2, '0')}`;
 };
 
@@ -108,14 +111,14 @@ export const getRangeDates = (range: string): { start: Date; end: Date } => {
   return { start, end };
 };
 
-export const tableRowStyles = 'py-2 px-4 text-nowrap text-right';
+export const tableRowStyles = 'py-2 px-4 text-nowrap text-left';
 
-export const statusIcons:any = {
-  'قيد الشحن': ShippingShipmentIcon,
-  متأخرة: delayedShipmentIcon,
-  'تم التوصيل': deliveredShipmentIcon,
-  ملغية: CancelledShipmentIcon,
-  مرتجعة: returnedShipmentIcon,
-  مكتملة: completedShipmentIcon,
+export const statusIcons: any = {
+  'In Transit': ShippingShipmentIcon,
+  'Delayed': delayedShipmentIcon,
+  'Delivered': deliveredShipmentIcon,
+  'Canceled': CancelledShipmentIcon,
+  'Returned': returnedShipmentIcon,
+  'Completed': completedShipmentIcon,
 };
 

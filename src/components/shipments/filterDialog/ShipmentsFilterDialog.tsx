@@ -16,8 +16,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function ShipmentsFilterDialog() {
   const [open, setOpen] = React.useState(false);
-  type Branch = 'تبوك' | 'جدة' | 'جيزان' | 'الدمام' | 'الرياض';
-  const branches: Branch[] = ['تبوك', 'جدة', 'جيزان', 'الدمام', 'الرياض'];
+  type Branch = 'Tabuk' | 'Jeddah' | 'Jazan' | 'Dammam' | 'Riyadh';
+  const branches: Branch[] = ['Tabuk', 'Jeddah', 'Jazan', 'Dammam', 'Riyadh'];
   const [selectedBranches, setSelectedBranches] = React.useState<Branch[]>([]);
 
   const handleClose = () => {
@@ -42,22 +42,21 @@ export default function ShipmentsFilterDialog() {
           id='customized-dialog-title'
           className='text-[#333333] text-center !font-Almarai !text-2xl'
         >
-          تصفية النتائج
+          Filter Results
         </DialogTitle>
         <DialogContent
-          dir='rtl'
           dividers
         >
           <div className='grid grid-cols-2 gap-4 mb-6'>
             <div className='flex flex-col '>
-              <label htmlFor='source'>المصدر</label>
+              <label htmlFor='source'>Origin</label>
               <input
                 type='text'
                 className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary'
               />
             </div>
             <div className='flex flex-col '>
-              <label htmlFor='source'>الوجهة</label>
+              <label htmlFor='source'>Destination</label>
               <input
                 type='text'
                 className='p-2 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-1 focus:ring-primary'
@@ -68,18 +67,17 @@ export default function ShipmentsFilterDialog() {
             htmlFor='branches'
             className='text-[#333333] mb-3 inline-block'
           >
-            الفروع
+            Branches
           </label>
           <div className='flex items-center gap-4 font-Rubik'>
             {branches.map((branch, index) => (
               <button
                 type='button'
                 key={index}
-                className={`px-6 py-2 rounded-lg ${
-                  selectedBranches.includes(branch)
-                    ? 'bg-primary text-[#F2F2F2]'
-                    : 'bg-[#F2F2F2] text-[#666666]'
-                }`}
+                className={`px-6 py-2 rounded-lg ${selectedBranches.includes(branch)
+                  ? 'bg-primary text-[#F2F2F2]'
+                  : 'bg-[#F2F2F2] text-[#666666]'
+                  }`}
                 onClick={() => handleBranchToggle(branch)}
               >
                 {branch}
@@ -88,15 +86,14 @@ export default function ShipmentsFilterDialog() {
           </div>{' '}
         </DialogContent>
         <DialogActions className='w-full flex justify-end items-center'>
-          {['حذف', 'تطبيق'].map((item, index) => {
+          {['Delete', 'Apply'].map((item, index) => {
             return (
               <div key={index}>
                 <button
                   onClick={handleClose}
                   type='button'
-                  className={`py-1.5 px-8 rounded-lg border border-primary  ${
-                    index === 0 ? 'bg-[#F2F2F2] text-primary' : 'bg-primary text-[#F2F2F2]'
-                  }`}
+                  className={`py-1.5 px-8 rounded-lg border border-primary  ${index === 0 ? 'bg-[#F2F2F2] text-primary' : 'bg-primary text-[#F2F2F2]'
+                    }`}
                 >
                   {item}
                 </button>

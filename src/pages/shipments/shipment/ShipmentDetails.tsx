@@ -26,47 +26,47 @@ const ShipmentDetails = () => {
   );
 
   const { menuActions } = useMenuActions([
-    { editLabel: 'تعديل الشحنة', editPath: `/shipments/edit/${shipmentId}` },
-    { deleteLabel: 'حذف الشحنة', deletePath: `/shipments/delete/${shipmentId}` },
+    { editLabel: 'Edit Shipment', editPath: `/shipments/edit/${shipmentId}` },
+    { deleteLabel: 'Delete Shipment', deletePath: `/shipments/delete/${shipmentId}` },
   ]);
 
   const shipperData = [
-    { label: 'الاسم', value: selectedShipper?.name || '-' },
-    { label: 'العنوان', value: selectedShipper?.address || '-' },
-    { label: 'الفرع', value: selectedShipperBranch?.name || '-' },
+    { label: 'Name', value: selectedShipper?.name || '-' },
+    { label: 'Address', value: selectedShipper?.address || '-' },
+    { label: 'Branch', value: selectedShipperBranch?.name || '-' },
   ];
 
   const recipientData = [
-    { label: 'الاسم', value: selectedRecipient?.name || '-' },
-    { label: 'العنوان', value: selectedRecipient?.address || '-' },
-    { label: 'بيانات التواصل', value: selectedRecipient?.primaryPhoneNumber || '-' },
+    { label: 'Name', value: selectedRecipient?.name || '-' },
+    { label: 'Address', value: selectedRecipient?.address || '-' },
+    { label: 'Contact Info', value: selectedRecipient?.primaryPhoneNumber || '-' },
   ];
 
   const driverData = [
-    { label: 'الاسم', value: selectedDriver?.name || '-' },
-    { label: 'نوع الشاحنة', value: selectedDriver?.vehicle || '-' },
-    { label: 'رقم الشاحنة', value: selectedDriver?.vehicleNumber || '-' },
+    { label: 'Name', value: selectedDriver?.name || '-' },
+    { label: 'Truck Type', value: selectedDriver?.vehicle || '-' },
+    { label: 'Truck Number', value: selectedDriver?.vehicleNumber || '-' },
   ];
 
   const shipmentData = [
-    { label: 'من', value: selectedShipment?.pickupCity || '-' },
-    { label: 'إلى', value: selectedShipment?.dropOffCity || '-' },
-    { label: 'المحتويات', value: selectedShipment?.content || '-' },
-    { label: 'الوزن', value: selectedShipment?.weight + ' طن' || '-' },
+    { label: 'From', value: selectedShipment?.pickupCity || '-' },
+    { label: 'To', value: selectedShipment?.dropOffCity || '-' },
+    { label: 'Contents', value: selectedShipment?.content || '-' },
+    { label: 'Weight', value: selectedShipment?.weight + ' Ton' || '-' },
   ];
 
   const shipmentCost = [
     {
-      label: 'التكلفة الأساسية',
-      value: `${selectedShipment?.baseCost} ر.س`,
+      label: 'Base Cost',
+      value: `${selectedShipment?.baseCost} SAR`,
     },
     {
-      label: 'الزيادة ',
-      value: `${selectedShipment?.extraCost} ر.س`,
+      label: 'Extra Cost',
+      value: `${selectedShipment?.extraCost} SAR`,
     },
     {
-      label: 'الخصم',
-      value: `${selectedShipment?.deduct} ر.س`,
+      label: 'Discount',
+      value: `${selectedShipment?.deduct} SAR`,
     },
   ];
 
@@ -84,13 +84,12 @@ const ShipmentDetails = () => {
       <div className='border border-primary rounded-lg mx-4 bg-[#FCFCFC]'>
         <div className='grid xs:grid-cols-10 grid-cols-12 gap-8'>
           <div
-            className={`xs:col-span-10 col-span-12 ${
-              isSidebarOpen ? 'lg:col-span-8' : 'lg:col-span-9'
-            } px-6 py-8 relative`}
+            className={`xs:col-span-10 col-span-12 ${isSidebarOpen ? 'lg:col-span-8' : 'lg:col-span-9'
+              } px-6 py-8 relative`}
           >
             <div className='absolute -left-8 top-0 bottom-0 w-px bg-[#B3B3B3] hidden lg:block'></div>
             <div className='flex items-center justify-between'>
-              <h1 className='text-xl sm:text-2xl font-bold'>بيانات السائق</h1>
+              <h1 className='text-xl sm:text-2xl font-bold'>Driver Details</h1>
               <ActionsMenu
                 options={menuActions}
                 position='top-16 left-4'
@@ -102,33 +101,33 @@ const ShipmentDetails = () => {
             <hr className='border-0 border-t-2 border-dashed border-[#666666] my-12' />{' '}
             <div className='grid grid-cols-1 gap-8 lg:gap-0 lg:grid-cols-2 font-Rubik text-[#333333]'>
               <ShipmentDetailsInfoSection
-                title='بيانات المرسل'
+                title='Shipper Details'
                 data={shipperData}
               />
               <ShipmentDetailsInfoSection
-                title='بيانات المستلم'
+                title='Recipient Details'
                 data={recipientData}
               />
             </div>
             <hr className='border-0 border-t-2 border-dashed border-[#666666] my-12' />{' '}
             <div className='font-Rubik'>
               <ShipmentDetailsInfoSection
-                title='تفاصيل الشحنة'
+                title='Shipment Details'
                 data={shipmentData}
               />
               <div className='bg-[#F8F8F8] w-full rounded-lg py-4 px-3 flex flex-col items-start gap-2 font-Rubik text-[#333333] border border-[#CCC] mt-6 mb-12 xs:text-base text-lg font-medium'>
                 {[
-                  'ملاحظات:',
-                  'يرجى التأكد من الشراع الثقيل',
-                  'يرجى تسليم الشحنة بالموعد المحدد',
-                  'تأكد من إرجاع جهاز الحرارة',
+                  'Notes:',
+                  'Please ensure heavy tarp',
+                  'Please deliver shipment on time',
+                  'Ensure returning the thermometer device',
                 ].map((item, index) => (
                   <span key={index}>- {item}</span>
                 ))}
               </div>
               <div className='w-full p-6 bg-[#FCF2E9] rounded-lg'>
                 <h1 className='text-2xl text-center sm:text-start font-bold font-Almarai text-primary'>
-                  تكلفة الشحنة
+                  Shipment Cost
                 </h1>
                 <hr className='border-0 border-t-2 border-dashed border-[#B3B3B3] my-6' />{' '}
                 <div className='flex flex-col items-start gap-2 my-6 w-full font-Rubik text-[#333333] font-bold xs:text-sm text-lg'>
@@ -144,18 +143,18 @@ const ShipmentDetails = () => {
                 <hr className='border-0 border-t-2 border-dashed border-[#666666]' />{' '}
                 {selectedShipment && (
                   <div className='w-full flex justify-between items-center mt-6 font-Rubik text-[#333333] font-bold xs:text-base text-lg'>
-                    <span>الإجمالي</span>{' '}
+                    <span>Total</span>{' '}
                     <span className='xs:text-nowrap'>
                       {selectedShipment.baseCost +
                         selectedShipment.extraCost -
                         selectedShipment.deduct}{' '}
-                      ر.س
+                      SAR
                     </span>
                   </div>
                 )}
               </div>
               <div className='my-10 w-full flex flex-col gap-2 sm:flex-row sm:gap-1 justify-center items-center font-Rubik text-[#666666] text-xl sm:text-2xl'>
-                <span>المستخدم المستخدم:</span>
+                <span>User:</span>
                 <span>
                   {selectedAdmin?.firstName} {selectedAdmin?.lastName}
                 </span>
@@ -165,15 +164,14 @@ const ShipmentDetails = () => {
                 onClick={() => setIsDialogOpen(true)}
                 className='w-full text-center text-xl sm:text-2xl  rounded-lg py-3 text-[#FCFCFC] bg-primary'
               >
-                طباعة البوليصة
+                Print Waybill
               </button>
             </div>
           </div>
 
           <div
-            className={`xs:col-span-10 col-span-12 ${
-              isSidebarOpen ? 'lg:col-span-4' : 'lg:col-span-3'
-            }`}
+            className={`xs:col-span-10 col-span-12 ${isSidebarOpen ? 'lg:col-span-4' : 'lg:col-span-3'
+              }`}
           >
             <ShipmentHistory shipment={selectedShipment!} />
           </div>

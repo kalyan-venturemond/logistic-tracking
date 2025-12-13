@@ -27,7 +27,7 @@ const EditShipment = () => {
 
   const { formData, setFormData, handleChange, getTotalCost } = useShipment();
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم تعديل بيانات الشحنة بنجاح',
+    successMessage: 'Shipment data updated successfully',
     redirectPath: '/shipments',
   });
 
@@ -81,7 +81,7 @@ const EditShipment = () => {
       >
         <AddEditItemDataSection
           section='driver'
-          title='السائق'
+          title='Driver'
           inputs={driverSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -90,7 +90,7 @@ const EditShipment = () => {
 
         <AddEditItemDataSection
           section='shipment'
-          title='الشحنة'
+          title='Shipment'
           inputs={shipmentSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -109,7 +109,7 @@ const EditShipment = () => {
         <AddEditShipmentDataSection
           page='editShipment'
           section='shipper'
-          title='المرسِل'
+          title='Shipper'
           inputs={shipperSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -119,7 +119,7 @@ const EditShipment = () => {
         <AddEditShipmentDataSection
           page='editShipment'
           section='recipient'
-          title='المستلِم'
+          title='Recipient'
           inputs={recipientSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -143,7 +143,7 @@ const EditShipment = () => {
         />
         {/* <hr className='border-0 border-t-2 border-dashed border-[#666] my-12' /> */}
         <button className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'>
-          حفظ التعديلات
+          Save Changes
         </button>
       </form>
     </>

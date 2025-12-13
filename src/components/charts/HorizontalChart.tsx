@@ -71,7 +71,7 @@ const HorizontalChart = ({
       colors: ['#fff'],
     },
     xaxis: {
-      categories: ['تبوك', 'جدة', 'جيزان', 'الدمام', 'الرياض'],
+      categories: ['Tabuk', 'Jeddah', 'Jazan', 'Dammam', 'Riyadh'],
       labels: {
         show: false,
       },
@@ -88,7 +88,7 @@ const HorizontalChart = ({
         style: {
           colors: '#333',
           fontSize: isSmallScreen ? '14px' : '16px',
-          fontFamily: 'Almarai, sans-serif',
+          fontFamily: 'Rubik, sans-serif',
         },
       },
       tooltip: {
@@ -111,7 +111,7 @@ const HorizontalChart = ({
       },
       y: {
         formatter: function (val: number) {
-          return val + ' شحنة';
+          return val + ' Shipments';
         },
       },
     },

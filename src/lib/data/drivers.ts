@@ -2,32 +2,32 @@ import { Driver } from "../../types/drivers";
 
 export const driverSectionInputsData = [
   {
-    label: 'الاسم',
+    label: 'Name',
     name: 'name',
   },
   {
-    label: 'رقم الهوية/الإقامة',
+    label: 'ID/Residency No.',
     name: 'identityNumber',
   },
   {
-    label: 'رقم الهاتف',
+    label: 'Phone No.',
     name: 'phoneNumber',
   },
   {
-    label: 'الفرع',
+    label: 'Branch',
     name: 'branch',
   },
   {
-    label: 'رقم الشاحنة',
+    label: 'Truck No.',
     name: 'vehicleNumber',
   },
 ];
 
 export const selectMenuOptions = [
-  { label: 'الكل', value: 'all' },
-  { label: 'يوم', value: 'day' },
-  { label: 'أسبوع', value: 'week' },
-  { label: 'شهر', value: 'month' },
+  { label: 'All', value: 'all' },
+  { label: 'Day', value: 'day' },
+  { label: 'Week', value: 'week' },
+  { label: 'Month', value: 'month' },
 ];
 
 export const fieldsToCheck: (keyof Driver)[] = [

@@ -28,7 +28,7 @@ const AddEditShipmentDataSection = ({
         {['PrimaryPhoneNumber', 'SecondaryPhoneNumber'].map((type, index) => (
           <PhoneNumberInput
             key={index}
-            label={`رقم الهاتف (${type === 'PrimaryPhoneNumber' ? 'أساسي' : 'احتياطي'})`}
+            label={`Phone Number (${type === 'PrimaryPhoneNumber' ? 'Primary' : 'Secondary'})`}
             value={value[`${section}${type}`]}
             onChange={(val: string) =>
               onChange({ target: { name: `${section}${type}`, value: val } })

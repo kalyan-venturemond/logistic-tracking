@@ -5,14 +5,14 @@ const getShipmentStatusDisplayText = (status: string) => {
   switch (status) {
     case 'shipping':
     case 'delayed':
-      return 'الشحنة في طريقها للعميل';
+      return 'Shipment is on its way to the client';
     case 'delivered':
     case 'completed':
-      return 'تم تسليم الشحنة للعميل';
+      return 'Shipment delivered to client';
     case 'canceled':
-      return 'تم إلغاء الشحنة';
+      return 'Shipment canceled';
     case 'returned':
-      return 'الشحنة مرتجعة للمرسل';
+      return 'Shipment returned to sender';
   }
 };
 
@@ -48,7 +48,7 @@ const ShipmentHistory = ({ shipment }: { shipment: Shipment }) => {
   const history = shipment.history || [];
   return (
     <div className='py-8 px-6'>
-      <h1 className='text-center text-primary text-xl font-bold'>تقرير الشحنة</h1>
+      <h1 className='text-center text-primary text-xl font-bold'>Shipment Report</h1>
       <hr className='border-0 border-t-2 border-dashed border-[#B3B3B3] my-6' />
       <div className='flex flex-col gap-20 items-start w-full'>
         <div
@@ -67,9 +67,9 @@ const ShipmentHistory = ({ shipment }: { shipment: Shipment }) => {
               alt={'shipping'}
             />
             <div className='flex flex-col justify-between gap-4 w-full'>
-              <h2 className='text-lg'>قيد الشحن</h2>
+              <h2 className='text-lg'>In Transit</h2>
               <div className='flex justify-between items-center w-full'>
-                <h4 className='text-[#666666] text-xs'>بواسطة: {shipment.admin}</h4>
+                <h4 className='text-[#666666] text-xs'>By: {shipment.admin}</h4>
                 <span className='text-[#666666] text-xs'>{shipment.pickupDate}</span>
               </div>
             </div>
@@ -97,7 +97,7 @@ const ShipmentHistory = ({ shipment }: { shipment: Shipment }) => {
                 <div className='flex flex-col justify-between gap-4 w-full'>
                   <h2 className='text-lg'>{getShipmentStatusLabel(phase.label)}</h2>
                   <div className='flex justify-between items-center w-full'>
-                    <h4 className='text-[#666666] text-xs'>بواسطة: {phase.admin}</h4>
+                    <h4 className='text-[#666666] text-xs'>By: {phase.admin}</h4>
                     <span className='text-[#666666] text-xs'>{phase.date}</span>
                   </div>
                 </div>

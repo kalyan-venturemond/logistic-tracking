@@ -9,7 +9,7 @@ const NoSelectedMessages = () => {
           alt='no selected message icon'
         />
         <h1 className='text-lg lg:text-3xl font-normal text-[#333333]'>
-          اختر رسالة للاطلاع على تفاصيلها
+          Select a message to view details
         </h1>
       </div>
     </div>

@@ -42,8 +42,8 @@ const ShipmentStatusOverview = ({ selectedShipment }: { selectedShipment: Shipme
       </div>
 
       <div className='w-11/12 flex flex-col gap-2 md:gap-0 md:flex-row md:justify-between md:items-center mt-6 font-Rubik text-[#333] text-sm md:text-base'>
-        <h1 className='text-nowrap'>تم التحميل: {selectedShipment?.pickupDate} م</h1>
-        <h1 className='text-nowrap'>الوصول المتوقع: {selectedShipment?.expectedDeliveryDate} م</h1>
+        <h1 className='text-nowrap'>Loaded: {selectedShipment?.pickupDate}</h1>
+        <h1 className='text-nowrap'>Expected Arrival: {selectedShipment?.expectedDeliveryDate}</h1>
       </div>
     </div>
   );

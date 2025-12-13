@@ -5,7 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip);
 
 const staticChartData = {
-  labels: ['مكتملة', 'مرتجعة', 'ملغية', 'متأخرة', 'قيد الشحن', 'تم التوصيل'],
+  labels: ['Completed', 'Returned', 'Canceled', 'Delayed', 'In Transit', 'Delivered'],
   backgroundColor: ['#2E853F', '#EA7B7E', '#CD2026', '#E5B84D', '#B3E5BD', '#CCCCCC'],
 };
 
@@ -28,7 +28,7 @@ const PieChart = ({ pieChartData, sum }: { pieChartData: number[]; sum: number }
       tooltip: {
         callbacks: {
           label: function (context: any) {
-            return `${context.label}: ${context.raw} شحنة`;
+            return `${context.label}: ${context.raw} Shipments`;
           },
         },
       },
@@ -51,7 +51,7 @@ const PieChart = ({ pieChartData, sum }: { pieChartData: number[]; sum: number }
         />
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-2xl font-Rubik text-[#333]'>
           {sum}
-          <div className='font-Rubik text-2xl'>شحنة</div>
+          <div className='font-Rubik text-2xl'>Shipments</div>
         </div>
       </div>
     </div>

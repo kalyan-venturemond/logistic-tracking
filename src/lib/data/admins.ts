@@ -2,30 +2,30 @@ import { Admin } from "../../types/admins";
 
 export const addEditAdminInputsData = [
   {
-    label: 'الاسم الأول',
+    label: 'First Name',
     name: 'firstName',
   },
   {
-    label: 'الاسم الأخير',
+    label: 'Last Name',
     name: 'lastName',
   },
   {
-    label: 'اسم المستخدم',
+    label: 'Username',
     name: 'userName',
   },
   {
-    label: 'رقم التواصل',
+    label: 'Phone No.',
     name: 'phoneNumber',
   },
   {
-    label: 'البريد الإلكتروني',
+    label: 'Email',
     name: 'email',
   },
   {
-    label: 'كلمة المرور',
+    label: 'Password',
     name: 'password',
     type: 'password',
-    description: ['لا تقل عن 8 أحرف', 'حروف وأرقام إنجليزية فقط'],
+    description: ['At least 8 characters', 'English letters and numbers only'],
   },
 ];
 

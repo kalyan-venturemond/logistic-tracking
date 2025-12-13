@@ -4,7 +4,7 @@ import { getShipmentStatusLabel } from '../../lib/utils';
 
 const DelayedShipments = () => {
   const delayedShipments = shipments.filter(
-    (shipment) => getShipmentStatusLabel(shipment.status) === 'متأخرة',
+    (shipment) => getShipmentStatusLabel(shipment.status) === 'Delayed',
   );
   return <ShipmentsPage shipments={delayedShipments} />;
 };

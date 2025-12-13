@@ -18,7 +18,7 @@ const iconsStyles = 'filter invert brightness-0';
 const items = [
   {
     nav: '/dashboard',
-    name: 'لوحة المعلومات',
+    name: 'Dashboard',
     icon: (
       <img
         src={statisticsIcon}
@@ -29,36 +29,36 @@ const items = [
   [
     {
       nav: '/shipments/all',
-      name: 'كل الشحنات',
+      name: 'All Shipments',
     },
     {
       nav: '/shipments/shipping',
-      name: 'قيد الشحن',
+      name: 'In Transit',
     },
     {
       nav: '/shipments/delivered',
-      name: 'تم التوصيل',
+      name: 'Delivered',
     },
     {
       nav: '/shipments/completed',
-      name: 'مكتملة',
+      name: 'Completed',
     },
     {
       nav: '/shipments/delayed',
-      name: 'متأخرة',
+      name: 'Delayed',
     },
     {
       nav: '/shipments/canceled',
-      name: 'ملغية',
+      name: 'Canceled',
     },
     {
       nav: '/shipments/returned',
-      name: 'مرتجعة',
+      name: 'Returned',
     },
   ],
   {
     nav: '/admins',
-    name: 'المستخدمين',
+    name: 'Users',
     icon: (
       <img
         src={usersIcon}
@@ -68,7 +68,7 @@ const items = [
   },
   {
     nav: '/drivers',
-    name: 'السائقين',
+    name: 'Drivers',
     icon: (
       <img
         src={truckIcon}
@@ -78,7 +78,7 @@ const items = [
   },
   {
     nav: '/shippers',
-    name: 'العملاء',
+    name: 'Shippers',
     icon: (
       <img
         src={shippersIcon}
@@ -88,7 +88,7 @@ const items = [
   },
   {
     nav: '/alert-messages',
-    name: 'رسائل التنبيه',
+    name: 'Alert Messages',
     icon: (
       <img
         src={alertIcon}
@@ -140,9 +140,8 @@ const Sidebar = () => {
         <>
           {isSidebarOpen && <div className='fixed lg:hidden inset-0 bg-black/50 z-40' />}
           <aside
-            className={`bg-[#E6E6E6] flex flex-col justify-between p-8 fixed lg:static z-50 h-full overflow-y-auto transition-[width,transform] duration-200 ease-in-out will-change-transform ${
-              isSidebarOpen ? 'w-[278px] items-end' : 'w-[104px] items-center'
-            } ${isMediumScreen && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'}`}
+            className={`bg-[#E6E6E6] flex flex-col justify-between p-8 fixed lg:static z-50 h-full overflow-y-auto transition-[width,transform] duration-200 ease-in-out will-change-transform ${isSidebarOpen ? 'w-[278px] items-end' : 'w-[104px] items-center'
+              } ${isMediumScreen && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'}`}
           >
             <div className={`w-full flex flex-col ${isSidebarOpen ? 'items-end' : 'items-center'}`}>
               {isSidebarOpen ? (
@@ -175,7 +174,7 @@ const Sidebar = () => {
                   Array.isArray(item) ? (
                     <SidebarAccordion
                       key={index}
-                      title='الشحنات'
+                      title='Shipments'
                       items={item}
                       isSidebarOpen={isSidebarOpen}
                       setIsSidebarOpen={setIsSidebarOpen}
@@ -191,11 +190,9 @@ const Sidebar = () => {
                         //   setIsSidebarOpen(false);
                         // }
                       }}
-                      className={`flex items-center w-full gap-2 mb-4 ${
-                        isSidebarOpen ? 'p-3' : 'p-2'
-                      } transition-all duration-200 ${
-                        isSidebarOpen ? 'justify-start' : 'justify-center'
-                      } ${isSelected(item.nav) && 'bg-primary rounded-lg text-[#FCFCFC]'}`}
+                      className={`flex items-center w-full gap-2 mb-4 ${isSidebarOpen ? 'p-3' : 'p-2'
+                        } transition-all duration-200 ${isSidebarOpen ? 'justify-start' : 'justify-center'
+                        } ${isSelected(item.nav) && 'bg-primary rounded-lg text-[#FCFCFC]'}`}
                     >
                       <span className={isSelected(item.nav) ? iconsStyles : ''}>{item.icon}</span>
                       {isSidebarOpen && <span>{item.name}</span>}
@@ -207,17 +204,15 @@ const Sidebar = () => {
             <button
               type='button'
               onClick={() => navigate('/')}
-              className={`flex items-center w-full gap-2 ${
-                isSidebarOpen ? 'p-3' : 'p-2'
-              } transition-all duration-200 ${isMediumScreen ? 'mb-12' : 'mb-4'} ${
-                isSidebarOpen ? 'justify-start' : 'justify-center'
-              }`}
+              className={`flex items-center w-full gap-2 ${isSidebarOpen ? 'p-3' : 'p-2'
+                } transition-all duration-200 ${isMediumScreen ? 'mb-12' : 'mb-4'} ${isSidebarOpen ? 'justify-start' : 'justify-center'
+                }`}
             >
               <img
                 src={logOutIcon}
                 alt='log-out'
               />
-              {isSidebarOpen && <span>تسجيل الخروج</span>}
+              {isSidebarOpen && <span>Log Out</span>}
             </button>
           </aside>
         </>

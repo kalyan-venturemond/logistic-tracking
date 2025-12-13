@@ -59,7 +59,7 @@ const ShipmentsPage = ({
           className={`flex flex-col items-start gap-2 md:flex-row md:items-center md:justify-between mb-10`}
         >
           <AddNewItemButton
-            title='إضافة شحنة'
+            title='Add Shipment'
             path='/shipments/add'
           />
 
@@ -70,7 +70,7 @@ const ShipmentsPage = ({
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
           <div className='w-full flex justify-between items-center mb-6'>
-            <h1 className='text-base md:text-xl font-bold'>قائمة الشحنات</h1>
+            <h1 className='text-base md:text-xl font-bold'>Shipments List</h1>
             {isAllShipmentsPage && (
               <SelectMenu
                 options={selectMenuOptions}

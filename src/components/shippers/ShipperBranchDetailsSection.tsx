@@ -27,17 +27,17 @@ const ShipperBranchDetailsSection = ({
         <div className='flex flex-col gap-4'>
           <DetailRow value={name} />
           <DetailRow
-            label='العنوان: '
+            label='Address: '
             value={address}
           />
         </div>
         <div className='flex flex-col gap-4'>
           <DetailRow
-            label='رقم الهاتف (أساسي): '
+            label='Phone Number (Primary): '
             value={primaryPhone}
           />
           <DetailRow
-            label='رقم الهاتف (احتياطي): '
+            label='Phone Number (Secondary): '
             value={secondaryPhone}
           />
         </div>

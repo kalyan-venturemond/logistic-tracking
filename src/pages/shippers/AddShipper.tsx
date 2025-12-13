@@ -20,7 +20,7 @@ const AddShipper = () => {
   } = useShippers();
 
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم إضاافة العميل بنجاح',
+    successMessage: 'Shipper added successfully',
     redirectPath: '/shippers',
   });
 
@@ -43,7 +43,7 @@ const AddShipper = () => {
         <AddShipmentTextArea
           page='addShipper'
           name='description'
-          placeholder='أضف وصفٍا للمنشة ومجال عملها'
+          placeholder='Add description of the facility and work field'
           value={mainFormData.description}
           onChange={handleMainFormChange}
         />
@@ -56,13 +56,13 @@ const AddShipper = () => {
             <hr className='border-0 border-t-2 border-dashed border-[#666] my-8' />
             {branches.length > 0 ? (
               <div className='w-full flex items-center justify-between'>
-                <h2 className='text-xl font-bold my-4'>الفرع ({index + 1})</h2>
+                <h2 className='text-xl font-bold my-4'>Branch ({index + 1})</h2>
                 <button
                   type='button'
                   onClick={() => deleteBranch(index)}
                   className='flex items-center gap-2'
                 >
-                  <span className='font-Rubik text-primary text-sm'>حذف الفرع</span>
+                  <span className='font-Rubik text-primary text-sm'>Delete Branch</span>
                   <img
                     src={trashIcon}
                     alt='delete branch'
@@ -70,7 +70,7 @@ const AddShipper = () => {
                 </button>
               </div>
             ) : (
-              <h2 className='text-xl font-bold my-4'>الفرع ({index + 1})</h2>
+              <h2 className='text-xl font-bold my-4'>Branch ({index + 1})</h2>
             )}
             <AddEditShipperDataSection
               inputs={addShipperAdditionalBranchSectionInputsData}
@@ -86,7 +86,7 @@ const AddShipper = () => {
           onClick={addNewBranch}
           className='flex items-center gap-2 text-primary border-2 border-primary py-2 px-3 text-sm rounded-lg font-Rubik my-12'
         >
-          <span>{branches.length > 0 ? 'إضافة فرع آخر' : 'إضافة فرع'}</span>
+          <span>{branches.length > 0 ? 'Add Another Branch' : 'Add Branch'}</span>
           <img
             src={addIcon}
             alt='upload image'
@@ -96,7 +96,7 @@ const AddShipper = () => {
           type='submit'
           className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mb-8'
         >
-          إضافة العميل
+          Add Shipper
         </button>
       </form>
     </>

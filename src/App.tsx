@@ -36,7 +36,7 @@ import AddShipper from './pages/shippers/AddShipper';
 
 function App() {
   return (
-    <div dir='rtl'>
+    <div dir='ltr'>
       <ScreenSizeProvider>
         <SidebarProvider>
           <BrowserRouter>

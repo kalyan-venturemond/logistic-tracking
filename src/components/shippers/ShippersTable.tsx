@@ -9,11 +9,11 @@ import { Shipper } from '../../types/shippers';
 
 const tableHeading = [
   { key: 'id', label: '(ID)' },
-  { key: 'name', label: 'الاسم' },
-  { key: 'primaryPhoneNumber', label: 'رقم الهاتف الأساسي' },
-  { key: 'primaryPhoneNumber', label: 'رقم الهاتف الاحتياطي' },
-  { key: 'email', label: 'البريد الالكتروني' },
-  { key: 'address', label: 'العنوان' },
+  { key: 'name', label: 'Name' },
+  { key: 'primaryPhoneNumber', label: 'Primary Phone No.' },
+  { key: 'secondaryPhoneNumber', label: 'Secondary Phone No.' },
+  { key: 'email', label: 'Email' },
+  { key: 'address', label: 'Address' },
 ];
 const ShippersTable = ({ data, searchValue }: { data: Shipper[]; searchValue: string }) => {
   const navigate = useNavigate();
@@ -38,9 +38,8 @@ const ShippersTable = ({ data, searchValue }: { data: Shipper[]; searchValue: st
                   className={tableRowStyles}
                 >
                   <div
-                    className={`flex items-center gap-1 ${
-                      index === tableHeading.length - 1 && 'lg:ms-12'
-                    }`}
+                    className={`flex items-center gap-1 ${index === tableHeading.length - 1 && 'lg:ms-12'
+                      }`}
                   >
                     {col.label}
                   </div>

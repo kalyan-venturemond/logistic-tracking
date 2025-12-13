@@ -4,7 +4,7 @@ import { getShipmentStatusLabel } from '../../lib/utils';
 
 const CanceledShipments = () => {
   const canceledShipments = shipments.filter(
-    (shipment) => getShipmentStatusLabel(shipment.status) === 'ملغية',
+    (shipment) => getShipmentStatusLabel(shipment.status) === 'Canceled',
   );
   return <ShipmentsPage shipments={canceledShipments} />;
 };

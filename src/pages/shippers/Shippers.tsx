@@ -10,9 +10,9 @@ const Shippers = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { filteredData, searchValue, setSearchValue } = useFilteredSearchValue(
-     fieldsToCheck,
-     shippers,
-   );
+    fieldsToCheck,
+    shippers,
+  );
 
   setTimeout(() => {
     setIsLoading(false);
@@ -30,7 +30,7 @@ const Shippers = () => {
           className={`flex flex-col items-start gap-2 md:flex-row md:items-center md:justify-between mb-10`}
         >
           <AddNewItemButton
-            title='إضافة عميل'
+            title='Add Shipper'
             path='/shippers/add'
           />
 
@@ -41,7 +41,7 @@ const Shippers = () => {
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
           <div className='w-full flex justify-between items-center mb-6'>
-            <h1 className='text-xl font-bold'>قائمة العملاء</h1>
+            <h1 className='text-xl font-bold'>Shippers List</h1>
           </div>
           <ShippersTable
             data={filteredData}

@@ -38,28 +38,26 @@ const RepeatMessageDialog = ({
         id='customized-dialog-title'
         className='text-primary text-center !font-Almarai !text-2xl'
       >
-        تكرار الإرسال
+        Repeat Sending
       </DialogTitle>
       <DialogContent
-        dir='rtl'
         sx={{ margin: '0 6px' }}
       >
-        <span className='text-primary text-lg'>رسالة كل:</span>
+        <span className='text-primary text-lg'>Message every:</span>
         <TimesDialog />
-        <span className='text-primary text-lg inline-block mt-4'>تكرار لمدة:</span>
+        <span className='text-primary text-lg inline-block mt-4'>Repeat for:</span>
         <DurationsDialog />
       </DialogContent>
       <DialogActions sx={{ margin: '10px 6px 0' }}>
         <div className='grid grid-cols-2 gap-4 w-full mb-2'>
-          {['تطبيق', 'حذف'].map((item, index) => {
+          {['Apply', 'Delete'].map((item, index) => {
             return (
               <div key={index}>
                 <button
                   onClick={handleClose}
                   type='button'
-                  className={`col-span-1 py-3 rounded-lg border w-full ${
-                    index === 0 ? 'bg-primary text-[#FCFCFC]' : 'bg-[#FCFCFC] text-primary'
-                  }`}
+                  className={`col-span-1 py-3 rounded-lg border w-full ${index === 0 ? 'bg-primary text-[#FCFCFC]' : 'bg-[#FCFCFC] text-primary'
+                    }`}
                 >
                   {item}
                 </button>

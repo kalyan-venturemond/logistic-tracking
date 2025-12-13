@@ -9,8 +9,8 @@ const ShipperDetails = () => {
   const selectedShipper = shippers.find((shipper) => shipper?.id === Number(shipperId));
 
   const { menuActions } = useMenuActions([
-    { editLabel: 'تعديل البيانات', editPath: `/shippers/edit/${shipperId}` },
-    { deleteLabel: 'حذف البيانات', deletePath: `/shippers/delete/${shipperId}` },
+    { editLabel: 'Edit Data', editPath: `/shippers/edit/${shipperId}` },
+    { deleteLabel: 'Delete Data', deletePath: `/shippers/delete/${shipperId}` },
   ]);
 
   return (
@@ -18,8 +18,8 @@ const ShipperDetails = () => {
       <div className='w-full flex justify-between items-start sm:items-center relative'>
         <div className='flex flex-col gap-2'>
           {[
-            { label: 'الاسم', value: selectedShipper?.name },
-            { label: 'رقم السجل التجاري', value: selectedShipper?.commercialRegistration },
+            { label: 'Name', value: selectedShipper?.name },
+            { label: 'Commercial Reg. No.', value: selectedShipper?.commercialRegistration },
           ].map((item, index) => (
             <div
               className='flex gap-1 font-medium text-base font-Rubik'
@@ -42,7 +42,7 @@ const ShipperDetails = () => {
       {selectedShipper?.branches.map((branch, index) => (
         <div key={index}>
           <ShipperBranchDetailsSection
-            title={`الفرع (${index + 1})`}
+            title={`Branch (${index + 1})`}
             name={branch.name}
             address={branch.address}
             primaryPhone={branch.primaryPhoneNumber}

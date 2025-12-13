@@ -32,7 +32,7 @@ const Drivers = () => {
           className={`flex flex-col items-start gap-2 md:flex-row md:items-center md:justify-between mb-10`}
         >
           <AddNewItemButton
-            title='إضافة سائق'
+            title='Add Driver'
             path='/drivers/add'
           />
           <SearchInput
@@ -42,7 +42,7 @@ const Drivers = () => {
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
           <div className='w-full flex justify-between items-center mb-6'>
-            <h1 className='xs:text-lg text-xl text-nowrap font-bold'>قائمة السائقين</h1>
+            <h1 className='xs:text-lg text-xl text-nowrap font-bold'>Drivers List</h1>
             <SelectMenu
               options={selectMenuOptions}
               selectedItem={selectedDriverStatus}

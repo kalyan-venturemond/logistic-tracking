@@ -15,7 +15,7 @@ import { useFormSubmission } from '../../../hooks/useFormSubmission ';
 const AddShipment = () => {
   const { formData, setFormData, handleChange, getTotalCost } = useShipment();
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم إضاافة الشحنة بنجاح',
+    successMessage: 'Shipment added successfully',
     redirectPath: '/shipments',
   });
 
@@ -32,7 +32,7 @@ const AddShipment = () => {
       >
         <AddEditItemDataSection
           section='driver'
-          title='السائق'
+          title='Driver'
           inputs={driverSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -41,7 +41,7 @@ const AddShipment = () => {
 
         <AddEditItemDataSection
           section='shipment'
-          title='الشحنة'
+          title='Shipment'
           inputs={shipmentSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -56,7 +56,7 @@ const AddShipment = () => {
         <hr className='border-0 border-t-2 border-dashed border-[#666] mb-12' />
         <AddEditShipmentDataSection
           section='shipper'
-          title='المرسِل'
+          title='Shipper'
           inputs={shipperSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -64,7 +64,7 @@ const AddShipment = () => {
         />
         <AddEditShipmentDataSection
           section='recipient'
-          title='المستلِم'
+          title='Recipient'
           inputs={recipientSectionInputsData}
           value={formData}
           onChange={handleChange}
@@ -87,7 +87,7 @@ const AddShipment = () => {
           type='submit'
           className='w-full py-3 rounded-lg text-xl bg-primary text-[#FCFCFC] mt-4'
         >
-          إضافة الشحنة
+          Add Shipment
         </button>
       </form>
     </>

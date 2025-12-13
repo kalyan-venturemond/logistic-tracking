@@ -57,7 +57,7 @@ const SelectRecipients = () => {
               navigate('/alert-messages');
             }}
           >
-            متابعة
+            Continue
             <img
               src={leftArrowIcon}
               alt='continue'
@@ -66,7 +66,7 @@ const SelectRecipients = () => {
         </div>
         <div className='shadow-xl rounded-3xl px-8 py-4'>
           <div className='w-full flex justify-between items-center mb-6'>
-            <h1 className='text-xl font-bold'>قائمة السائقين</h1>
+            <h1 className='text-xl font-bold'>Drivers List</h1>
             <SelectMenu
               options={selectMenuOptions}
               selectedItem={selectedDriverStatus}

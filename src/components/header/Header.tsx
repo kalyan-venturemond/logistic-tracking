@@ -4,29 +4,29 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 
 const pageTitles: Record<string, string> = {
-  '/dashboard': 'لوحة المعلومات',
-  '/shipments/all': 'الشحنات',
-  '/shipments/add': 'إضافة شحنة',
-  '/shipments/edit': 'تعديل بيانات الشحنة',
-  '/shipments/delete': 'حذف الشحنة',
-  '/shipments/': 'بيانات الشحنة',
-  '/admins/add': 'إضافة مستخدم',
-  '/admins/edit': 'تحديث بيانات المستخدم',
-  '/admins/delete': 'حذف المستخدم',
-  '/admins/': 'بيانات المستخدم',
-  '/admins': 'المستخدمين',
-  '/drivers/add': 'إضافة سائق',
-  '/drivers/edit': 'تحديث بيانات السائق',
-  '/drivers/delete': 'حذف السائق',
-  '/drivers/': 'بيانات السائق',
-  '/drivers': 'السائقين',
-  '/shippers/add': 'إضافة عميل',
-  '/shippers/edit': 'تحديث بيانات العميل',
-  '/shippers/delete': 'حذف العميل',
-  '/shippers/': 'بيانات العميل',
-  '/shippers': 'العملاء',
-  '/alert-messages': 'رسائل النظام',
-  '/alert-messages/select-recipients': 'تحديد مستلمين',
+  '/dashboard': 'Dashboard',
+  '/shipments/all': 'Shipments',
+  '/shipments/add': 'Add Shipment',
+  '/shipments/edit': 'Edit Shipment',
+  '/shipments/delete': 'Delete Shipment',
+  '/shipments/': 'Shipment Details',
+  '/admins/add': 'Add User',
+  '/admins/edit': 'Update User',
+  '/admins/delete': 'Delete User',
+  '/admins/': 'User Details',
+  '/admins': 'Users',
+  '/drivers/add': 'Add Driver',
+  '/drivers/edit': 'Update Driver',
+  '/drivers/delete': 'Delete Driver',
+  '/drivers/': 'Driver Details',
+  '/drivers': 'Drivers',
+  '/shippers/add': 'Add Shipper',
+  '/shippers/edit': 'Update Shipper',
+  '/shippers/delete': 'Delete Shipper',
+  '/shippers/': 'Shipper Details',
+  '/shippers': 'Shippers',
+  '/alert-messages': 'System Messages',
+  '/alert-messages/select-recipients': 'Select Recipients',
 };
 
 const backButtonPaths = [
@@ -48,7 +48,7 @@ const Header = () => {
     if (pageTitles[path]) return pageTitles[path];
     const matchingPath = Object.keys(pageTitles).find((key) => key !== '/' && path.startsWith(key));
 
-    return matchingPath ? pageTitles[matchingPath] : 'الشحنات';
+    return matchingPath ? pageTitles[matchingPath] : 'Shipments';
   };
 
   // Usage in component:
@@ -70,13 +70,13 @@ const Header = () => {
           className='text-primary flex items-center gap-2 font-Rubik text-lg'
         >
           {location.pathname.includes('/shipments/delete-shipment') ? (
-            <span>إلغاء</span>
+            <span>Cancel</span>
           ) : (
             <>
-              <span className='-mt-1 xs:text-base'>عودة</span>
+              <span className='-mt-1 xs:text-base'>Back</span>
               <FaArrowLeft
                 color='#DD7E1F'
-                // size={20}
+              // size={20}
               />
             </>
           )}
@@ -98,7 +98,7 @@ const Header = () => {
             alt='avatar pic'
             className='w-8 h-8 rounded-full object-cover'
           />
-          <h4 className='text-[#333333] text-sm font-semibold'>باسم العوفي</h4>
+          <h4 className='text-[#333333] text-sm font-semibold'>Basem Al-Aufi</h4>
         </div>
       )}
     </header>

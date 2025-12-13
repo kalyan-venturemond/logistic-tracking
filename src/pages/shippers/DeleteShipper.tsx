@@ -8,7 +8,7 @@ const DeleteShipper = () => {
   const selectedShipper = shippers.find((shipper) => shipper.id === Number(shipperId));
 
   const { handleSubmit, isLoading } = useFormSubmission({
-    successMessage: 'تم حذف العميل بنجاح',
+    successMessage: 'Shipper deleted successfully',
     redirectPath: '/shippers',
   });
 
@@ -18,8 +18,8 @@ const DeleteShipper = () => {
         <div className='w-full flex justify-between items-center relative'>
           <div className='flex flex-col gap-2'>
             {[
-              { label: 'الاسم', value: selectedShipper?.name },
-              { label: 'رقم السجل التجاري', value: selectedShipper?.commercialRegistration },
+              { label: 'Name', value: selectedShipper?.name },
+              { label: 'Commercial Reg. No.', value: selectedShipper?.commercialRegistration },
             ].map((item, index) => (
               <div
                 className='flex gap-2 font-medium text-base font-Rubik'

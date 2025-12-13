@@ -3,7 +3,7 @@ import { shipments } from '../../lib/data/mainData';
 import { getShipmentStatusLabel } from '../../lib/utils';
 const DeliveredShipments = () => {
   const deliveredShipments = shipments.filter(
-    (shipment) => getShipmentStatusLabel(shipment.status) === 'تم التوصيل',
+    (shipment) => getShipmentStatusLabel(shipment.status) === 'Delivered',
   );
   return <ShipmentsPage shipments={deliveredShipments} />;
 };
