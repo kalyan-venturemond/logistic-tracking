@@ -7,6 +7,7 @@ import { useFormSubmission } from '../hooks/useFormSubmission ';
 
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  // Force update for deployment sync
 
   const { handleSubmit, isLoading } = useFormSubmission({
     redirectPath: '/dashboard',
