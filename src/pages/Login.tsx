@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { CiLock } from 'react-icons/ci';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
-import logo from '/images/truck-Logo.svg';
+const logo = '/images/truck-Logo.svg';
 import { useFormSubmission } from '../hooks/useFormSubmission ';
 
 const Login = () => {
@@ -22,12 +22,16 @@ const Login = () => {
         </div>
       )}
       <div className='w-full max-w-lg shadow-2xl border bg-[#FCFCFC] mx-2 md:mx-0 px-8 py-6 rounded-xl -mt-24 sm:-mt-12'>
-        <div className='flex justify-center items-center mb-4'>
+        <div className='flex justify-center items-center mb-6 gap-3'>
           <img
             src={logo}
             alt='logo'
-            className='w-24 h-24'
+            className='w-16 h-16'
           />
+          <div className='flex flex-col justify-center select-none'>
+            <span className='text-3xl font-normal text-[#333333] leading-none'>Venture</span>
+            <span className='text-3xl font-bold text-[#333333] leading-none'>Mond</span>
+          </div>
         </div>
         <h1 className='my-6 text-center font-medium text-xl'>Login to Account</h1>
         <form
@@ -89,27 +93,18 @@ const Login = () => {
               )}
             </button>
           </div>
-          <span className='font-Rubik text-[#333333] text-sm'>
-            This is a demo version, just click Login.
-          </span>
+
           <button
             type='submit'
             className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-primary rounded-lg mt-4'
           >
-            Login
+            Login to Dashboard
           </button>
         </form>
       </div>
       <div className='fixed bottom-6 w-full text-center'>
         <p className='text-gray-500 text-sm font-Rubik'>
-          © {new Date().getFullYear()} Shuhnaty Dashboard Demo by{' '}
-          <a
-            target='_blank'
-            href='https://www.linkedin.com/in/islam-khairy-364793307/'
-            className='text-primary hover:underline'
-          >
-            Islam Khairy
-          </a>
+          © {new Date().getFullYear()} VentureMond. All rights reserved.
         </p>
       </div>
     </div>

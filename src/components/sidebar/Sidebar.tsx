@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { IoMdMenu } from 'react-icons/io';
-import logo from '/images/logo.svg';
+const logo = '/images/logo.svg';
 import { IoCloseOutline } from 'react-icons/io5';
 import statisticsIcon from '/images/sidebar/statistics.svg';
 import usersIcon from '/images/sidebar/people.svg';
@@ -161,13 +161,19 @@ const Sidebar = () => {
               )}
 
               {isSidebarOpen && (
-                <img
-                  src={logo}
-                  alt='logo'
-                  className='mt-10'
-                  loading='eager'
-                  fetchPriority='high'
-                />
+                <div className='mt-10 flex items-center justify-center gap-3 w-full select-none'>
+                  <img
+                    src={`${logo}?v=4`}
+                    alt='logo'
+                    className='w-10 h-10'
+                    loading='eager'
+                    fetchPriority='high'
+                  />
+                  <div className='flex flex-col justify-center'>
+                    <span className='text-xl font-normal text-[#333333] leading-none'>Venture</span>
+                    <span className='text-xl font-bold text-[#333333] leading-none'>Mond</span>
+                  </div>
+                </div>
               )}
               <div className='w-full mt-10'>
                 {items.map((item, index) =>

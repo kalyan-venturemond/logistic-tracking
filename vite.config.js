@@ -16,9 +16,9 @@ export default defineConfig({
         'icons/apple-touch-icon-76x76.png',
       ],
       manifest: {
-        name: 'Shuhnaty Transport Dashboard',
-        short_name: 'Shuhnaty',
-        description: 'Dashboard for Shuhnaty Transport management and operations.',
+        name: 'VentureMond Transport Dashboard',
+        short_name: 'VentureMond',
+        description: 'Dashboard for VentureMond Transport management and operations.',
         icons: [
           {
             src: '/192.png',

@@ -95,10 +95,10 @@ const Header = () => {
           </button>
           <img
             src={avatar}
-            alt='avatar pic'
+            alt='Account Avatar'
             className='w-8 h-8 rounded-full object-cover'
           />
-          <h4 className='text-[#333333] text-sm font-semibold'>Basem Al-Aufi</h4>
+          <h4 className='text-[#333333] text-sm font-semibold'>VentureMond Client</h4>
         </div>
       )}
     </header>
