@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 
 const pageTitles: Record<string, string> = {
-  '/dashboard': 'Dashboard',
+  '/dashboard': 'Overview',
   '/shipments/all': 'Shipments',
   '/shipments/add': 'Add Shipment',
   '/shipments/edit': 'Edit Shipment',
@@ -14,7 +14,7 @@ const pageTitles: Record<string, string> = {
   '/admins/edit': 'Update User',
   '/admins/delete': 'Delete User',
   '/admins/': 'User Details',
-  '/admins': 'Users',
+  '/admins': 'Operations Team',
   '/drivers/add': 'Add Driver',
   '/drivers/edit': 'Update Driver',
   '/drivers/delete': 'Delete Driver',
@@ -24,8 +24,8 @@ const pageTitles: Record<string, string> = {
   '/shippers/edit': 'Update Shipper',
   '/shippers/delete': 'Delete Shipper',
   '/shippers/': 'Shipper Details',
-  '/shippers': 'Shippers',
-  '/alert-messages': 'System Messages',
+  '/shippers': 'Clients',
+  '/alert-messages': 'Alerts',
   '/alert-messages/select-recipients': 'Select Recipients',
 };
 
@@ -98,7 +98,7 @@ const Header = () => {
             alt='Account Avatar'
             className='w-8 h-8 rounded-full object-cover'
           />
-          <h4 className='text-[#333333] text-sm font-semibold'>VentureMond Client</h4>
+          <h4 className='text-[#333333] text-sm font-semibold'>FleetFlow Studio Client</h4>
         </div>
       )}
     </header>

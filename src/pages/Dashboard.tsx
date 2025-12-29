@@ -12,7 +12,7 @@ import { getRangeDates } from '../lib/utils';
 
 const shipmentsStatus = [
   {
-    status: 'Delivered',
+    status: 'Completed Deliveries',
     count: '48',
     icon: (
       <div className='p-2 rounded-full bg-[#999999] group-hover:bg-[#4D4D4D]'>
@@ -26,7 +26,7 @@ const shipmentsStatus = [
     styles: 'hover:bg-[#666666] text-[#333333] hover:text-white',
   },
   {
-    status: 'Delayed Shipments',
+    status: 'Delayed Deliveries',
     count: '26',
     icon: (
       <div className='p-2 rounded-full bg-[#CA8B02] group-hover:bg-[#986801]'>
@@ -40,7 +40,7 @@ const shipmentsStatus = [
     styles: 'hover:bg-[#CA8B02] text-[#CA8B02] font-bold hover:text-white',
   },
   {
-    status: 'Driver Alerts',
+    status: 'Active Driver Alerts',
     count: '12',
     icon: (
       <div className='p-2 rounded-full bg-primary group-hover:bg-[#864D13]'>
@@ -231,7 +231,7 @@ const Dashboard = () => {
                 <div>
                   <h4 className='xs:text-lg text-xl sm:text-2xl font-bold mb-6'>{item?.status}</h4>
                   <h5 className='xs:text-base text-lg font-medium font-Rubik'>
-                    {item?.count} {item.status === 'Driver Alerts' ? 'Active Alert' : 'Shipment'}
+                    {item?.count} {item.status === 'Active Driver Alerts' ? 'Active Alert' : 'Shipment'}
                   </h5>
                 </div>
                 <button

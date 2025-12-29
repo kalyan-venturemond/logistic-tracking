@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { CiLock } from 'react-icons/ci';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
-const logo = '/images/truck-Logo.svg';
+const logo = '/images/fleetflow-logo.png';
 import { useFormSubmission } from '../hooks/useFormSubmission ';
 
 const Login = () => {
@@ -22,18 +22,19 @@ const Login = () => {
         </div>
       )}
       <div className='w-full max-w-lg shadow-2xl border bg-[#FCFCFC] mx-2 md:mx-0 px-8 py-6 rounded-xl -mt-24 sm:-mt-12'>
-        <div className='flex justify-center items-center mb-6 gap-3'>
-          <img
-            src={logo}
-            alt='logo'
-            className='w-16 h-16'
-          />
-          <div className='flex flex-col justify-center select-none'>
-            <span className='text-3xl font-normal text-[#333333] leading-none'>Venture</span>
-            <span className='text-3xl font-bold text-[#333333] leading-none'>Mond</span>
+        <div className='flex flex-col justify-center items-center mb-6 gap-3'>
+          <div className='flex items-center justify-center gap-3'>
+            <img
+              src={logo}
+              alt='logo'
+              className='w-16 h-16 object-contain'
+              style={{ background: 'transparent' }}
+            />
+            <span className='text-3xl font-bold text-[#333333] leading-none'>FleetFlow Studio</span>
           </div>
+          <span className='text-sm text-[#666666]'>Fleet & Logistics Operations</span>
         </div>
-        <h1 className='my-6 text-center font-medium text-xl'>Login to Account</h1>
+
         <form
           onSubmit={handleSubmit}
           className='flex flex-col items-start gap-1'
@@ -98,13 +99,13 @@ const Login = () => {
             type='submit'
             className='w-full px-10 py-2 text-[#FCFCFC] font-thin bg-primary rounded-lg mt-4'
           >
-            Login to Dashboard
+            Access Fleet Dashboard
           </button>
         </form>
       </div>
       <div className='fixed bottom-6 w-full text-center'>
         <p className='text-gray-500 text-sm font-Rubik'>
-          © {new Date().getFullYear()} VentureMond. All rights reserved.
+          © 2025 FleetFlow Studio. All rights reserved.
         </p>
       </div>
     </div>

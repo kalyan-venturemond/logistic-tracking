@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { IoMdMenu } from 'react-icons/io';
-const logo = '/images/logo.svg';
+const logo = '/images/fleetflow-logo.png';
 import { IoCloseOutline } from 'react-icons/io5';
 import statisticsIcon from '/images/sidebar/statistics.svg';
 import usersIcon from '/images/sidebar/people.svg';
@@ -18,7 +18,7 @@ const iconsStyles = 'filter invert brightness-0';
 const items = [
   {
     nav: '/dashboard',
-    name: 'Dashboard',
+    name: 'Overview',
     icon: (
       <img
         src={statisticsIcon}
@@ -58,7 +58,7 @@ const items = [
   ],
   {
     nav: '/admins',
-    name: 'Users',
+    name: 'Operations Team',
     icon: (
       <img
         src={usersIcon}
@@ -78,7 +78,7 @@ const items = [
   },
   {
     nav: '/shippers',
-    name: 'Shippers',
+    name: 'Clients',
     icon: (
       <img
         src={shippersIcon}
@@ -88,7 +88,7 @@ const items = [
   },
   {
     nav: '/alert-messages',
-    name: 'Alert Messages',
+    name: 'Alerts',
     icon: (
       <img
         src={alertIcon}
@@ -161,18 +161,19 @@ const Sidebar = () => {
               )}
 
               {isSidebarOpen && (
-                <div className='mt-10 flex items-center justify-center gap-3 w-full select-none'>
-                  <img
-                    src={`${logo}?v=4`}
-                    alt='logo'
-                    className='w-10 h-10'
-                    loading='eager'
-                    fetchPriority='high'
-                  />
-                  <div className='flex flex-col justify-center'>
-                    <span className='text-xl font-normal text-[#333333] leading-none'>Venture</span>
-                    <span className='text-xl font-bold text-[#333333] leading-none'>Mond</span>
+                <div className='mt-10 flex flex-col items-center justify-center gap-2 w-full select-none'>
+                  <div className='flex items-center justify-center gap-3'>
+                    <img
+                      src={logo}
+                      alt='logo'
+                      className='w-10 h-10 object-contain'
+                      style={{ background: 'transparent' }}
+                      loading='eager'
+                      fetchPriority='high'
+                    />
+                    <span className='text-xl font-bold text-[#333333] leading-none'>FleetFlow Studio</span>
                   </div>
+                  <span className='text-xs text-[#666666] font-normal leading-tight text-center max-w-[200px]'>Intelligent Fleet & Logistics Operations</span>
                 </div>
               )}
               <div className='w-full mt-10'>
